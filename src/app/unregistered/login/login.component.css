@@ -1,0 +1,89 @@
+.container {
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+	overflow: hidden;
+}	
+
+header {
+	background-image: linear-gradient(
+		rgba(0, 0, 0, 0.7),
+		rgba(0, 0, 0, 0.7)
+	  ), url('src/assets/Unregistered/stretching.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 1475px;
+	margin-bottom: -16px;
+}
+
+header .menu {
+	margin: 70px 0;
+	text-align: right;
+}
+
+
+header .menu img {
+	float: left;
+	width: 265px;
+}
+
+header .menu .btn {
+	font-size: 1.1rem
+}
+
+.btn_hover {
+	
+}
+
+.separation_line {
+	height: 12px;
+	background-color:  rgb(27 27 27);
+	padding-bottom: 12px;
+}
+
+footer {
+	background-color: black;
+	font-size: 16px;
+}
+
+footer .container.text-left.text-md-left {
+	width:1000px;
+	margin: 50px auto;
+}
+
+footer .font-weight-bold.text-uppercase.mb-4.text-secondary {
+	font-size: 18px;
+}
+
+footer ul li p a {
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+}
+
+footer ul li p a:hover {
+	font-size: 18px;
+	color:rgb(141, 139, 139)
+}
+
+.bottom_bar {
+	height: 60px;
+	background-color: rgb(255, 10, 10);
+	margin-top: 30px;
+}
+
+.bottom_bar .footer-copyright {
+	padding-top: 18px;
+	font-size: 15px;
+	color: white;
+}	
+
+footer ul {
+	padding: 5px;
+}
+
+footer ul li p a.twitter,
+footer ul li p a.facebook,
+footer ul li p a.instagram {
+	padding-bottom: 12px;
+}

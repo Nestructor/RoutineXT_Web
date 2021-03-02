@@ -1,6 +1,6 @@
 .container {
 	width: 90%;
-	max-width: 1400px;
+	max-width: 1200px;
 	margin: auto;
 	overflow: hidden;
 }	
@@ -25,11 +25,11 @@ header .menu {
 
 header .menu img {
 	float: left;
-	width: 330px;
+	width: 265px;
 }
 
 header .menu .btn {
-	font-size: 1.2rem
+	font-size: 1.1rem
 }
 
 header .text_container {
@@ -54,12 +54,12 @@ header .text_container .text h2 {
 
 header .text_container .text .description {
 	margin-bottom: 10px;
-	font-size: 35px;
+	font-size: 29px;
 	line-height: 50px;
 }
 
 header .text_container .text .sub_description {
-	font-size: 20px;
+	font-size: 18px;
 	margin-top: 80px;
 }
 
@@ -85,24 +85,24 @@ main {
 
 main .container {
 	overflow: hidden;
-    height: 650px;
+    height: 580px;
 	padding-top: 80px;
     margin-bottom: 45px;
 }
 
 main .article .article1_text {
-	margin: 130px 40px 130px 100px;
+	margin: 138px 40px 130px 134px;
 }
 
 main .article .article_title {
-	margin: 40px 121px 40px 22px;
-    font-size: 40px;
-    line-height: 40px;
+	margin: 0px 50px 15px 22px;
+    font-size: 28px;
+    line-height: 34px;
     color: white;
 }
 
 main .article .article_subtitle {
-	font-size: 22px;
+	font-size: 18px;
 	margin-right: 108px;
 	margin-left: 20px;
 	color:cornflowerblue
@@ -111,7 +111,7 @@ main .article .article_subtitle {
 main .article .article1_img {
 	display:block;
 	margin: 50px auto;
-	width: 215px;
+	width: 180px;
 	transition: all 500ms ease-in-out;
 }
 
@@ -121,19 +121,19 @@ main .article .article1_img:hover {
 
 main .container.article2 {
 	overflow: hidden;
-    height: 500px;
+    height: 460px;
     padding-top: 70px;
     margin-bottom: 45px;
 }
 
 main .article .article2_text {
-	margin: 30px 20px 65px 90px;
+	margin: 50px 30px 65px 90px;
 }
 
 main .article .article2_img {
 	float: left;
 	margin-left: 120px;
-	width: 335px;
+	width: 315px;
 	transition: all 500ms ease-in-out;
 }
 
@@ -142,11 +142,11 @@ main .article .article2_img:hover {
 }
 
 main .article .article3_text {
-	margin: 80px 40px 10px 100px;
+	margin: 90px 40px 10px 132px;
 }
 
 main .article .container.article3 {
-    height: 525px;
+    height: 460px;
 	padding-top:30px;
     margin-bottom: 0;
 }
@@ -154,7 +154,7 @@ main .article .container.article3 {
 main .article .article3_img {
 	display: block;
 	margin: 80px auto;
-	width: 400px;
+	width: 360px;
 	transition: all 500ms ease-in-out;
 }
 
@@ -164,48 +164,48 @@ main .article .article3_img:hover {
 
 main .container.reviews {
 	overflow: hidden;
-    height: 650px;
+    height: 550px;
 	margin: 0 auto;
 }
 
 main .article .reviews_title {
-	margin:auto;
-	padding-top: 50px;
-	width: 358px;
-	color:white;
+	margin: 0;
+    padding-top: 50px;
+    color: white;
+    font-size: 26px;
+    text-align: center;
 }
 
 main .article .reviews_img {
-	display:block;
-	width: 400px;
-	margin-bottom: 40px;
+	width: 300px;
+    margin-left: 42px;
 }
 
 main .article .reviews_usertitle {
-	margin: 30px 0px;
-	font-size: 24px;
-	line-height: 40px;
-	color:cornflowerblue;
-	width: 115%;
+	margin: 30px 15px 18px 42px;
+    font-size: 20px;
+    line-height: 40px;
+    color: cornflowerblue;
 }
 
 main .article .reviews_usersubtitle {
-	font-size: 22px;
-    margin-right: 34px;
+	font-size: 16px;
+    margin-left: 43px;
     color: white;
-}
-
-.container.text-center.text-md-left {
-	font-size: 18px;
 }
 
 footer {
 	background-color: black;
+	font-size: 16px;
 }
 
 footer .container.text-left.text-md-left {
 	width:1000px;
 	margin: 50px auto;
+}
+
+footer .font-weight-bold.text-uppercase.mb-4.text-secondary {
+	font-size: 18px;
 }
 
 footer ul li p a {
@@ -214,7 +214,7 @@ footer ul li p a {
 }
 
 footer ul li p a:hover {
-	font-size: 20px;
+	font-size: 18px;
 	color:rgb(141, 139, 139)
 }
 
@@ -226,7 +226,7 @@ footer ul li p a:hover {
 
 .bottom_bar .footer-copyright {
 	padding-top: 18px;
-	font-size: 16px;
+	font-size: 15px;
 	color: white;
 }	
 
