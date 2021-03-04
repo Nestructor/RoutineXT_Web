@@ -13,7 +13,7 @@ header {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	height: 1190px;
+	height: 1300px;
 	margin-bottom: -16px;
 }
 
@@ -31,57 +31,102 @@ header .menu .btn {
 	font-size: 1.1rem
 }
 
-.form .form_title {
-	text-align: center;
-    font-size: 26px;
-    margin-bottom: 45px;
-    color: rgb(141, 139, 139);
-}
-
 .form {
-	background: #2c2c2c;
+	background: #ffffff;
     width: 650px;
     margin: 110px auto;
     padding: 60px 90px;
     border-radius: 5px;
-	height: 760px;
+	height: 950px;
 }
 
-.form input[type="email"], 
-.form input[type="password"] {
+/* Form Title Separator */
+
+.form .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #002e73;
+    margin-bottom: 40px;
+    font-size: 21px;
+}
+
+.form .separator::before,
+.form .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #919191;;
+}
+
+.form .separator:not(:empty)::before {
+    margin-right: 1.25em;
+}
+
+.form .separator:not(:empty)::after {
+    margin-left: 1.25em;
+}
+
+.form input {
 	width: 100%;
     padding: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-radius: 3px;
     border: 1px solid #000000;
     font-size: 16px;
 }
 
-.alert {
-	padding: 0.5rem 0.5rem
-}
-
-.form input[type="email"]:focus, 
-.form input[type="password"]:focus {
-	border: 2px solid #0066ff;
+.form input:focus {
+	border: 2px solid #002e73;
 	outline: 0 none;
 }
 
-.form .btn.btn-light {
+.custom-radio-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: arial;
+    font-size: 14px;
+}
+
+/* Modificador para dar la imagen de checkbox */
+.custom-radio-checkbox__show--checkbox {
+    background-image: url(src/assets/checkbox_unchecked.png);
+}
+
+/* Oculta input original */
+.custom-radio-checkbox > .custom-radio-checkbox__input {
+    display: none;
+}
+
+/* Radio personalizado usando <span> */
+.custom-radio-checkbox > .custom-radio-checkbox__show {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: .5rem;
+    background-size: cover;
+}
+
+/* Cambia el checkbox personalizado cuando es pulsado */
+.custom-radio-checkbox > .custom-radio-checkbox__input:checked + .custom-radio-checkbox__show--checkbox {
+    background-image: url(src/assets/checkbox_checked.jpg);
+}
+
+.form .btn.btn-dark {
 	width: 148px;
-    margin: 30px 0;
+    margin: 40px 0;
     font-size: 16px;
     border-radius: 52px;
 	float: right;
 }
 
-.form .btn.btn-light:hover {
+.form .btn.btn-dark:hover {
 	background-color: #0d6efd;
 	color: white;
 }
 
 .form a:hover {
-	color: white !important;
+	color: rgb(0, 0, 0) !important;
 }
 
 .form .crear_cuenta {
@@ -92,7 +137,7 @@ header .menu .btn {
 }
 
 .form .logo_form {
-	margin: 50px 110px;
+	margin: 40px 110px;
 	width: 250px;
 }
 

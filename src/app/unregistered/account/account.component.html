@@ -6,29 +6,29 @@
         </nav>
 
         
-        <form class="form" [formGroup]="loginForm">
-          <h1 class="form_title">Inicio de Sesión</h1>
-          
-          <input type="email" placeholder="Email" formControlName="email">
-          <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].dirty" class="alert alert-danger" role="alert">
-            <span *ngIf="loginForm.controls['email'].errors.required">El correo es un campo obligatorio</span>
-          </div>
+        <form class="form">
+            <div class="separator">Crear Cuenta</div>
+            <input type="text" placeholder="Introduzca su nombre">
+            <input type="text" placeholder="Introduzca sus apellidos">
+            <input type="date" placeholder="Escoja su fecha de nacimiento">
+            <input type="email" placeholder="Introduzca su correo">
+            <input type="password" placeholder="Introduzca una contraseña de 8 caracteres">
+            <input type="password" placeholder="Vuelva a introducir la misma contraseña">
 
-          <input type="password" placeholder="Contraseña" formControlName="password" (keyUp.enter)="ingresar()">
-          <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].dirty" class="alert alert-danger" role="alert">
-            <span *ngIf="loginForm.controls['password'].errors.required">La contraseña es un campo obligatorio</span>
-          </div>
+            <label class="custom-radio-checkbox">
+                <!-- Input oculto -->
+                <input class="custom-radio-checkbox__input" type="checkbox" name="genero" value="hombre">
+                <!-- Imagen en sustitucion -->
+                <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+                <!-- Texto -->
+                <span class="custom-radio-checkbox__text">Acepto las condiciones de uso y privacidad</span>
+            </label>
 
-          <div *ngIf="!validData" class="alert alert-warning" role="alert">
-            Correo electrónico y/o contraseña incorrecto
-          </div>
-
-          <a href="#" style="color: #66a4ff">¿Has olvidado la contraseña?</a>
-          <button type="button" class="btn btn-light" (click)="ingresar()" [disabled]="!loginForm.valid">Acceder</button>
-          <p style="color: #8d8b8b" class="crear_cuenta">¿Eres nuevo en RoutineXT? <a class="crear_cuenta" routerLink="/Crear_Cuenta">Crea una cuenta</a></p>
-          <img class="logo_form" src="assets/WebLogo_Big.png">
+            <button type="button" class="btn btn-dark" routerLink="">Acceder</button>
+            <p style="color: #8d8b8b" class="crear_cuenta">¿Eres nuevo en RoutineXT? <a class="crear_cuenta" href="#">Crea una cuenta</a></p>
+            <img class="logo_form" src="assets/WebLogo_BigBlue.png">
         </form>
-
+        
     </div>
 </header>
 

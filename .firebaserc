@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "routinext": {
+      "hosting": {
+        "RoutineXT-Web": [
+          "routinext"
+        ]
+      }
+    }
+  }
+}
