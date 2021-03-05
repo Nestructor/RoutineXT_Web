@@ -1,1 +1,28 @@
-<button class="btn btn-danger" (click)="logout()">Salir</button>
+<!-- Hola, {{user?.email}}  -->
+<!-- El signo ? es para que no se compruebe si el usuario existe -->
+
+<!-- <ul *ngIf="user$ | async as user; else login">
+    <li><button class="btn btn-danger" (click)="onLogout()">Logout</button></li>
+    <li>Hola, {{user?.email}}</li>
+</ul>
+<ng-template #login>
+    <li>
+        <a routerLink="/Iniciar_Sesion">Login</a>
+    </li>
+</ng-template> -->
+
+<div *ngIf="!loading && user$ | async as user; else showLoading">
+    <p>Hola, {{user?.email}}</p>
+    <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+</div>
+
+<ng-template #showLoading>
+    <ngx-spinner bdColor =
+        rgba(0,0,0,0.8)
+        size = "large" 
+        color = "#fff" 
+        type = "ball-atom" 
+        [fullScreen] = "true">
+        <p style="color: white">Cargando contenido</p>
+    </ngx-spinner>
+</ng-template>

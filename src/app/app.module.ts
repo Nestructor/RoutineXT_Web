@@ -8,7 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire'; //Inicializar conexión con Firebase
+import { AngularFireAuthModule } from '@angular/fire/auth'; //Para trabajar con Autenticaciones
 import { environment } from 'src/environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -18,6 +19,8 @@ import { HomeComponent } from './unregistered/home/home.component';
 import { LoginComponent } from './unregistered/login/login.component';
 import { AccountComponent } from './unregistered/account/account.component';
 import { TestComponent } from './unregistered/test/test.component';
+import { AuthService } from './services/auth.service';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -33,11 +36,14 @@ import { TestComponent } from './unregistered/test/test.component';
     AccordionModule.forRoot(),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [
-    AngularFireAuth
+    AngularFireAuth,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-test',
@@ -8,16 +12,36 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private auth: AngularFireAuth) {
+  public isLogged = false
+  public user$: Observable<any> = this.authSvc.afAuth.user
 
+  loading: boolean = true
+
+  constructor(private  authSvc: AuthService, private router: Router, private spinner: NgxSpinnerService) {
+    this.user$.subscribe((user) => {
+      this.isLogged = user != null ? true : false
+      if (!this.isLogged) {
+        this.router.navigate(['/Iniciar_Sesion']) 
+      } else {
+        this.spinner.show()
+        setTimeout(() => {
+          this.spinner.hide()
+          this.loading = false
+        }, 3000)
+      }
+    })
   }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
   }
 
-  logout() {
-    this.auth.signOut();
+  async onLogout() {
+    try {
+      await this.authSvc.logout()
+      this.router.navigate(['/Iniciar_Sesion'])
+    } catch(error) {
+      console.log(error)
+    }
   }
 
 }

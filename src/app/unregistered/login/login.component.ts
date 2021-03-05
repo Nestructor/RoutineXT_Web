@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -11,8 +13,22 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
   validData: boolean = true
+  
+  user$: Observable<any> = this.authSrv.afAuth.user
+  isLogged: boolean = false
 
-  constructor(private fb: FormBuilder, private auth: AngularFireAuth) { }
+  constructor(
+    private authSrv: AuthService, 
+    private router: Router, 
+    private fb: FormBuilder) 
+  {
+    this.user$.subscribe((user) => {
+      this.isLogged = user != null ? true : false
+      if (this.isLogged) {
+        this.router.navigate(['/Test']) 
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -21,17 +37,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ingresar() {
-    if(this.loginForm.valid) {
-      this.validData = true;
-      this.auth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
-      .then((user) => {
-        console.log("Entró");
-      }).catch((error) => {
-        this.validData = false;
-      })
-    } else {
-      this.validData = false;
+  async onLogin() {
+    //console.log('Form->', this.loginForm.value)
+    const {email, password} = this.loginForm.value
+    try {
+      
+      const login =  await this.authSrv.login(email, password)
+      if(login != "error") {
+        this.router.navigate(['/Test']) 
+      } else {
+        this.validData = false
+        this.loginForm.reset()
+      }
+    } catch(error) {
+      console.log(error)
     }
   }
 

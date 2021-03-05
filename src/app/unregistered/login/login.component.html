@@ -5,8 +5,7 @@
             <button type="button" class="btn btn-danger" routerLink="/Iniciar_Sesion">Iniciar Sesión</button>
         </nav>
 
-        
-        <form class="form" [formGroup]="loginForm">
+          <form class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
           <h1 class="form_title">Inicio de Sesión</h1>
           
           <input type="email" placeholder="Email" formControlName="email">
@@ -14,17 +13,17 @@
             <span *ngIf="loginForm.controls['email'].errors.required">El correo es un campo obligatorio</span>
           </div>
 
-          <input type="password" placeholder="Contraseña" formControlName="password" (keyUp.enter)="ingresar()">
+          <input type="password" placeholder="Contraseña" formControlName="password" (keyUp.enter)="onLogin()">
           <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].dirty" class="alert alert-danger" role="alert">
             <span *ngIf="loginForm.controls['password'].errors.required">La contraseña es un campo obligatorio</span>
           </div>
 
-          <div *ngIf="!validData" class="alert alert-warning" role="alert">
+          <div *ngIf="!validData && !loginForm.controls['email'].dirty && !loginForm.controls['password'].dirty" class="alert alert-warning" role="alert">
             Correo electrónico y/o contraseña incorrecto
           </div>
 
           <a href="#" style="color: #66a4ff">¿Has olvidado la contraseña?</a>
-          <button type="button" class="btn btn-light" (click)="ingresar()" [disabled]="!loginForm.valid">Acceder</button>
+          <button type="submit" class="btn btn-light" [disabled]="!loginForm.valid">Acceder</button>
           <p style="color: #8d8b8b" class="crear_cuenta">¿Eres nuevo en RoutineXT? <a class="crear_cuenta" routerLink="/Crear_Cuenta">Crea una cuenta</a></p>
           <img class="logo_form" src="assets/WebLogo_Big.png">
         </form>
