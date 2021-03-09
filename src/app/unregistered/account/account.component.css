@@ -86,6 +86,7 @@ header .menu .btn {
     cursor: pointer;
     font-family: arial;
     font-size: 14px;
+	
 }
 
 /* Modificador para dar la imagen de checkbox */
@@ -105,6 +106,7 @@ header .menu .btn {
     height: 15px;
     margin-right: .5rem;
     background-size: cover;
+	margin-top: -3px;
 }
 
 /* Cambia el checkbox personalizado cuando es pulsado */
@@ -132,7 +134,7 @@ header .menu .btn {
 .form .crear_cuenta {
 	text-align: center;
     margin-top: 100px;
-    color: #66a4ff;
+    color: #0d6efd;
 	font-size: 18px;
 }
 
@@ -141,54 +143,12 @@ header .menu .btn {
 	width: 250px;
 }
 
-.separation_line {
-	height: 12px;
-	background-color:  rgb(27 27 27);
-	padding-bottom: 12px;
+.form > div.alert {
+	position: relative;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    margin-top: -1rem;
 }
 
-footer {
-	background-color: black;
-	font-size: 16px;
-}
-
-footer .container.text-left.text-md-left {
-	width:1000px;
-	margin: 50px auto;
-}
-
-footer .font-weight-bold.text-uppercase.mb-4.text-secondary {
-	font-size: 18px;
-}
-
-footer ul li p a {
-	color: rgb(255, 255, 255);
-	text-decoration: none;
-}
-
-footer ul li p a:hover {
-	font-size: 18px;
-	color:rgb(141, 139, 139)
-}
-
-.bottom_bar {
-	height: 60px;
-	background-color: rgb(255, 10, 10);
-	margin-top: 30px;
-}
-
-.bottom_bar .footer-copyright {
-	padding-top: 18px;
-	font-size: 15px;
-	color: white;
-}	
-
-footer ul {
-	padding: 5px;
-}
-
-footer ul li p a.twitter,
-footer ul li p a.facebook,
-footer ul li p a.instagram {
-	padding-bottom: 12px;
-}

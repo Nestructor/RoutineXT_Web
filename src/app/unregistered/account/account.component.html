@@ -2,99 +2,72 @@
     <div class="container">
         <nav class="menu">
             <img type="button" src="assets/WebLogo.png" alt="logo" routerLink="/">
-            <button type="button" class="btn btn-danger" routerLink="/Iniciar_Sesion">Iniciar Sesión</button>
+            <button type="button" class="btn btn-danger" routerLink="/Test" *ngIf="user$ | async as user">Hola, {{user?.email}}</button>
+            <button type="button" class="btn btn-danger" routerLink="/Iniciar_Sesion" *ngIf="!isLogged">Iniciar Sesión</button>
         </nav>
-
         
         <form class="form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
             <div class="separator">Crear Cuenta</div>
-            <input type="text" placeholder="Introduzca su nombre">
-            <input type="text" placeholder="Introduzca sus apellidos">
-            <input type="date" placeholder="Escoja su fecha de nacimiento">
-            <input type="email" placeholder="Introduzca su correo" formControlName="email">
-            <input type="password" placeholder="Introduzca una contraseña de 8 caracteres" formControlName="password">
-            <input type="password" placeholder="Vuelva a introducir la misma contraseña">
+            <input type="text" placeholder="Introduzca su nombre *" formControlName="name" maxlength="25">
 
+            <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].dirty" class="alert alert-danger" role="alert">
+              <span *ngIf="registerForm.controls['name'].errors.required">El nombre corresponde a un campo obligatorio</span>
+            </div>
+            
+            <input type="text" placeholder="Introduzca sus apellidos *" formControlName="surname" maxlength="50">
+
+            <div *ngIf="registerForm.controls['surname'].invalid && registerForm.controls['surname'].dirty" class="alert alert-danger" role="alert">
+              <span *ngIf="registerForm.controls['surname'].errors.required">Los apellidos corresponden a un campo obligatorio</span>
+            </div>
+
+            <input type="number" min="18" max="65" placeholder="Escoja su edad (18-65) *" formControlName="age">
+
+            <div *ngIf="registerForm.controls['age'].invalid && registerForm.controls['age'].dirty" class="alert alert-danger" role="alert">
+              <span *ngIf="registerForm.controls['age'].errors.required">La edad es un campo obligatorio</span>
+              <span *ngIf="registerForm.controls['age'].errors.min || registerForm.controls['age'].errors.max">La edad debe estar comprendida entre 18 y 65 años</span>
+            </div>
+
+            <input type="email" placeholder="Introduzca su correo *" formControlName="email" maxlength="50">
+
+            <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty" class="alert alert-danger" role="alert">
+              <span *ngIf="registerForm.controls['email'].errors.required">El correo electrónico corresponde a un campo obligatorio</span>
+              <span *ngIf="registerForm.controls['email'].errors.pattern">El correo no es válido</span>
+            </div>
+
+            <input type="password" placeholder="Introduzca una contraseña de 8 caracteres *" formControlName="password">
+
+            <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].dirty" class="alert alert-danger" role="alert">
+              <span *ngIf="registerForm.controls['password'].errors.required">La contraseña corresponde a un campo obligatorio</span>
+              <span *ngIf = "registerForm.controls['password'].hasError('minlength') || registerForm.controls['password'].hasError('maxlength')">La contraseña debe contener entre 8 y 16 caracteres</span>
+            </div>                                                                          
+
+            <input type="password" placeholder="Vuelva a introducir la misma contraseña *" formControlName="confirmPassword">
+
+            <div *ngIf="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].dirty" class="alert alert-danger" role="alert">
+              <span *ngIf="registerForm.controls['confirmPassword'].hasError('NoPasswordMatch')">Las contraseñas no coinciden</span>
+            </div>
+            
             <label class="custom-radio-checkbox">
                 <!-- Input oculto -->
-                <input class="custom-radio-checkbox__input" type="checkbox" name="genero" value="hombre">
+                <input class="custom-radio-checkbox__input" type="checkbox" (change)="onCheckboxChange($event)">
                 <!-- Imagen en sustitucion -->
                 <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
                 <!-- Texto -->
                 <span class="custom-radio-checkbox__text">Acepto las condiciones de uso y privacidad</span>
             </label>
 
-            <button type="submit" class="btn btn-dark">Registrarse</button>
-            <p style="color: #8d8b8b" class="crear_cuenta">¿Eres nuevo en RoutineXT? <a class="crear_cuenta" href="#">Crea una cuenta</a></p>
-            <img class="logo_form" src="assets/WebLogo_BigBlue.png">
+            <button type="submit" class="btn btn-dark" [disabled]="(registerForm.valid && !checked) || (registerForm.invalid && checked) || (registerForm.invalid && !checked)">Registrarse</button>
+            <p style="color: #8d8b8b" class="crear_cuenta">¿Ya tienes cuenta en RoutineXT? <a class="crear_cuenta" routerLink="/Iniciar_Sesion">Inicia Sesión</a></p>
+            
+            <img *ngIf=
+            "(((registerForm.controls['name'].invalid && !registerForm.controls['name'].dirty) || (registerForm.controls['name'].valid && registerForm.controls['name'].dirty))) &&
+            ((registerForm.controls['surname'].invalid && !registerForm.controls['surname'].dirty) || (registerForm.controls['surname'].valid && registerForm.controls['surname'].dirty)) &&
+            ((registerForm.controls['age'].invalid && !registerForm.controls['age'].dirty) || (registerForm.controls['age'].valid && registerForm.controls['age'].dirty)) &&
+            ((registerForm.controls['email'].invalid && !registerForm.controls['email'].dirty) || (registerForm.controls['email'].valid && registerForm.controls['email'].dirty)) &&
+            ((registerForm.controls['password'].invalid && !registerForm.controls['password'].dirty) || (registerForm.controls['password'].valid && registerForm.controls['password'].dirty))"
+            class="logo_form" src="assets/WebLogo_BigBlue.png">
+
         </form>
-        
     </div>
 </header>
-
-<div class="separation_line"></div>
-
-<footer class="page-footer font-small mdb-color lighten-3 pt-4">
-    <div class="container text-left text-md-left">
-      <div class="row">
-        <div class="col-xl-4 text-center">
-          <h5 class="font-weight-bold text-uppercase mb-4 text-secondary">Servicios</h5>
-          <ul class="list-unstyled">
-            <li>
-              <p>
-                <a href="#">Preguntas Frecuentes (FAQs)</a>
-              </p>
-            </li>
-            <li>
-              <p>
-                <a href="#">Contacto</a>
-              </p>
-            </li>
-          </ul>
-        </div>
-        <div class="col-xl-4 text-center">
-            <h5 class="font-weight-bold text-uppercase mb-4 text-secondary">Cuestiones Legales</h5>
-            <ul class="list-unstyled">
-              <li>
-                <p>
-                  <a href="#">Aviso Legal</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href="#">Política de Privacidad</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href="#">Política de Cookies</a>
-                </p>
-              </li>
-            </ul>
-          </div>
-        <div class="col-xl-4 text-center">
-            <h5 class="font-weight-bold text-uppercase mb-4 text-secondary">Redes Sociales</h5>
-            <ul class="list-unstyled">
-              <li>
-                <p>
-                    <a class="twitter" href=""><i style="margin-top: 5px; margin-right: 5px; color:#00acee; width:25; height:25" class="fab fa-twitter"></i> Twitter</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                    <a class="instagram" href=""><i style="margin-top: 5px; margin-right: 5px; color: #E1306C; width:25; height:25" class="fab fa-instagram"></i> Instagram</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                    <a class="facebook" href=""><i style="margin-top: 5px; margin-right: 5px; color: #3b5998; width:25; height:25" class="fab fa-facebook-square"></i> Facebook</a>
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </div>
-    <div class="bottom_bar">
-        <div class="footer-copyright text-center">© RoutineXT - 2021 (también disponible en versión móvil)</div>
-    </div>
-  </footer>
+<app-footer></app-footer>

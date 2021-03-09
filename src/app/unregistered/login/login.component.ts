@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     //console.log('Form->', this.loginForm.value)
     const {email, password} = this.loginForm.value
     try {
-      
       const login =  await this.authSrv.login(email, password)
       if(login != "error") {
         this.router.navigate(['/Test']) 

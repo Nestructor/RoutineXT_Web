@@ -22,7 +22,7 @@
             Correo electrónico y/o contraseña incorrecto
           </div>
 
-          <a href="#" style="color: #66a4ff">¿Has olvidado la contraseña?</a>
+          <a style="color: #66a4ff">¿Has olvidado la contraseña?</a>
           <button type="submit" class="btn btn-light" [disabled]="!loginForm.valid">Acceder</button>
           <p style="color: #8d8b8b" class="crear_cuenta">¿Eres nuevo en RoutineXT? <a class="crear_cuenta" routerLink="/Crear_Cuenta">Crea una cuenta</a></p>
           <img class="logo_form" src="assets/WebLogo_Big.png">
@@ -31,69 +31,4 @@
     </div>
 </header>
 
-<div class="separation_line"></div>
-
-<footer class="page-footer font-small mdb-color lighten-3 pt-4">
-    <div class="container text-left text-md-left">
-      <div class="row">
-        <div class="col-xl-4 text-center">
-          <h5 class="font-weight-bold text-uppercase mb-4 text-secondary">Servicios</h5>
-          <ul class="list-unstyled">
-            <li>
-              <p>
-                <a href="#">Preguntas Frecuentes (FAQs)</a>
-              </p>
-            </li>
-            <li>
-              <p>
-                <a href="#">Contacto</a>
-              </p>
-            </li>
-          </ul>
-        </div>
-        <div class="col-xl-4 text-center">
-            <h5 class="font-weight-bold text-uppercase mb-4 text-secondary">Cuestiones Legales</h5>
-            <ul class="list-unstyled">
-              <li>
-                <p>
-                  <a href="#">Aviso Legal</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href="#">Política de Privacidad</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href="#">Política de Cookies</a>
-                </p>
-              </li>
-            </ul>
-          </div>
-        <div class="col-xl-4 text-center">
-            <h5 class="font-weight-bold text-uppercase mb-4 text-secondary">Redes Sociales</h5>
-            <ul class="list-unstyled">
-              <li>
-                <p>
-                    <a class="twitter" href=""><i style="margin-top: 5px; margin-right: 5px; color:#00acee; width:25; height:25" class="fab fa-twitter"></i> Twitter</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                    <a class="instagram" href=""><i style="margin-top: 5px; margin-right: 5px; color: #E1306C; width:25; height:25" class="fab fa-instagram"></i> Instagram</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                    <a class="facebook" href=""><i style="margin-top: 5px; margin-right: 5px; color: #3b5998; width:25; height:25" class="fab fa-facebook-square"></i> Facebook</a>
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </div>
-    <div class="bottom_bar">
-        <div class="footer-copyright text-center">© RoutineXT - 2021 (también disponible en versión móvil)</div>
-    </div>
-  </footer>
+<app-footer></app-footer>

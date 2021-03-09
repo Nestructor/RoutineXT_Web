@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
  
 @Injectable()
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(
+    public afAuth: AngularFireAuth, 
+    private router: Router) 
+  { }
 
   async login(email: string, password: string) { 
     try {
       return await this.afAuth.signInWithEmailAndPassword(email, password)
     } catch(error) {
-      // console.log(error)
+      console.log(error)
       return "error"
     }
   }
@@ -20,7 +23,7 @@ export class AuthService {
     try {
       return await this.afAuth.createUserWithEmailAndPassword(email, password)
     } catch(error) {
-      // console.log(error)
+      console.log(error)
       return "error"
     }
   }
@@ -28,12 +31,11 @@ export class AuthService {
   async logout() {
     try {
       await this.afAuth.signOut()
+      this.router.navigate(['/Iniciar_Sesion'])
     } catch(error) {
-      // console.log(error)
+      console.log(error)
       return "error"
     }
   }
-
-  
 
 }

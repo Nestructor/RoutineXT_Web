@@ -21,6 +21,7 @@ import { AccountComponent } from './unregistered/account/account.component';
 import { TestComponent } from './unregistered/test/test.component';
 import { AuthService } from './services/auth.service';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { FooterComponent } from './unregistered/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HomeComponent,
     LoginComponent,
     AccountComponent,
-    TestComponent
+    TestComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

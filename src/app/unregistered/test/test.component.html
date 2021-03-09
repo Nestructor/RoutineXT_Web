@@ -12,8 +12,10 @@
 </ng-template> -->
 
 <div *ngIf="!loading && user$ | async as user; else showLoading">
+    <h4>Vista de Usuario Registrado (sin emplementar)</h4> 
     <p>Hola, {{user?.email}}</p>
     <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+    <br><br><img width="150px" src="https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2FXT_black.png?alt=media&token=ecb49987-1e49-40bd-a498-e1111086505f" alt="">
 </div>
 
 <ng-template #showLoading>
@@ -23,6 +25,6 @@
         color = "#fff" 
         type = "ball-atom" 
         [fullScreen] = "true">
-        <p style="color: white">Cargando contenido</p>
+        <p style="color: white">Cargando Contenido</p>
     </ngx-spinner>
 </ng-template>
