@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+	overflow: hidden;
+}	
+
+header {
+    background-image: linear-gradient(
+		rgba(0, 0, 0, 0.9),
+		rgba(0, 0, 0, 0.9)
+	  ), url('src/assets/Unregistered/stretching.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 350px;
+}
+
+header .menu {
+	margin: 70px 0;
+	text-align: right;
+}
+
+header .menu img {
+	float: left;
+	width: 265px;
+    margin-top: -15px;
+}
+
+header .menu .btn {
+	font-size: 1.1rem
+}
+
+header .container .menu .title {
+    margin-top: 85px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}
+
+header .container .menu .title_decoration {
+    padding-bottom: 8px;
+    width: 100px;
+    margin-left: 218px;
+    border-radius: 10px;
+    background-color: white;
+    text-align: justify;
+}
+
+.article_container {
+    min-width: 250px;
+    background-color: #ffffff;
+    padding: 75px 200px;
+    text-align: justify;
+}
+
+.article_container .content {
+    background-color: #e7e7e7;
+    padding: 25px;
+}
+
+.article_container .content .heading {
+    color: rgb(0 0 97);
+    margin: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+}
+
+.article_container .content .heading_title {
+    color: black;
+    margin: 12px 0;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
