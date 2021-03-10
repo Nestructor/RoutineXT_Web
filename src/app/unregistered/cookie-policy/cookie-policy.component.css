@@ -52,7 +52,6 @@ header .container .menu .title_decoration {
 }
 
 .article_container {
-    min-width: 250px;
     background-color: #ffffff;
     padding: 75px 200px;
     text-align: justify;
