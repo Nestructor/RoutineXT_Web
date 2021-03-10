@@ -22,6 +22,9 @@ import { TestComponent } from './unregistered/test/test.component';
 import { AuthService } from './services/auth.service';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { FooterComponent } from './unregistered/footer/footer.component';
+import { CookiePolicyComponent } from './unregistered/cookie-policy/cookie-policy.component';
+import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-policy.component';
+import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { FooterComponent } from './unregistered/footer/footer.component';
     LoginComponent,
     AccountComponent,
     TestComponent,
-    FooterComponent
+    FooterComponent,
+    CookiePolicyComponent,
+    PrivacyPolicyComponent,
+    LegalNoticeComponent
   ],
   imports: [
     BrowserModule,

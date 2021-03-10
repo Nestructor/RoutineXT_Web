@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
 
   registerForm: FormGroup;
   checked: boolean = false
-  public user$: Observable<any> = this.authSvc.afAuth.user
+  public user$: Observable<any> = this.authSrv.afAuth.user
   isLogged: boolean = false
 
 
@@ -23,7 +23,6 @@ export class AccountComponent implements OnInit {
     private authSrv: AuthService, 
     private fb: FormBuilder, 
     private db: AngularFirestore,
-    private  authSvc: AuthService, 
     private router: Router) 
   { 
     this.user$.subscribe((user) => {

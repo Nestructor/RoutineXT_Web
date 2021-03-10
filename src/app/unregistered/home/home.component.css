@@ -26,6 +26,7 @@ header .menu {
 header .menu img {
 	float: left;
 	width: 265px;
+	margin-top: -15px;
 }
 
 header .menu .btn {

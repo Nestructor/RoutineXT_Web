@@ -3,19 +3,16 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-cookie-policy',
+  templateUrl: './cookie-policy.component.html',
+  styleUrls: ['./cookie-policy.component.css']
 })
-export class HomeComponent implements OnInit {
+export class CookiePolicyComponent implements OnInit {
 
-  public user$: Observable<any> = this.authSvc.afAuth.user
+  public user$: Observable<any> = this.authSrv.afAuth.user
   isLogged: boolean = false
 
-  constructor (
-    private  authSvc: AuthService, 
-  ) 
-  { 
+  constructor(private authSrv: AuthService) {
     this.user$.subscribe((user) => {
       console.log(user)
       this.isLogged = user != null ? true : false
@@ -23,7 +20,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
   }
 
 }
