@@ -26,6 +26,7 @@ import { CookiePolicyComponent } from './unregistered/cookie-policy/cookie-polic
 import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-policy.component';
 import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.component';
 import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.component';
+import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.c
     CookiePolicyComponent,
     PrivacyPolicyComponent,
     LegalNoticeComponent,
-    FaqsContactComponent
+    FaqsContactComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

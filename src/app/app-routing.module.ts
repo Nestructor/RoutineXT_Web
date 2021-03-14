@@ -7,6 +7,7 @@ import { HomeComponent } from './unregistered/home/home.component';
 import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.component';
 import { LoginComponent } from './unregistered/login/login.component';
 import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-policy.component';
+import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
 import { TestComponent } from './unregistered/test/test.component';
 
 const routes: Routes = [
@@ -33,6 +34,9 @@ const routes: Routes = [
   },
   {
     path: "FAQs_Contacto", component: FaqsContactComponent
+  },
+  {
+    path: "Nueva_Contraseña", component: ResetPasswordComponent
   }
 ];
 

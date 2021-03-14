@@ -19,10 +19,7 @@ export class FaqsContactComponent implements OnInit {
   checked: boolean = false
   
 
-  constructor(
-    private authSrv: AuthService,
-    private fb: FormBuilder) 
-  {
+  constructor(private authSrv: AuthService, private fb: FormBuilder) {
     this.user$.subscribe((user) => {
       console.log(user)
       this.isLogged = user != null ? true : false
@@ -33,7 +30,7 @@ export class FaqsContactComponent implements OnInit {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.compose([
-        Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+        Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
       ])],
       message: ['', Validators.required ]
     })
@@ -66,6 +63,7 @@ export class FaqsContactComponent implements OnInit {
 
     emailjs.send('service_1u7l7cw','template_rl1ubl5', templateParams, 'user_SCdzq1A51qGu85qIZrtba')
       .then((result: EmailJSResponseStatus) => {
+        this.registerForm.reset()
         Toast.fire({
           icon: 'success',
           title: 'Hemos recibido su mensaje correctamente'

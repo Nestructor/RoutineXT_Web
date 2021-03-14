@@ -41,7 +41,7 @@ export class AccountComponent implements OnInit {
         Validators.max(65)
       ])],
       email: ['', Validators.compose([
-        Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+        Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
       ])],
       password: ['', Validators.compose([
         Validators.required, 

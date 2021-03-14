@@ -11,6 +11,7 @@
           <input type="email" placeholder="Email" formControlName="email">
           <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].dirty" class="alert alert-danger" role="alert">
             <span *ngIf="loginForm.controls['email'].errors.required">El correo es un campo obligatorio</span>
+            <span *ngIf="loginForm.controls['email'].errors.pattern">El correo no es válido</span>
           </div>
 
           <input type="password" placeholder="Contraseña" formControlName="password" (keyUp.enter)="onLogin()">
@@ -22,7 +23,7 @@
             Correo electrónico y/o contraseña incorrecto
           </div>
 
-          <a style="color: #66a4ff">¿Has olvidado la contraseña?</a>
+          <a style="color: #66a4ff" routerLink="/Nueva_Contraseña">¿Has olvidado la contraseña?</a>
           <button type="submit" class="btn btn-light" [disabled]="!loginForm.valid">Acceder</button>
           <p style="color: #8d8b8b" class="crear_cuenta">¿Eres nuevo en RoutineXT? <a class="crear_cuenta" routerLink="/Crear_Cuenta">Crea una cuenta</a></p>
           <img class="logo_form" src="assets/WebLogo_Big.png">

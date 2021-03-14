@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-test',
@@ -34,9 +35,26 @@ export class TestComponent implements OnInit {
   }
 
   async onLogout() {
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: false,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
     try {
       await this.authSvc.logout()
       this.router.navigate(['/Iniciar_Sesion'])
+      Toast.fire({
+        icon: 'success',
+        title: 'Sesión cerrada correctamente'
+      })
     } catch(error) {
       console.log(error)
     }
