@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './unregistered/account/account.component';
 import { CookiePolicyComponent } from './unregistered/cookie-policy/cookie-policy.component';
+import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.component';
 import { HomeComponent } from './unregistered/home/home.component';
 import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.component';
 import { LoginComponent } from './unregistered/login/login.component';
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path: "Test", component: TestComponent
+  },
+  {
+    path: "FAQs_Contacto", component: FaqsContactComponent
   }
 ];
 

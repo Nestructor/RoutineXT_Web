@@ -1,0 +1,181 @@
+<header>
+    <div class="container">
+        <nav class="menu">
+            <img type="button" src="assets/WebLogo.png" alt="logo" routerLink="/">
+            <button type="button" class="btn btn-danger" routerLink="/Test" *ngIf="user$ | async as user">Hola, {{user?.email}}</button>
+            <button type="button" class="btn btn-danger" routerLink="/Iniciar_Sesion" *ngIf="!isLogged">Iniciar Sesión</button>
+            <p class="title">Preguntas Frecuentes (FAQs)</p>
+            <div class="title_decoration">
+            </div>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+<!--1--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                ¿Qué es RoutineXT?
+            </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--2--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                ¿Cuál es la metodología de RoutineXT? (app web y móvil)
+            </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--3--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo funciona el sistema de puntuación?
+            </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--4--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                ¿Cómo se mide el progreso de los últimos 3 meses?
+            </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--5--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                ¿Puedo personalizar el horario de la semana las veces que quiera?
+            </button>
+            </h2>
+            <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--6--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                ¿Cómo puede controlar la aplicación la realización de los ejercicios?
+            </button>
+            </h2>
+            <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--7--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                ¿Puedo tener varios planes de entrenamiento?
+            </button>
+            </h2>
+            <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--8--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingEight">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+                ¿Debo utilizar siempre el móvil u ordenador para hacer los ejercicios?
+            </button>
+            </h2>
+            <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--9--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingNine">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+                ¿Está disponible la aplicación móvil para IOS?
+            </button>
+            </h2>
+            <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+<!--10--><div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTen">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
+                ¿Qué son los retos y qué utilidad tienen?
+            </button>
+            </h2>
+            <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                [Poner contenido aquí]
+            </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<a name="contacto"></a>
+<div class="separation_line"></div>
+<div class="form_container">
+    <h2 class="contact_title">
+        ¿Tienes alguna pregunta?
+    </h2>
+    <p class="contact_content">
+        Contacta con nosotros a través del siguiente formulario y te respondemos al correo con la mayor brevedad posible.
+    </p>
+    <div class="contact">
+        <form class="form" [formGroup]="registerForm" (ngSubmit)="sendEmail()">
+
+            <input type="text" placeholder="Nombre*" formControlName="name">
+            <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].dirty" class="alert alert-danger" role="alert">
+                <span *ngIf="registerForm.controls['name'].errors.required">El nombre corresponde a un campo obligatorio</span>
+            </div>
+
+            <input type="email" placeholder="Correo*" formControlName="email">
+            <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty" class="alert alert-danger" role="alert">
+                <span *ngIf="registerForm.controls['email'].errors.required">El correo electrónico corresponde a un campo obligatorio</span>
+                <span *ngIf="registerForm.controls['email'].errors.pattern">El correo no es válido</span>
+            </div>
+
+            <textarea placeholder="Mensaje*" formControlName="message"></textarea>
+            <div *ngIf="registerForm.controls['message'].invalid && registerForm.controls['message'].dirty" class="alert alert-danger" role="alert">
+                <span *ngIf="registerForm.controls['message'].errors.required">El cuerpo del mensaje está vacío</span>
+            </div>
+
+            <label class="custom-radio-checkbox">
+                <!-- Input oculto -->
+                <input class="custom-radio-checkbox__input" type="checkbox" (change)="onCheckboxChange($event)">
+                <!-- Imagen en sustitucion -->
+                <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+                <!-- Texto -->
+                <span class="custom-radio-checkbox__text">Acepto las condiciones de uso y privacidad</span>
+            </label>
+            
+            <button class="btn" [disabled]="(registerForm.valid && !checked) || registerForm.invalid" type="submit">Enviar</button>
+        </form>
+
+    </div>
+</div>
+
+<app-footer></app-footer>

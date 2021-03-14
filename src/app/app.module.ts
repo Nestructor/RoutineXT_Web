@@ -25,6 +25,7 @@ import { FooterComponent } from './unregistered/footer/footer.component';
 import { CookiePolicyComponent } from './unregistered/cookie-policy/cookie-policy.component';
 import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-policy.component';
 import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.component';
+import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.c
     FooterComponent,
     CookiePolicyComponent,
     PrivacyPolicyComponent,
-    LegalNoticeComponent
+    LegalNoticeComponent,
+    FaqsContactComponent
   ],
   imports: [
     BrowserModule,
