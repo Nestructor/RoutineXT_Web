@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from '@angular/fire'; //Inicializar conexión con Firebase
@@ -27,6 +27,7 @@ import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-po
 import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.component';
 import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.component';
 import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
+import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ResetPasswordComponent } from './unregistered/reset-password/reset-pass
     PrivacyPolicyComponent,
     LegalNoticeComponent,
     FaqsContactComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    PaginaNoEncontradaComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { ResetPasswordComponent } from './unregistered/reset-password/reset-pass
   ],
   providers: [
     AngularFireAuth,
-    AuthService
+    AuthService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

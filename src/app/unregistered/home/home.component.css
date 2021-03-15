@@ -240,3 +240,41 @@ footer ul li p a.facebook,
 footer ul li p a.instagram {
 	padding-bottom: 12px;
 }
+
+.grdp {
+	position: fixed;
+	bottom: -1px;
+	left: 0px;
+	width: 100%;
+	z-index: 100000;
+	text-align: justify;
+	color: rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
+	border: 2px solid #000000;
+	padding: 12px;
+	margin: auto;
+	font-size: 14px;
+	animation: fadeIn ease 3s;
+  }
+
+  @keyframes fadeIn {
+	0% {
+	  opacity:0;
+	}
+	100% {
+	  opacity:1;
+	}
+  }
+
+.btn {
+	float:right;
+	margin-right: 12px;
+	margin-top: -20px;
+	font-size: 14px;
+}
+   
+.bcgrdp {
+	cursor: pointer;
+	
+}
+  

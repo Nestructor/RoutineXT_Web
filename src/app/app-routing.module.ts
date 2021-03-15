@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
 import { AccountComponent } from './unregistered/account/account.component';
 import { CookiePolicyComponent } from './unregistered/cookie-policy/cookie-policy.component';
 import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.component';
@@ -37,6 +38,9 @@ const routes: Routes = [
   },
   {
     path: "Nueva_Contraseña", component: ResetPasswordComponent
+  },
+  {
+    path: '**', component: PaginaNoEncontradaComponent
   }
 ];
 

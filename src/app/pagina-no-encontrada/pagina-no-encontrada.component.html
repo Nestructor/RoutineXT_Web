@@ -1,0 +1,33 @@
+<header>
+    <div class="container">
+        <nav class="menu">
+            <img type="button" src="assets/WebLogo.png" alt="logo" routerLink="/">
+            <button type="button" class="btn btn-danger" routerLink="/Test" *ngIf="user$ | async as user">Hola, {{user?.email}}</button>
+            <button type="button" class="btn btn-danger" routerLink="/Iniciar_Sesion" *ngIf="!isLogged">Iniciar Sesión</button>
+        </nav>
+
+    <section class="article">
+            <div class="row">
+                <div class="col-xl-6">
+                    <img class="space_img" src="assets/Space_Error.gif">
+                </div>
+                <div class="col-xl-6">
+                    <div class="article1_text">
+                        <h1 class="article_title">
+                            ¡Oops! :(
+                        </h1>
+                        <h2 class="article_subtitle">
+                            Página No Encontrada
+                        </h2>
+                        <img class="_404_img" src="assets/404_Error.gif">
+                    </div>
+                </div>
+        </div>
+    </section>
+        
+        
+
+    </div>
+</header>
+
+<app-footer></app-footer>

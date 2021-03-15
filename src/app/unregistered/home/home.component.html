@@ -142,5 +142,16 @@
     </section>
     
 </main>
-
 <app-footer></app-footer>
+
+<div class="grdp" role="alert" [hidden]="!showCookieMessage">
+    <p>
+      <strong>GDPR (Reglamento General Protección de Datos)</strong>
+       <br>
+       Utilizamos cookies propias y de terceros para mejorar nuestros servicios relacionados con tus preferencias mediante el análisis de tus hábitos de navegación.
+       Puede obtener más información en nuestra <a routerLink="/Política_De_Cookies" target="_blank">Política de Cookies.</a>
+       Pulse el botón ACEPTAR, para confirmar que ha leído y aceptado la información presentada. Después de aceptar no volveremos a mostrar este mensaje tras 72 horas.
+    </p>
+    <button type="button" class="btn btn-primary bcgrdp" (click)="acceptCookies()">Aceptar</button>
+    <button type="button" class="btn btn-danger bcgrdp" (click)="rejectCookies()">Rechazar</button>
+  </div>

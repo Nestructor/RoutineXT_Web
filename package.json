@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "firebase": "^8.2.9",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-cookie-service": "^11.0.2",
     "ngx-spinner": "^10.0.1",
     "nodemailer": "^6.5.0",
     "rxjs": "~6.6.0",

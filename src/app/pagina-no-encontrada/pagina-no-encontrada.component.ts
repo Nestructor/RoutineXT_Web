@@ -1,0 +1,20 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+
+@Component({
+  selector: 'app-pagina-no-encontrada',
+  templateUrl: './pagina-no-encontrada.component.html',
+  styleUrls: ['./pagina-no-encontrada.component.css']
+})
+export class PaginaNoEncontradaComponent implements OnInit {
+
+  public user$: Observable<any> = this.authSrv.afAuth.user
+  isLogged: boolean = false
+
+  constructor(private authSrv: AuthService) { }
+
+  ngOnInit(): void {
+  }
+
+}
