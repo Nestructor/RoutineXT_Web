@@ -18,7 +18,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './unregistered/home/home.component';
 import { LoginComponent } from './unregistered/login/login.component';
 import { AccountComponent } from './unregistered/account/account.component';
-import { TestComponent } from './unregistered/test/test.component';
 import { AuthService } from './services/auth.service';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { FooterComponent } from './unregistered/footer/footer.component';
@@ -27,7 +26,8 @@ import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-po
 import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.component';
 import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.component';
 import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
-import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
+import { PaginaNoEncontradaComponent } from './page-not-found/pagina-no-encontrada.component';
+import { TrainingPlanComponent } from './registered/training-plan/training-plan.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +35,14 @@ import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-en
     HomeComponent,
     LoginComponent,
     AccountComponent,
-    TestComponent,
     FooterComponent,
     CookiePolicyComponent,
     PrivacyPolicyComponent,
     LegalNoticeComponent,
     FaqsContactComponent,
     ResetPasswordComponent,
-    PaginaNoEncontradaComponent
+    PaginaNoEncontradaComponent,
+    TrainingPlanComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.user$.subscribe((user) => {
       this.isLogged = user != null ? true : false
       if (this.isLogged) {
-        this.router.navigate(['/Test']) 
+        this.router.navigate(['/Plan_De_Entrenamiento']) 
       }
     })
   }
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     try {
       const login =  await this.authSrv.login(email, password)
       if(login != "error") {
-        this.router.navigate(['/Test']) 
+        this.router.navigate(['/Plan_De_Entrenamiento']) 
       } else {
         this.validData = false
         this.loginForm.reset()

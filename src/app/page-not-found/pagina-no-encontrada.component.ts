@@ -12,7 +12,12 @@ export class PaginaNoEncontradaComponent implements OnInit {
   public user$: Observable<any> = this.authSrv.afAuth.user
   isLogged: boolean = false
 
-  constructor(private authSrv: AuthService) { }
+  constructor(private authSrv: AuthService) {
+    this.user$.subscribe((user) => {
+      console.log(user)
+      this.isLogged = user != null ? true : false
+    })
+  }
 
   ngOnInit(): void {
   }

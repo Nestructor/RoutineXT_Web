@@ -35,9 +35,9 @@ export class ResetPasswordComponent implements OnInit {
 
     const Toast = Swal.mixin({
       toast: true,
-      position: 'top-end',
+      position: 'top',
       showConfirmButton: false,
-      timer: 5000,
+      timer: 7000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)

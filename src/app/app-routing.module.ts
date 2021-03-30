@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
+import { PaginaNoEncontradaComponent } from './page-not-found/pagina-no-encontrada.component';
 import { AccountComponent } from './unregistered/account/account.component';
 import { CookiePolicyComponent } from './unregistered/cookie-policy/cookie-policy.component';
 import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.component';
@@ -9,7 +9,7 @@ import { LegalNoticeComponent } from './unregistered/legal-notice/legal-notice.c
 import { LoginComponent } from './unregistered/login/login.component';
 import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-policy.component';
 import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
-import { TestComponent } from './unregistered/test/test.component';
+import { TrainingPlanComponent } from './registered/training-plan/training-plan.component';
 
 const routes: Routes = [
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
     path: "Aviso_Legal", component: LegalNoticeComponent
   },
   {
-    path: "Test", component: TestComponent
+    path: "Plan_De_Entrenamiento", component: TrainingPlanComponent
   },
   {
     path: "FAQs_Contacto", component: FaqsContactComponent

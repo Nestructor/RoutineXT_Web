@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="menu">
             <img type="button" src="assets/WebLogo.png" alt="logo" routerLink="/">
-            <button type="button" class="btn btn-danger" routerLink="/Test" *ngIf="user$ | async as user">Hola, {{user?.email}}</button>
+            <button type="button" class="btn btn-danger" routerLink="/Plan_De_Entrenamiento" *ngIf="user$ | async as user">Hola, {{user?.email}}</button>
             <button type="button" class="btn btn-danger" routerLink="/Iniciar_Sesion" *ngIf="!isLogged">Iniciar Sesión</button>
             <p class="title">Preguntas Frecuentes (FAQs)</p>
             <div class="title_decoration">
