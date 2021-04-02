@@ -11,12 +11,17 @@ export class PaginaNoEncontradaComponent implements OnInit {
 
   public user$: Observable<any> = this.authSrv.afAuth.user
   isLogged: boolean = false
+  startTime: Date = new Date();
 
   constructor(private authSrv: AuthService) {
     this.user$.subscribe((user) => {
       console.log(user)
       this.isLogged = user != null ? true : false
     })
+  }
+
+  verifyTime() {
+    console.log(this.startTime)
   }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -6,6 +6,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2';
 import { formatDate } from '@angular/common';
 import { monthMap } from 'src/app/modules/month-map';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-training-plan',
@@ -21,7 +22,28 @@ export class TrainingPlanComponent implements OnInit {
   firstDayOfWeek: string = "Lunes ";
   lastDayOfWeek: string = "Domingo ";
 
-  constructor(private  authSvc: AuthService, private router: Router, private spinner: NgxSpinnerService) {
+  modalRef: BsModalRef;
+  isMeridian = false;
+  today: Date = new Date();
+  weekday: string = formatDate(this.today, 'EEEE', 'en');
+  startTime: Date = new Date();
+  endTime: Date = new Date();
+  isTimeCorrect: boolean = false
+  timeDay: string = '';
+
+  verifyTime() {
+    let startTimeInMinutes: number = this.startTime.getHours()*60 + this.startTime.getMinutes();
+    let endTimeInMinutes: number = this.endTime.getHours()*60 + this.endTime.getMinutes();
+    this.isTimeCorrect = (endTimeInMinutes - startTimeInMinutes <= 60 && endTimeInMinutes - startTimeInMinutes >= 15)  == true;
+    // console.log(this.startTime.getHours()+":"+this.startTime.getMinutes() + " - " + this.endTime.getHours()+":"+this.endTime.getMinutes() + " -> " + this.isTimeCorrect + "(" + (endTimeInMinutes - startTimeInMinutes) +")")
+  }
+
+  constructor(
+    private  authSvc: AuthService, 
+    private router: Router, 
+    private spinner: NgxSpinnerService,
+    private modalService: BsModalService
+  ) {
     this.user$.subscribe((user) => {
       this.isLogged = user != null ? true : false
       if (!this.isLogged) {
@@ -31,54 +53,68 @@ export class TrainingPlanComponent implements OnInit {
         setTimeout(() => {
           this.spinner.hide()
           this.loading = false
-        }, 1000)
+        }, 0)
       }
     })
+    
   }
 
   ngOnInit() {
-    let today: Date = new Date();
-    let weekday: string = formatDate(today, 'EEEE', 'en');
     let diaEnMilisegundos = 1000 * 60 * 60 * 24;
     let month = new monthMap();
 
-    switch(weekday) { 
+    switch(this.weekday) { 
       case 'Monday': { 
-        this.firstDayOfWeek += formatDate(today.getTime(), 'dd', 'en'); + ' de ' + formatDate(today.getTime(), 'MM', 'en');
-        this.lastDayOfWeek += formatDate(today.getTime() + diaEnMilisegundos*6, 'dd', 'en') + " de " + formatDate(today.getTime() + diaEnMilisegundos*6, 'MM', 'en');
+        this.firstDayOfWeek += formatDate(this.today.getTime(), 'dd', 'en') + ' de ' + month.map.get(formatDate(this.today.getTime(), 'MM', 'en'));
+        this.lastDayOfWeek += formatDate(this.today.getTime() + diaEnMilisegundos*6, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() + diaEnMilisegundos*6, 'MM', 'en'));
         break; 
       } 
       case 'Tuesday': { 
-        this.firstDayOfWeek += formatDate(today.getTime() - diaEnMilisegundos, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() - diaEnMilisegundos, 'MM', 'en'));
-        this.lastDayOfWeek += formatDate(today.getTime() + diaEnMilisegundos*5, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() + diaEnMilisegundos*5, 'MM', 'en'));
+        this.firstDayOfWeek += formatDate(this.today.getTime() - diaEnMilisegundos, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() - diaEnMilisegundos, 'MM', 'en'));
+        this.lastDayOfWeek += formatDate(this.today.getTime() + diaEnMilisegundos*5, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() + diaEnMilisegundos*5, 'MM', 'en'));
         break; 
-      } 
+      }  
       case 'Wednesday': { 
-        this.firstDayOfWeek += formatDate(today.getTime() - diaEnMilisegundos*2, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() - diaEnMilisegundos*2, 'MM', 'en'));
-        this.lastDayOfWeek += formatDate(today.getTime() + diaEnMilisegundos*4, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() + diaEnMilisegundos*4, 'MM', 'en'));
+        this.firstDayOfWeek += formatDate(this.today.getTime() - diaEnMilisegundos*2, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() - diaEnMilisegundos*2, 'MM', 'en'));
+        this.lastDayOfWeek += formatDate(this.today.getTime() + diaEnMilisegundos*4, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() + diaEnMilisegundos*4, 'MM', 'en'));
          break; 
       } 
       case 'Thursday': { 
-        this.firstDayOfWeek += formatDate(today.getTime() - diaEnMilisegundos*3, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() - diaEnMilisegundos*3, 'MM', 'en')); 
-        this.lastDayOfWeek += formatDate(today.getTime() + diaEnMilisegundos*3, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() + diaEnMilisegundos*3, 'MM', 'en')); 
+        this.firstDayOfWeek += formatDate(this.today.getTime() - diaEnMilisegundos*3, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() - diaEnMilisegundos*3, 'MM', 'en')); 
+        this.lastDayOfWeek += formatDate(this.today.getTime() + diaEnMilisegundos*3, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() + diaEnMilisegundos*3, 'MM', 'en')); 
         break; 
       } 
       case 'Friday': { 
-        this.firstDayOfWeek += formatDate(today.getTime() - diaEnMilisegundos*4, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() - diaEnMilisegundos*4, 'MM', 'en'));
-        this.lastDayOfWeek += formatDate(today.getTime() + diaEnMilisegundos*2, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() + diaEnMilisegundos*2, 'MM', 'en'));
+        this.firstDayOfWeek += formatDate(this.today.getTime() - diaEnMilisegundos*4, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() - diaEnMilisegundos*4, 'MM', 'en'));
+        this.lastDayOfWeek += formatDate(this.today.getTime() + diaEnMilisegundos*2, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() + diaEnMilisegundos*2, 'MM', 'en'));
         break; 
       } 
       case 'Saturday': { 
-        this.firstDayOfWeek += formatDate(today.getTime() - diaEnMilisegundos, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() - diaEnMilisegundos, 'MM', 'en'));
+        this.firstDayOfWeek += formatDate(this.today.getTime() - diaEnMilisegundos, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() - diaEnMilisegundos, 'MM', 'en'));
         
         break; 
       } 
       case 'Sunday': { 
-        this.lastDayOfWeek += formatDate(today.getTime(), 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime(), 'MM', 'en'));
-        this.firstDayOfWeek += formatDate(today.getTime() - diaEnMilisegundos*6, 'dd', 'en') + " de " + month.map.get(formatDate(today.getTime() - diaEnMilisegundos*6, 'MM', 'en'));
-         break; 
+        this.lastDayOfWeek += formatDate(this.today.getTime(), 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime(), 'MM', 'en'));
+        this.firstDayOfWeek += formatDate(this.today.getTime() - diaEnMilisegundos*6, 'dd', 'en') + " de " + month.map.get(formatDate(this.today.getTime() - diaEnMilisegundos*6, 'MM', 'en'));
+         break;
       } 
     } 
+  }
+
+  openModal(modal: TemplateRef<any>, number:number) {
+    this.modalRef = this.modalService.show(modal);
+    switch(number) {
+      case 1:
+        this.timeDay = 'Mañana'
+        break
+      case 2:
+        this.timeDay = 'Tarde'
+        break
+      case 3:
+        this.timeDay = 'Noche'
+        break
+    }
   }
 
   async onLogout() {

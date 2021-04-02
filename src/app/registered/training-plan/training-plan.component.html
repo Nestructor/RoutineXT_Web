@@ -61,7 +61,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="assets/404_Error.gif" class="img-fluid rounded-circle profile mr-2"
+                                <img src="https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2Fdefault_profile_photo.png?alt=media&token=8d696e13-a7d6-47ca-bc9c-384d4e1c0719" class="img-fluid rounded-circle profile mr-2"
                                     alt="profile photo" />
                                 Diego Hernández González
                             </a>
@@ -88,116 +88,103 @@
                             <button class="btn btn-warning mt-2">Imprimir <img width="24px" src="assets/registered/print.png" alt="print img"></button>
                         </div>
                     </div>
-                    
                 </div>
                 
-
                 <div class="card-group mx-5 text-center">
 
-                    <div class="card h-25">
+                    <div class="card h-25 weekday" [ngStyle]="{'background-color':weekday === 'Monday' ? '#ffc107' : '#d7d7d7' }">
                         <div class="card-body">
                             <h5 class="card-title">Lunes</h5>
                         </div>
                     </div>
 
-                    <div class="card h-25">
+                    <div class="card h-25 weekday" [ngStyle]="{'background-color':weekday === 'Tuesday' ? '#ffc107' : '#d7d7d7' }">
                         <div class="card-body">
                             <h5 class="card-title">Martes</h5>
                         </div>
                     </div>
 
-                    <div class="card h-25">
+                    <div class="card h-25 weekday" [ngStyle]="{'background-color':weekday === 'Wednesday' ? '#ffc107' : '#d7d7d7' }">
                         <div class="card-body">
                             <h5 class="card-title">Miércoles</h5>
                         </div>
                     </div>
 
-                    <div class="card h-25">
+                    <div class="card h-25 weekday" [ngStyle]="{'background-color':weekday === 'Thursday' ? '#ffc107' : '#d7d7d7' }">
                         <div class="card-body">
                             <h5 class="card-title">Jueves</h5>
                         </div>
                     </div>
 
-                    <div class="card h-25">
+                    <div class="card h-25 weekday" [ngStyle]="{'background-color':weekday === 'Friday' ? '#ffc107' : '#d7d7d7' }">
                         <div class="card-body">
                             <h5 class="card-title">Viernes</h5>
                         </div>
                     </div>
-
-                    <div class="card h-25">
+                    <div class="card h-25 weekday" [ngStyle]="{'background-color':weekday === 'Saturday' ? '#ffc107' : '#d7d7d7' }">
                         <div class="card-body">
                             <h5 class="card-title">Sábado</h5>
                         </div>
                     </div>
-
-                    <div class="card h-25">
+                    <div class="card h-25 weekday" [ngStyle]="{'background-color':weekday === 'Sunday' ? '#ffc107' : '#d7d7d7' }">
                         <div class="card-body">
                             <h5 class="card-title">Domingo</h5>
                         </div>
                     </div>
 
-                </div>
-
+                </div><br>
+                
                 <!------------------------------------ Mornings ------------------------------------------->
+                <div class="card-group mornings mx-5 text-center">
 
-                <div class="card-group mx-5 text-center">
-
-                    <div class="card">
+                    <!-- <div class="card"> -->
+                    <div class="card" (click)="openModal(modal, 1)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
+                            <cite title="Source Title" style="float: left">Mañana</cite>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
@@ -205,64 +192,55 @@
 
                 <!------------------------------------ Afternoons ------------------------------------------->
 
-                <div class="card-group mx-5 text-center">
+                <div class="card-group afternoons mx-5 text-center">
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 2)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
+                            <cite title="Source Title" style="float: left">Tarde</cite>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 2)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 2)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 2)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 2)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 2)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 2)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
@@ -270,64 +248,55 @@
 
                 <!------------------------------------ Nights ------------------------------------------->
 
-                <div class="card-group mx-5 text-center">
+                <div class="card-group nights mx-5 text-center">
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 3)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
+                            <cite title="Source Title" style="float: left">Noche</cite>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 3)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 3)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 3)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 3)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 3)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" (click)="openModal(modal, 3)">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                            <h5 class="card-title">Flexibilidad</h5>
+                            <p class="card-text">(10:30-11:30)</p>
                         </div>
                     </div>
 
@@ -344,4 +313,59 @@
     <ngx-spinner bdColor=rgba(1,23,111,0.8) size="large" color="#ffc107" type="square-jelly-box" [fullScreen]="true">
         <p style="color: white; padding-top: 30px;">Cargando Contenido</p>
     </ngx-spinner>
+</ng-template>
+
+<ng-template #modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Lunes - {{timeDay}}</h4>
+        <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cerrar</button>
+    </div>
+    <div class="modal-body">
+        <div class="row mb-2">
+            <div class="col-8">
+                -Tipo de Rutina:
+            </div>
+            <div class="col-4">
+                <select class="form-select">
+                    <option selected value="1">Piernas</option>
+                    <option value="2">Glúteos</option>
+                    <option value="3">Flexibilidad</option>
+                    <option value="4">Abdominales</option>
+                    <option value="5">Brazos</option>
+                  </select>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-8">
+                -Hora de inicio:
+            </div>
+            <div class="col-4">
+                <timepicker 
+                    [(ngModel)]="startTime" 
+                    (ngModelChange)="verifyTime()" 
+                    [showMeridian]="false" 
+                    [showSpinners]="false">
+                </timepicker>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                -Hora de finalización
+            </div>
+            <div class="col-4">
+                <timepicker 
+                    [(ngModel)]="endTime" 
+                    (ngModelChange)="verifyTime()" 
+                    [showMeridian]="false" 
+                    [showSpinners]="false">
+                </timepicker>
+            </div>
+        </div>
+       
+    </div>
+    <div class="modal-footer">
+        <p>Las rutinas solo pueden tener una duración máxima de 1 hora.</p>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!isTimeCorrect">Añadir</button>
+    </div>
 </ng-template>

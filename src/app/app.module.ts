@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
@@ -28,6 +28,9 @@ import { FaqsContactComponent } from './unregistered/faqs-contact/faqs-contact.c
 import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
 import { PaginaNoEncontradaComponent } from './page-not-found/pagina-no-encontrada.component';
 import { TrainingPlanComponent } from './registered/training-plan/training-plan.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,11 @@ import { TrainingPlanComponent } from './registered/training-plan/training-plan.
     AngularFireAuthModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ModalModule.forRoot(),
+    TimepickerModule.forRoot(),
+    NgbModule,
+    FormsModule
   ],
   providers: [
     AngularFireAuth,

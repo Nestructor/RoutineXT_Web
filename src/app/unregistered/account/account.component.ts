@@ -101,7 +101,12 @@ export class AccountComponent implements OnInit {
       surname: this.registerForm.get('surname').value,
       age: this.registerForm.get('age').value,
       email: this.registerForm.get('email').value,
-      profile: "https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2Fcoche.jpg?alt=media&token=0825fed0-e7a6-4afc-aebe-09f1433c4bcb"
+      profile: "https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2Fdefault_profile_photo.png?alt=media&token=8d696e13-a7d6-47ca-bc9c-384d4e1c0719",
+      score: 0,
+      routines: 0,
+      exercises: 0,
+      challenges: 0,
+      max_score: 0
     }).then((registered)=> {
       console.log("Registro creado")
     })
