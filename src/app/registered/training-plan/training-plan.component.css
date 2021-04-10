@@ -74,8 +74,7 @@
 
 #content {
     overflow-y: auto;
-    height: 100vh;
-    padding-bottom: 5rem;
+    height: 120vh;
 }
 
 .profile {
@@ -122,14 +121,14 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
 
 /* CONTENT INSIDE */
 
-#content > div.container-fluid > div > div.col-10 > p.week_title {
+#content > div.container-fluid > div > div.col-5 > p.week_title {
     font-size: 26px;
     text-decoration: underline;
     color: #002959;
 }
 
-#content > div.container-fluid > div > div.col-10 > p.week_value {
-    font-size: 22px;
+#content > div.container-fluid > div > div.col-5 > p.week_value {
+    font-size: 20px;
 }
 
 #content > button {
@@ -150,6 +149,10 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
 #content > .card-group.afternoons .card .card-body, 
 #content > .card-group.nights .card .card-body {
     margin-top: 40px;
+}
+
+#content > div > div > div {
+    padding: 0.8rem;
 }
 
 #content > div.card-group.mornings .card:hover, 
@@ -178,4 +181,5 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
 
 #content > div.container-fluid > div > div.col-2 > button {
     padding: 12px;
+    font-size: 18px;
 }

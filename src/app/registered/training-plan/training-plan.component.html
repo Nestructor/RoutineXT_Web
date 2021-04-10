@@ -80,12 +80,16 @@
 
                 <div class="container-fluid">
                     <div class="row my-5 mx-4">
-                        <div class="col-10">
+                        <div class="col-5">
                             <p class="week_title">Semana</p>
                             <p class="week_value">{{firstDayOfWeek}} - {{lastDayOfWeek}}</p>
                         </div>
+                        <div class="col-3">
+                            <button class="btn btn-light mt-2" style="font-size: 18px; border: 2px outset">Descansar esta semana <img style="width: 40px; margin-left: 5px" src="assets/registered/break.png" alt="print img"></button>
+                        </div>
+                        <div class="col-2"></div>
                         <div class="col-2">
-                            <button class="btn btn-warning mt-2">Imprimir <img width="24px" src="assets/registered/print.png" alt="print img"></button>
+                            <button class="btn btn-warning mt-2">Imprimir <img style="width: 24px; margin-left: 5px" src="assets/registered/print.png" alt="print img"></button>
                         </div>
                     </div>
                 </div>
@@ -138,53 +142,59 @@
                 <div class="card-group mornings mx-5 text-center">
 
                     <!-- <div class="card"> -->
-                    <div class="card" (click)="openModal(modal, 1)">
+                    <div class="card" (click)="editableDays[0] && openModal(modal, 'Lunes', 'Mañana (00:00-12:59)')" [ngStyle]="editableDays[0] ? {'background-color':morningRoutines[2][0]} : {'background-color':morningRoutines[2][0], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{morningRoutines[0][0]}}</h5>
+                            <p class="card-text">{{morningRoutines[1][0]}}</p>
                             <cite title="Source Title" style="float: left">Mañana</cite>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal)">
+                    <div class="card" (click)="editableDays[1] && openModal(modal, 'Martes', 'Mañana (00:00-12:59)')" [ngStyle]="editableDays[1] ? {'background-color':morningRoutines[2][1]} : {'background-color':morningRoutines[2][1], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{morningRoutines[0][1]}}</h5>
+                            <p class="card-text">{{morningRoutines[1][1]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal)">
+                    <div class="card" (click)="editableDays[2] && openModal(modal, 'Miércoles', 'Mañana (00:00-12:59)')" [ngStyle]="editableDays[2] ? {'background-color':morningRoutines[2][2]} : {'background-color':morningRoutines[2][2], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{morningRoutines[0][2]}}</h5>
+                            <p class="card-text">{{morningRoutines[1][2]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal)">
+                    <div class="card" (click)="editableDays[3] && openModal(modal, 'Jueves', 'Mañana (00:00-12:59)')" [ngStyle]="editableDays[3] ? {'background-color':morningRoutines[2][3]} : {'background-color':morningRoutines[2][3], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{morningRoutines[0][3]}}</h5>
+                            <p class="card-text">{{morningRoutines[1][3]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal)">
+                    <div class="card" (click)="editableDays[4] && openModal(modal, 'Viernes', 'Mañana (00:00-12:59)')" [ngStyle]="editableDays[4] ? {'background-color':morningRoutines[2][4]} : {'background-color':morningRoutines[2][4], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{morningRoutines[0][4]}}</h5>
+                            <p class="card-text">{{morningRoutines[1][4]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal)">
+                    <div class="card" (click)="editableDays[5] && openModal(modal, 'Sábado', 'Mañana (00:00-12:59)')" [ngStyle]="editableDays[5] ? {'background-color':morningRoutines[2][5]} : {'background-color':morningRoutines[2][5], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{morningRoutines[0][5]}}</h5>
+                            <p class="card-text">{{morningRoutines[1][5]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal)">
+                    <div class="card" (click)="editableDays[6] && openModal(modal, 'Domingo', 'Mañana (00:00-12:59)')" [ngStyle]="editableDays[6] ? {'background-color':morningRoutines[2][6]} : {'background-color':morningRoutines[2][6], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{morningRoutines[0][6]}}</h5>
+                            <p class="card-text">{{morningRoutines[1][6]}}</p>
+                            <br>
                         </div>
                     </div>
 
@@ -194,53 +204,59 @@
 
                 <div class="card-group afternoons mx-5 text-center">
 
-                    <div class="card" (click)="openModal(modal, 2)">
+                    <div class="card" (click)="editableDays[0] && openModal(modal, 'Lunes', 'Tarde (13:00-19:59)')" [ngStyle]="editableDays[0] ? {'background-color':afternoonRoutines[2][0]} : {'background-color':afternoonRoutines[2][0], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{afternoonRoutines[0][0]}}</h5>
+                            <p class="card-text">{{afternoonRoutines[1][0]}}</p>
                             <cite title="Source Title" style="float: left">Tarde</cite>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 2)">
+                    <div class="card" (click)="editableDays[1] && openModal(modal, 'Martes', 'Tarde (13:00-19:59)')" [ngStyle]="editableDays[1] ? {'background-color':afternoonRoutines[2][1]} : {'background-color':afternoonRoutines[2][1], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{afternoonRoutines[0][1]}}</h5>
+                            <p class="card-text">{{afternoonRoutines[1][1]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 2)">
+                    <div class="card" (click)="editableDays[2] && openModal(modal, 'Miércoles', 'Tarde (13:00-19:59)')" [ngStyle]="editableDays[2] ? {'background-color':afternoonRoutines[2][2]} : {'background-color':afternoonRoutines[2][2], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{afternoonRoutines[0][2]}}</h5>
+                            <p class="card-text">{{afternoonRoutines[1][2]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 2)">
+                    <div class="card" (click)="editableDays[3] && openModal(modal, 'Jueves', 'Tarde (13:00-19:59)')" [ngStyle]="editableDays[3] ? {'background-color':afternoonRoutines[2][3]} : {'background-color':afternoonRoutines[2][3], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{afternoonRoutines[0][3]}}</h5>
+                            <p class="card-text">{{afternoonRoutines[1][3]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 2)">
+                    <div class="card" (click)="editableDays[4] && openModal(modal, 'Viernes', 'Tarde (13:00-19:59)')" [ngStyle]="editableDays[4] ? {'background-color':afternoonRoutines[2][4]} : {'background-color':afternoonRoutines[2][4], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{afternoonRoutines[0][4]}}</h5>
+                            <p class="card-text">{{afternoonRoutines[1][4]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 2)">
+                    <div class="card" (click)="editableDays[5] && openModal(modal, 'Sábado', 'Tarde (13:00-19:59)')" [ngStyle]="editableDays[5] ? {'background-color':afternoonRoutines[2][5]} : {'background-color':afternoonRoutines[2][5], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{afternoonRoutines[0][5]}}</h5>
+                            <p class="card-text">{{afternoonRoutines[1][5]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 2)">
+                    <div class="card" (click)="editableDays[6] && openModal(modal, 'Domingo', 'Tarde (13:00-19:59)')" [ngStyle]="editableDays[6] ? {'background-color':afternoonRoutines[2][6]} : {'background-color':afternoonRoutines[2][6], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{afternoonRoutines[0][6]}}</h5>
+                            <p class="card-text">{{afternoonRoutines[1][6]}}</p>
+                            <br>
                         </div>
                     </div>
 
@@ -250,53 +266,59 @@
 
                 <div class="card-group nights mx-5 text-center">
 
-                    <div class="card" (click)="openModal(modal, 3)">
+                    <div class="card" (click)="editableDays[0] && openModal(modal, 'Lunes', 'Noche (20:00-23:59)')" [ngStyle]="editableDays[0] ? {'background-color':nightRoutines[2][0]} : {'background-color':nightRoutines[2][0], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{nightRoutines[0][0]}}</h5>
+                            <p class="card-text">{{nightRoutines[1][0]}}</p>
                             <cite title="Source Title" style="float: left">Noche</cite>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 3)">
+                    <div class="card" (click)="editableDays[1] && openModal(modal, 'Martes', 'Noche (20:00-23:59)')" [ngStyle]="editableDays[1] ? {'background-color':nightRoutines[2][1]} : {'background-color':nightRoutines[2][1], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{nightRoutines[0][1]}}</h5>
+                            <p class="card-text">{{nightRoutines[1][1]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 3)">
+                    <div class="card" (click)="editableDays[2] && openModal(modal, 'Miércoles', 'Noche (20:00-23:59)')" [ngStyle]="editableDays[2] ? {'background-color':nightRoutines[2][2]} : {'background-color':nightRoutines[2][2], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{nightRoutines[0][2]}}</h5>
+                            <p class="card-text">{{nightRoutines[1][2]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 3)">
+                    <div class="card" (click)="editableDays[3] && openModal(modal, 'Jueves', 'Noche (20:00-23:59)')" [ngStyle]="editableDays[3] ? {'background-color':nightRoutines[2][3]} : {'background-color':nightRoutines[2][3], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{nightRoutines[0][3]}}</h5>
+                            <p class="card-text">{{nightRoutines[1][3]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 3)">
+                    <div class="card" (click)="editableDays[4] && openModal(modal, 'Viernes', 'Noche (20:00-23:59)')" [ngStyle]="editableDays[4] ? {'background-color':nightRoutines[2][4]} : {'background-color':nightRoutines[2][4], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{nightRoutines[0][4]}}</h5>
+                            <p class="card-text">{{nightRoutines[1][4]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 3)">
+                    <div class="card" (click)="editableDays[5] && openModal(modal, 'Sábado', 'Noche (20:00-23:59)')" [ngStyle]="editableDays[5] ? {'background-color':nightRoutines[2][5]} : {'background-color':nightRoutines[2][5], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{nightRoutines[0][5]}}</h5>
+                            <p class="card-text">{{nightRoutines[1][5]}}</p>
+                            <br>
                         </div>
                     </div>
 
-                    <div class="card" (click)="openModal(modal, 3)">
+                    <div class="card" (click)="editableDays[6] && openModal(modal, 'Domingo', 'Noche (20:00-23:59)')" [ngStyle]="editableDays[6] ? {'background-color':nightRoutines[2][6]} : {'background-color':nightRoutines[2][6], 'opacity': 0.6}">
                         <div class="card-body">
-                            <h5 class="card-title">Flexibilidad</h5>
-                            <p class="card-text">(10:30-11:30)</p>
+                            <h5 class="card-title">{{nightRoutines[0][6]}}</h5>
+                            <p class="card-text">{{nightRoutines[1][6]}}</p>
+                            <br>
                         </div>
                     </div>
 
@@ -317,7 +339,7 @@
 
 <ng-template #modal>
     <div class="modal-header">
-        <h4 class="modal-title">Lunes - {{timeDay}}</h4>
+        <h4 class="modal-title">{{weekdayModal}} - {{timeDay}}</h4>
         <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cerrar</button>
     </div>
     <div class="modal-body">
@@ -326,13 +348,13 @@
                 -Tipo de Rutina:
             </div>
             <div class="col-4">
-                <select class="form-select">
-                    <option selected value="1">Piernas</option>
+                <select [(ngModel)]="selectedRoutine" class="form-select">
+                    <option value="1">Piernas</option>
                     <option value="2">Glúteos</option>
                     <option value="3">Flexibilidad</option>
                     <option value="4">Abdominales</option>
                     <option value="5">Brazos</option>
-                  </select>
+                </select>
             </div>
         </div>
         <div class="row mb-2">
@@ -340,9 +362,9 @@
                 -Hora de inicio:
             </div>
             <div class="col-4">
-                <timepicker 
+                <timepicker
                     [(ngModel)]="startTime" 
-                    (ngModelChange)="verifyTime()" 
+                    (ngModelChange)="verifyTimeSelectedInModal()" 
                     [showMeridian]="false" 
                     [showSpinners]="false">
                 </timepicker>
@@ -355,7 +377,7 @@
             <div class="col-4">
                 <timepicker 
                     [(ngModel)]="endTime" 
-                    (ngModelChange)="verifyTime()" 
+                    (ngModelChange)="verifyTimeSelectedInModal()" 
                     [showMeridian]="false" 
                     [showSpinners]="false">
                 </timepicker>
@@ -364,8 +386,8 @@
        
     </div>
     <div class="modal-footer">
-        <p>Las rutinas solo pueden tener una duración máxima de 1 hora.</p>
-        <button type="button" class="btn btn-danger">Eliminar</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!isTimeCorrect">Añadir</button>
+        <p>Las rutinas solo pueden tener una duración de entre 15 y 60 minutos.</p>
+        <button type="button" class="btn btn-danger" (click)="deleteRoutine()" [disabled]="!modalState">Eliminar</button> 
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!isTimeCorrect" (click)="addRoutine()">Añadir</button>
     </div>
 </ng-template>
