@@ -68,13 +68,14 @@ export class AccountComponent implements OnInit {
   }
 
   async onRegister() {
+    let uid;
     // console.log('Form ->', this.registerForm.value)
     //Añadir datos de usuario a Authentication
     const {email, password} = this.registerForm.value
     try {
       const user =  await this.authSrv.register(email, password)
       if(user != "error") {
-        console.log(user)
+        uid = user.user.uid
         await this.authSrv.logout()
         setTimeout(function() {
           Swal.fire({
@@ -96,7 +97,7 @@ export class AccountComponent implements OnInit {
       console.log(error)
     }
     //Añadir datos de usuario a cloudFirestore
-    this.db.collection('users').add({
+    this.db.collection('users').doc(uid).set({
       name: this.registerForm.get('name').value,
       surname: this.registerForm.get('surname').value,
       age: this.registerForm.get('age').value,

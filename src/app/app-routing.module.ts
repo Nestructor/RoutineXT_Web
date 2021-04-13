@@ -10,6 +10,7 @@ import { LoginComponent } from './unregistered/login/login.component';
 import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-policy.component';
 import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
 import { TrainingPlanComponent } from './registered/training-plan/training-plan.component';
+import { ProfileComponent } from './registered/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -31,17 +32,20 @@ const routes: Routes = [
     path: "Aviso_Legal", component: LegalNoticeComponent
   },
   {
-    path: "Plan_De_Entrenamiento", component: TrainingPlanComponent
-  },
-  {
     path: "FAQs_Contacto", component: FaqsContactComponent
   },
   {
     path: "Nueva_Contraseña", component: ResetPasswordComponent
   },
   {
+    path: "Plan_De_Entrenamiento", component: TrainingPlanComponent
+  },
+  {
+    path: "Perfil", component: ProfileComponent
+  },
+  {
     path: '**', component: PaginaNoEncontradaComponent
-  }
+  },
 ];
 
 @NgModule({

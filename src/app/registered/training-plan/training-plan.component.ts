@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { formatDate } from '@angular/common';
 import { Maps } from 'src/app/modules/maps';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-training-plan',
@@ -19,14 +20,16 @@ export class TrainingPlanComponent implements OnInit {
   public isLogged = false
   public user$: Observable<any> = this.authSvc.afAuth.user
   loading: boolean = true
+  userID: string
+  completeUserName: string
   
   firstDayOfWeek: string = "Lunes ";
   lastDayOfWeek: string = "Domingo ";
-  modalRef: BsModalRef;
+  modalRef: BsModalRef
   startTime: Date = new Date();
   endTime: Date = new Date();
   isTimeCorrect: boolean = false
-  timeDay: string = ''; //Mañana (00:00-12:59)
+  dayTime: string = ''; //Mañana (00:00-12:59)
   today: Date = new Date(); //1212165549849
   weekday: string = formatDate(this.today, 'EEEE', 'en'); //Saturday
   weekdayModal: string = ''; //Martes
@@ -37,16 +40,18 @@ export class TrainingPlanComponent implements OnInit {
   morningRoutines = [];
   afternoonRoutines = [];
   nightRoutines = [];
-  modalState: boolean = false;
+  modalState: string = ''
   editableDays = []
 
   constructor(
-    private  authSvc: AuthService, 
+    private authSvc: AuthService, 
     private router: Router, 
     private spinner: NgxSpinnerService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private db: AngularFirestore,
   ) {
     this.user$.subscribe((user) => {
+      this.userID = user.uid
       this.isLogged = user != null ? true : false
       if (!this.isLogged) {
         this.router.navigate(['/Iniciar_Sesion']) 
@@ -55,8 +60,14 @@ export class TrainingPlanComponent implements OnInit {
         setTimeout(() => {
           this.spinner.hide()
           this.loading = false
-        }, 0)
+        }, 3000)
       }
+
+      this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
+        let items: any = resultado.data()
+        this.completeUserName = items.name + " " + items.surname
+      })
+
     })
 
     for(var i=0; i<4; i++) {
@@ -66,19 +77,12 @@ export class TrainingPlanComponent implements OnInit {
     }
     
     for(var j=0; j<7; j++) {
-      this.morningRoutines[3][j] = false
+      this.morningRoutines[3][j] = ''
     }
 
     for(var k=0; k<7; k++) {
       this.editableDays[k] = true
     }
-
-    // morningRoutines: string[][] 
-    // afternoonRoutines: string[][]
-    // nightRoutines: string[][]
-    // this.morningRoutines = [ ["","","","","","",""], ["","","","","","",""], ["","","","","","",""] ]
-    // this.afternoonRoutines = [ ["","","","","","",""], ["","","","","","",""], ["","","","","","",""] ]
-    // this.nightRoutines = [ ["","","","","","",""], ["","","","","","",""], ["","","","","","",""] ]
     
   }
 
@@ -133,29 +137,57 @@ export class TrainingPlanComponent implements OnInit {
 
     // this.editableDays.forEach(e => console.log(e))
 
+    this.db.collection('routines').get().subscribe((resultado) => {
+      resultado.docs.forEach((item) => {
+        let routineID = item.ref.id
+        let routine:any = item.data(); //Identificador del cliente
+        if(this.userID == routine.userID) {
+            switch(routine.dayTime) {
+              case 'Mañana (00:00-12:59)':
+                this.morningRoutines[0][routine.weekday] = routine.type;
+                this.morningRoutines[1][routine.weekday] = routine.timetable
+                this.morningRoutines[2][routine.weekday] = this.map.routineToBgColor.get(routine.type);
+                this.morningRoutines[3][routine.weekday] = routineID
+                break;
+              case 'Tarde (13:00-19:59)':
+                this.afternoonRoutines[0][routine.weekday] = routine.type;
+                this.afternoonRoutines[1][routine.weekday] = routine.timetable
+                this.afternoonRoutines[2][routine.weekday] = this.map.routineToBgColor.get(routine.type);
+                this.afternoonRoutines[3][routine.weekday] = routineID
+                break;
+              case 'Noche (20:00-23:59)':
+                this.nightRoutines[0][routine.weekday] = routine.type;
+                this.nightRoutines[1][routine.weekday] = routine.timetable
+                this.nightRoutines[2][routine.weekday] = this.map.routineToBgColor.get(routine.type);
+                this.nightRoutines[3][routine.weekday] = routineID
+                break;
+            }
+          }
+      })
+    })
+
   }
 
   verifyTimeSelectedInModal() {
     let startTimeInMinutes: number = this.startTime.getHours()*60 + this.startTime.getMinutes();
     let endTimeInMinutes: number = this.endTime.getHours()*60 + this.endTime.getMinutes();
     this.isTimeCorrect = (endTimeInMinutes - startTimeInMinutes <= 60 && endTimeInMinutes - startTimeInMinutes >= 15)  == true;
-    if((this.timeDay == 'Mañana (00:00-12:59)') && (this.startTime.getHours() > 12)) {
+    if((this.dayTime == 'Mañana (00:00-12:59)') && (this.startTime.getHours() > 12)) {
       this.isTimeCorrect = false
-    } else if((this.timeDay == 'Tarde (13:00-19:59)') && (this.startTime.getHours() < 13 || this.endTime.getHours() > 19)) {
+    } else if((this.dayTime == 'Tarde (13:00-19:59)') && (this.startTime.getHours() < 13 || this.endTime.getHours() > 19)) {
       this.isTimeCorrect = false
-    } else if((this.timeDay == 'Noche (20:00-23:59)') && (this.startTime.getHours() < 20 )) {
+    } else if((this.dayTime == 'Noche (20:00-23:59)') && (this.startTime.getHours() < 20 )) {
       this.isTimeCorrect = false
     }
-    // console.log(this.timeDay)
+    // console.log(this.dayTime)
     // console.log(this.startTime.getHours()+":"+this.startTime.getMinutes() + " - " + this.endTime.getHours()+":"+this.endTime.getMinutes() + " -> " + this.isTimeCorrect + " (" + (endTimeInMinutes - startTimeInMinutes) +")")
   }
 
-  openModal(modal: TemplateRef<any>, weekdayModal: string, timeDay:string) {
+  openModal(modal: TemplateRef<any>, weekdayModal: string, dayTime:string) {
     this.weekdayModal = weekdayModal
-    this.timeDay = timeDay
+    this.dayTime = dayTime
     this.weekdayIndex = this.map.weekdayToIndexArray.get(this.weekdayModal);
-
-    switch(this.timeDay) {
+    switch(this.dayTime) {
       case 'Mañana (00:00-12:59)':
         this.modalState = this.morningRoutines[3][this.weekdayIndex]
         break;
@@ -166,12 +198,12 @@ export class TrainingPlanComponent implements OnInit {
         this.modalState = this.nightRoutines[3][this.weekdayIndex]
         break 
     }
+    console.log("openModal(): " + this.modalState)
     this.modalRef = this.modalService.show(modal);
   }
 
-  addRoutine() {
+ checkRoutine() {
     let routine = this.map.routineTypeToRoutine.get(this.selectedRoutine);
-    let routineBgColor = this.map.routineToBgColor.get(routine)
 
     let startHoursSelected = this.startTime.getHours().toString();
     let endHoursSelected = this.endTime.getHours().toString();
@@ -190,63 +222,115 @@ export class TrainingPlanComponent implements OnInit {
       endMinutesSelected = "0" + this.endTime.getMinutes()
     }
 
-    switch(this.timeDay) {
+    switch(this.dayTime) {
       case 'Mañana (00:00-12:59)':
-        this.morningRoutines[0][this.weekdayIndex] = routine;
-        this.morningRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
-        this.morningRoutines[2][this.weekdayIndex] = routineBgColor
-        this.morningRoutines[3][this.weekdayIndex] = true
-        break;
+        this.morningRoutines[3][this.weekdayIndex] == '' || this.morningRoutines[3][this.weekdayIndex] == undefined 
+          ? this.addRoutine(routine, startHoursSelected, startMinutesSelected, endHoursSelected, endMinutesSelected)
+          : this.updateRoutine(routine, startHoursSelected, startMinutesSelected, endHoursSelected, endMinutesSelected, this.morningRoutines[3][this.weekdayIndex]) 
+        break
       case 'Tarde (13:00-19:59)':
-        this.afternoonRoutines[0][this.weekdayIndex] = routine;
-        this.afternoonRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
-        this.afternoonRoutines[2][this.weekdayIndex] = routineBgColor
-        this.afternoonRoutines[3][this.weekdayIndex] = true
-        break;
+        this.afternoonRoutines[3][this.weekdayIndex] == '' || this.afternoonRoutines[3][this.weekdayIndex] == undefined 
+          ? this.addRoutine(routine, startHoursSelected, startMinutesSelected, endHoursSelected, endMinutesSelected)
+          : this.updateRoutine(routine, startHoursSelected, startMinutesSelected, endHoursSelected, endMinutesSelected, this.afternoonRoutines[3][this.weekdayIndex]) 
+        break
       case 'Noche (20:00-23:59)':
-        this.nightRoutines[0][this.weekdayIndex] = routine;
-        this.nightRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
-        this.nightRoutines[2][this.weekdayIndex] = routineBgColor
-        this.nightRoutines[3][this.weekdayIndex] = true
-        break;
+        this.nightRoutines[3][this.weekdayIndex] == '' || this.nightRoutines[3][this.weekdayIndex] == undefined 
+          ? this.addRoutine(routine, startHoursSelected, startMinutesSelected, endHoursSelected, endMinutesSelected)
+          : this.updateRoutine(routine, startHoursSelected, startMinutesSelected, endHoursSelected, endMinutesSelected, this.nightRoutines[3][this.weekdayIndex]) 
+        break  
     }
 
-    // this.morningRoutines.forEach(e => console.log(e))
-
-    // this.nightRoutines[0][0] = "Glúteos"
-    // this.nightRoutines[1][0] = "12:35"
-    // this.nightRoutines[2][0] = "#ffa749"
-    
-    // console.log(this.timeDay + " - " + this.weekday)
-    // console.log(routine + " (" + routineBgColor + ")")
-    // console.log(startHoursSelected + ":" + startMinutesSelected)
-    // console.log(endHoursSelected + ":" + endMinutesSelected)
     this.modalRef.hide()
   }
+  
+  addRoutine(routine: string, startHoursSelected: string, startMinutesSelected: string, endHoursSelected: string, endMinutesSelected: string) {
+    this.db.collection('routines').add({
+      weekday: this.weekdayIndex,
+      dayTime: this.dayTime,
+      type: routine,
+      timetable: startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected,
+      completed: false,
+      userID: this.userID
+    }).then((routineID)=> {
+      console.log(this.dayTime)
+      switch(this.dayTime) {
+        case 'Mañana (00:00-12:59)':
+          this.morningRoutines[0][this.weekdayIndex] = routine;
+          this.morningRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
+          this.morningRoutines[2][this.weekdayIndex] = this.map.routineToBgColor.get(routine)
+          this.morningRoutines[3][this.weekdayIndex] = routineID.id
+          break;
+        case 'Tarde (13:00-19:59)':
+          this.afternoonRoutines[0][this.weekdayIndex] = routine;
+          this.afternoonRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
+          this.afternoonRoutines[2][this.weekdayIndex] = this.map.routineToBgColor.get(routine)
+          this.afternoonRoutines[3][this.weekdayIndex] = routineID.id
+          break;
+        case 'Noche (20:00-23:59)':
+          this.nightRoutines[0][this.weekdayIndex] = routine;
+          this.nightRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
+          this.nightRoutines[2][this.weekdayIndex] = this.map.routineToBgColor.get(routine)
+          this.nightRoutines[3][this.weekdayIndex] = routineID.id
+          break;
+      }
+    })
+  }
 
-  deleteRoutine() {
-    // console.log(this.timeDay + "   " + this.weekday + "   " + this.weekdayModal + "   " + this.weekdayIndex)
-    
-    switch(this.timeDay) {
+  updateRoutine(routine: string, startHoursSelected: string, startMinutesSelected: string, endHoursSelected: string, endMinutesSelected: string, routineID: string) {
+    this.db.collection('routines').doc(routineID).update({
+      weekday: this.weekdayIndex,
+      dayTime: this.dayTime,
+      type: routine,
+      timetable: startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected,
+      completed: false,
+      userID: this.userID
+    }).then((updated) => {
+      switch(this.dayTime) {
+        case 'Mañana (00:00-12:59)':
+          this.morningRoutines[0][this.weekdayIndex] = routine;
+          this.morningRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
+          this.morningRoutines[2][this.weekdayIndex] = this.map.routineToBgColor.get(routine)
+          break;
+        case 'Tarde (13:00-19:59)':
+          this.afternoonRoutines[0][this.weekdayIndex] = routine;
+          this.afternoonRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
+          this.afternoonRoutines[2][this.weekdayIndex] = this.map.routineToBgColor.get(routine)
+          break;
+        case 'Noche (20:00-23:59)':
+          this.nightRoutines[0][this.weekdayIndex] = routine;
+          this.nightRoutines[1][this.weekdayIndex] = startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected
+          this.nightRoutines[2][this.weekdayIndex] = this.map.routineToBgColor.get(routine)
+          break;
+      }
+    })
+  }
+
+  deleteRoutine() {    
+
+    switch(this.dayTime) {
       case 'Mañana (00:00-12:59)':
+        this.db.collection('routines').doc(this.morningRoutines[3][this.weekdayIndex]).delete()
         this.morningRoutines[0][this.weekdayIndex] = '';
         this.morningRoutines[1][this.weekdayIndex] = ''
         this.morningRoutines[2][this.weekdayIndex] = ''
-        this.morningRoutines[3][this.weekdayIndex] = false
+        this.morningRoutines[3][this.weekdayIndex] = ''
         break;
       case 'Tarde (13:00-19:59)':
+        this.db.collection('routines').doc(this.afternoonRoutines[3][this.weekdayIndex]).delete()
         this.afternoonRoutines[0][this.weekdayIndex] = '';
         this.afternoonRoutines[1][this.weekdayIndex] = ''
         this.afternoonRoutines[2][this.weekdayIndex] = ''
-        this.afternoonRoutines[3][this.weekdayIndex] = false
+        this.afternoonRoutines[3][this.weekdayIndex] = ''
         break;
       case 'Noche (20:00-23:59)':
+        this.db.collection('routines').doc(this.nightRoutines[3][this.weekdayIndex]).delete()
         this.nightRoutines[0][this.weekdayIndex] = ''
         this.nightRoutines[1][this.weekdayIndex] = ''
         this.nightRoutines[2][this.weekdayIndex] = ''
-        this.nightRoutines[3][this.weekdayIndex] = false
+        this.nightRoutines[3][this.weekdayIndex] = ''
         break;
     }
+
     this.modalRef.hide()
   }
 

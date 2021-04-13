@@ -34,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { ProfileComponent } from './registered/profile/profile.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -49,7 +50,8 @@ registerLocaleData(localeEs);
     FaqsContactComponent,
     ResetPasswordComponent,
     PaginaNoEncontradaComponent,
-    TrainingPlanComponent
+    TrainingPlanComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

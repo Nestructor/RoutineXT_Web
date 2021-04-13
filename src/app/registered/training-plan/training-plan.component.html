@@ -33,7 +33,7 @@
     <div class="d-flex">
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
-                <img src="assets/WebLogo.png">
+                <a routerLink="/" target="_blank"><img src="assets/WebLogo.png" ></a>
                 <hr class="separation_line">
             </div>
 
@@ -63,10 +63,10 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2Fdefault_profile_photo.png?alt=media&token=8d696e13-a7d6-47ca-bc9c-384d4e1c0719" class="img-fluid rounded-circle profile mr-2"
                                     alt="profile photo" />
-                                Diego Hernández González
+                                {{completeUserName}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <button class="dropdown-item">Mi perfil</button>
+                                <button class="dropdown-item" routerLink="/Perfil">Mi perfil</button>
                                 <div class="dropdown-divider"></div>
                                 <button class="dropdown-item" (click)="onLogout()">Cerrar sesión</button>
                             </div>
@@ -332,14 +332,14 @@
 </div>
 
 <ng-template #showLoading>
-    <ngx-spinner bdColor=rgba(1,23,111,0.8) size="large" color="#ffc107" type="square-jelly-box" [fullScreen]="true">
-        <p style="color: white; padding-top: 30px;">Cargando Contenido</p>
+    <ngx-spinner bdColor=rgba(9,30,115,0.8) size="large" color="#ffc107" type="square-jelly-box" [fullScreen]="true">
+        <p style="font-size: 18px; color: white; padding-top: 30px;">Cargando Contenido</p>
     </ngx-spinner>
 </ng-template>
 
 <ng-template #modal>
     <div class="modal-header">
-        <h4 class="modal-title">{{weekdayModal}} - {{timeDay}}</h4>
+        <h4 class="modal-title">{{weekdayModal}} - {{dayTime}}</h4>
         <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cerrar</button>
     </div>
     <div class="modal-body">
@@ -387,7 +387,7 @@
     </div>
     <div class="modal-footer">
         <p>Las rutinas solo pueden tener una duración de entre 15 y 60 minutos.</p>
-        <button type="button" class="btn btn-danger" (click)="deleteRoutine()" [disabled]="!modalState">Eliminar</button> 
-        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!isTimeCorrect" (click)="addRoutine()">Añadir</button>
+        <button type="button" class="btn btn-danger" (click)="deleteRoutine()" [disabled]="modalState == '' || modalState == undefined">Eliminar</button> 
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!isTimeCorrect" (click)="checkRoutine()">Añadir</button>
     </div>
 </ng-template>
