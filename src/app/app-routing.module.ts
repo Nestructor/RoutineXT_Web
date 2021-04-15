@@ -11,6 +11,7 @@ import { PrivacyPolicyComponent } from './unregistered/privacy-policy/privacy-po
 import { ResetPasswordComponent } from './unregistered/reset-password/reset-password.component';
 import { TrainingPlanComponent } from './registered/training-plan/training-plan.component';
 import { ProfileComponent } from './registered/profile/profile.component';
+import { EditProfileComponent } from './registered/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   {
     path: "Perfil", component: ProfileComponent
+  },
+  {
+    path: "Editar_Perfil", component: EditProfileComponent
   },
   {
     path: '**', component: PaginaNoEncontradaComponent

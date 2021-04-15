@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service'
 
@@ -20,15 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authSrv: AuthService, 
     private router: Router, 
+    private spinner: NgxSpinnerService,
     private fb: FormBuilder) 
-  {
-    this.user$.subscribe((user) => {
-      this.isLogged = user != null ? true : false
-      if (this.isLogged) {
-        this.router.navigate(['/Plan_De_Entrenamiento']) 
-      }
-    })
-  }
+  {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -45,7 +40,7 @@ export class LoginComponent implements OnInit {
     try {
       const login =  await this.authSrv.login(email, password)
       if(login != "error") {
-        this.router.navigate(['/Plan_De_Entrenamiento']) 
+        this.showLoading()
       } else {
         this.validData = false
         this.loginForm.reset()
@@ -55,4 +50,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  async showLoading() {
+    this.spinner.show()
+    setTimeout(() => {
+      this.router.navigate(['/Plan_De_Entrenamiento']) 
+      this.spinner.hide()
+    }, 3000)
+  }
+
 }
+

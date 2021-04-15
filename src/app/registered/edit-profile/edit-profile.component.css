@@ -102,16 +102,35 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     display: block;
 }
 
+#content > div > div > div:nth-child(1) > div > div > button {
+    font-size: 17px;
+    border-radius: 25px;
+    display: block;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #007bff;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border-radius: 20px;
+}
+
+.custom-file-upload:hover {
+    background-color: #248dff;
+}
+
 #content > div > div > div:nth-child(1) > div {
     background-color: #212529;
     color: white;
     border: 4px outset;
     width: 80%;
     border-radius: 20px;
-}
-
-#content > div > div > div.col-4 > div > div > img:nth-child(4) {
-    margin-top: -25px;
 }
 
 #content > div > div > div:nth-child(1) > div:hover {
@@ -175,12 +194,12 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     float: left;
     margin-left: 10px;
     font-size: 18px;
+    margin-top: 41px;
 }
 
-#content > div > div > div:nth-child(3) > button.btn.change_password {
-    margin-left: 10px;
-    background-color: rgb(255 132 0 / 85%);
-    margin-top: 4px;
+#content > div > div > div:nth-child(3) > form > button {
+    margin-top: 72px;
+    font-size: 18px;
 }
 
 #content > div > div > div:nth-child(3) > button.btn.change_password:hover {
@@ -260,3 +279,31 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     background-color: white;
 }
 
+.form {
+    background: #ffffff;
+    margin: 15px auto 45px auto;
+    padding: 35px 30px;
+    height: 358px;
+}
+
+.form input {
+	width: 100%;
+    padding: 4px;
+    margin-bottom: 41px;
+    border: 1px solid #000000;
+    font-size: 16px;
+}
+
+.form input:focus {
+	border: 2px outset #002e73;
+	outline: 0 none;
+}
+
+.form > div.alert {
+    position: relative;
+    padding: 0.1rem 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    margin-top: -2rem;
+}

@@ -36,6 +36,8 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ProfileComponent } from './registered/profile/profile.component';
 registerLocaleData(localeEs);
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { EditProfileComponent } from './registered/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ registerLocaleData(localeEs);
     ResetPasswordComponent,
     PaginaNoEncontradaComponent,
     TrainingPlanComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ registerLocaleData(localeEs);
     ModalModule.forRoot(),
     TimepickerModule.forRoot(),
     NgbModule,
-    FormsModule
+    FormsModule,
+    ProgressbarModule.forRoot(),
   ],
   providers: [
     AngularFireAuth,

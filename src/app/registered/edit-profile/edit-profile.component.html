@@ -23,7 +23,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div class="container-fluid">
-                <p class="title_header">Mi Perfil de Usuario</p><br>
+                <p class="title_header">Editar Datos de Usuario</p><br>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -52,9 +52,12 @@
                             <div class="card-body mx-auto">
                                 <h5 class="card-title">Foto de Perfil</h5><hr>
                                 <img class="card-img-top" [src]="userImg">
-                                <img src="assets/registered/pedestal.png" alt="pedestal">
+                                <label for="file-upload" class="custom-file-upload mt-4">Cambiar Imagen</label>
+                                <input id="file-upload" type="file" (change)="updateImg($event)">
                             </div>
                         </div><br>
+                        <progressbar [value]="uploadPercentage" type="success" *ngIf="uploadPercentage < 100">{{uploadPercentage}}%</progressbar>
+                        <progressbar [value]="uploadPercentage" type="success" *ngIf="uploadPercentage == 100">OK</progressbar>
                         <p>Puntuación Récord: <span style="font-weight: normal">{{max_score}} puntos.</span></p> 
                     </div>
                     <div class="col-2">
@@ -62,34 +65,62 @@
                         <p>Apellidos:</p>
                         <p>Correo Personal:</p>
                         <p>Edad:</p>
-                        <button class="btn btn-primary" routerLink="/Editar_Perfil">Editar Datos</button>
+                        <button class="btn btn-secondary" routerLink="/Perfil">Volver al perfil</button>
                     </div>
                     <div class="col-3">
-                        <p>{{name}}</p>
-                        <p>{{surname}}</p>
-                        <p>{{email}}</p>
-                        <p>{{age}}</p>
-                        <button class="btn change_password" routerLink="/Nueva_Contraseña">Cambiar Contraseña</button>
+                        
+                        <form class="form" [formGroup]="dataForm" (ngSubmit)="onUpdate()">
+                            
+                            <input type="text" placeholder={{name}} formControlName="userName" maxlength="25">
+                
+                            <div *ngIf="dataForm.controls['userName'].invalid && dataForm.controls['userName'].dirty" class="alert alert-danger" role="alert">
+                              <span *ngIf="dataForm.controls['userName'].errors.required">Nombre requerido</span>
+                            </div>
+                            
+                            <input type="text" placeholder={{surname}} formControlName="userSurname" maxlength="50">
+                
+                            <div *ngIf="dataForm.controls['userSurname'].invalid && dataForm.controls['userSurname'].dirty" class="alert alert-danger" role="alert">
+                              <span *ngIf="dataForm.controls['userSurname'].errors.required">Apellidos requeridos</span>
+                            </div>
+                
+                            <input type="number" min="18" max="65" placeholder={{age}}  formControlName="userAge">
+                
+                            <div *ngIf="dataForm.controls['userAge'].invalid && dataForm.controls['userAge'].dirty" class="alert alert-danger" role="alert">
+                              <span *ngIf="dataForm.controls['userAge'].errors.required">Edad requerida (18-65)</span>
+                              <span *ngIf="dataForm.controls['userAge'].errors.min || dataForm.controls['userAge'].errors.max">Edad Incorrecta (18-65)</span>
+                            </div>
+                
+                            <input type="email" placeholder="{{email}}" formControlName="userEmail" maxlength="50">
+                
+                            <div *ngIf="dataForm.controls['userEmail'].invalid && dataForm.controls['userEmail'].dirty" class="alert alert-danger age" role="alert">
+                              <span *ngIf="dataForm.controls['userEmail'].errors.required">Correo requerido</span>
+                              <span *ngIf="dataForm.controls['userEmail'].errors.pattern">El correo no es válido</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-success" [disabled]="!dataForm.valid">Guardar Cambios</button>
+                                
+                        </form>
+
                     </div>
                     <div class="col-3">
                         <dl>
-                            <div class="box ">
+                            <div class="box mx-auto">
                                 <dt>Ranking</dt>
                                     <dd>1º Puesto</dd>
                             </div>
-                            <div class="box ">
+                            <div class="box mx-auto">
                                 <dt>Puntuación</dt>
                                     <dd>{{score}}</dd>
                             </div>
-                            <div class="box ">
+                            <div class="box mx-auto">
                                 <dt>Rutinas Completadas</dt>
                                     <dd>{{routines}}</dd>
                             </div>
-                            <div class="box ">
+                            <div class="box mx-auto">
                                 <dt>Ejercicios Realizados</dt>
                                     <dd>{{exercises}}</dd>
                             </div>
-                            <div class="box ">
+                            <div class="box mx-auto">
                                 <dt>Retos Completados</dt>
                                     <dd>{{challenges}}</dd>
                             </div>

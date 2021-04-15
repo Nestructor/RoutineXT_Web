@@ -29,7 +29,6 @@
     </ngx-spinner>
 </ng-template> -->
 
-<div *ngIf="!loading && user$ | async as user; else showLoading">
     <div class="d-flex">
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
@@ -38,7 +37,7 @@
             </div>
 
             <div class="menu">
-                <a class="d-block text-light p-3 border-0"><i class="icon ion-md-walk lead mr-2"></i>Mi
+                <a class="d-block text-light p-3 border-0" style="cursor: pointer"><i class="icon ion-md-walk lead mr-2"></i>Mi
                     Entrenamiento</a>
                 <a class="d-block text-light p-3 border-0"><i class="ion-md-clipboard lead mr-2"></i>Mis Ejercicios</a>
                 <a class="d-block text-light p-3 border-0"><i class="icon ion-md-stats lead mr-2"></i>Mi Progreso</a>
@@ -61,8 +60,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2Fdefault_profile_photo.png?alt=media&token=8d696e13-a7d6-47ca-bc9c-384d4e1c0719" class="img-fluid rounded-circle profile mr-2"
-                                    alt="profile photo" />
+                                <img [src]="userImg" class="img-fluid rounded profile mr-2" alt="profile photo" >
                                 {{completeUserName}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -329,13 +327,6 @@
 
         </div>
     </div>
-</div>
-
-<ng-template #showLoading>
-    <ngx-spinner bdColor=rgba(9,30,115,0.8) size="large" color="#ffc107" type="square-jelly-box" [fullScreen]="true">
-        <p style="font-size: 18px; color: white; padding-top: 30px;">Cargando Contenido</p>
-    </ngx-spinner>
-</ng-template>
 
 <ng-template #modal>
     <div class="modal-header">

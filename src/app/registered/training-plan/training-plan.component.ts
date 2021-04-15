@@ -19,8 +19,9 @@ export class TrainingPlanComponent implements OnInit {
 
   public isLogged = false
   public user$: Observable<any> = this.authSvc.afAuth.user
-  loading: boolean = true
+  // loading: boolean = true
   userID: string
+  userImg: any
   completeUserName: string
   
   firstDayOfWeek: string = "Lunes ";
@@ -46,27 +47,20 @@ export class TrainingPlanComponent implements OnInit {
   constructor(
     private authSvc: AuthService, 
     private router: Router, 
-    private spinner: NgxSpinnerService,
     private modalService: BsModalService,
     private db: AngularFirestore,
   ) {
     this.user$.subscribe((user) => {
-      this.userID = user.uid
-      this.isLogged = user != null ? true : false
-      if (!this.isLogged) {
+      try {
+        this.userID = user.uid
+        this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
+          let items: any = resultado.data()
+          this.completeUserName = items.name + " " + items.surname
+          this.userImg = items.profile
+        })
+      } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 
-      } else {
-        this.spinner.show()
-        setTimeout(() => {
-          this.spinner.hide()
-          this.loading = false
-        }, 3000)
       }
-
-      this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
-        let items: any = resultado.data()
-        this.completeUserName = items.name + " " + items.surname
-      })
 
     })
 
@@ -179,8 +173,6 @@ export class TrainingPlanComponent implements OnInit {
     } else if((this.dayTime == 'Noche (20:00-23:59)') && (this.startTime.getHours() < 20 )) {
       this.isTimeCorrect = false
     }
-    // console.log(this.dayTime)
-    // console.log(this.startTime.getHours()+":"+this.startTime.getMinutes() + " - " + this.endTime.getHours()+":"+this.endTime.getMinutes() + " -> " + this.isTimeCorrect + " (" + (endTimeInMinutes - startTimeInMinutes) +")")
   }
 
   openModal(modal: TemplateRef<any>, weekdayModal: string, dayTime:string) {
@@ -198,7 +190,6 @@ export class TrainingPlanComponent implements OnInit {
         this.modalState = this.nightRoutines[3][this.weekdayIndex]
         break 
     }
-    console.log("openModal(): " + this.modalState)
     this.modalRef = this.modalService.show(modal);
   }
 
@@ -239,7 +230,6 @@ export class TrainingPlanComponent implements OnInit {
           : this.updateRoutine(routine, startHoursSelected, startMinutesSelected, endHoursSelected, endMinutesSelected, this.nightRoutines[3][this.weekdayIndex]) 
         break  
     }
-
     this.modalRef.hide()
   }
   
@@ -306,18 +296,17 @@ export class TrainingPlanComponent implements OnInit {
   }
 
   deleteRoutine() {    
-
     switch(this.dayTime) {
       case 'Mañana (00:00-12:59)':
         this.db.collection('routines').doc(this.morningRoutines[3][this.weekdayIndex]).delete()
-        this.morningRoutines[0][this.weekdayIndex] = '';
+        this.morningRoutines[0][this.weekdayIndex] = ''
         this.morningRoutines[1][this.weekdayIndex] = ''
         this.morningRoutines[2][this.weekdayIndex] = ''
         this.morningRoutines[3][this.weekdayIndex] = ''
         break;
       case 'Tarde (13:00-19:59)':
         this.db.collection('routines').doc(this.afternoonRoutines[3][this.weekdayIndex]).delete()
-        this.afternoonRoutines[0][this.weekdayIndex] = '';
+        this.afternoonRoutines[0][this.weekdayIndex] = ''
         this.afternoonRoutines[1][this.weekdayIndex] = ''
         this.afternoonRoutines[2][this.weekdayIndex] = ''
         this.afternoonRoutines[3][this.weekdayIndex] = ''
@@ -330,7 +319,6 @@ export class TrainingPlanComponent implements OnInit {
         this.nightRoutines[3][this.weekdayIndex] = ''
         break;
     }
-
     this.modalRef.hide()
   }
 
