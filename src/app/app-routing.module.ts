@@ -12,6 +12,7 @@ import { ResetPasswordComponent } from './unregistered/reset-password/reset-pass
 import { TrainingPlanComponent } from './registered/training-plan/training-plan.component';
 import { ProfileComponent } from './registered/profile/profile.component';
 import { EditProfileComponent } from './registered/edit-profile/edit-profile.component';
+import { AdviceComponent } from './registered/advice/advice.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,9 @@ const routes: Routes = [
   },
   {
     path: "Editar_Perfil", component: EditProfileComponent
+  },
+  {
+    path: "Consejos", component: AdviceComponent
   },
   {
     path: '**', component: PaginaNoEncontradaComponent

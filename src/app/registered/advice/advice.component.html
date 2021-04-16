@@ -4,7 +4,7 @@
         <div class="logo">
             <a routerLink="/" target="_blank"><img src="assets/WebLogo.png" ></a>
             <hr class="separation_line">
-        </div>
+        </div>o
 
         <div class="menu">
             <a class="d-block text-light p-3 border-0" routerLink="/Plan_De_Entrenamiento"><i class="icon ion-md-walk lead mr-2"></i>Mi
@@ -23,7 +23,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div class="container-fluid">
-                <p class="title_header">Mi Perfil de Usuario</p><br>
+                <p class="title_header">Consejos y Buenas Prácticas</p><br>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -46,54 +46,37 @@
         <div id="content" class="bg-grey w-100 text-center">
            
             <div class="container-fluid">
-                <div class="row my-5 ml-5">
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-body mx-auto">
-                                <h5 class="card-title">Foto de Perfil</h5><hr>
-                                <img class="card-img-top" [src]="userImg">
-                                <img src="assets/registered/pedestal.png" alt="pedestal">
+                <div class="row mx-auto">
+                    <p class="title">Consejos</p>
+
+                    <div id="demo" class="carousel slide mx-auto" data-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <p>A continuación, te presentamos algunos consejos útiles para tu entrenamiento</p>
                             </div>
-                        </div><br>
-                        <p>Puntuación Récord: <span style="font-weight: normal">{{max_score}} puntos.</span></p> 
+                            
+                            <div class="carousel-item" *ngFor="let adv of advice">
+                                <p>{{adv}}</p>
+                            </div>
+                           
+                        </div>
+                        
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
                     </div>
-                    <div class="col-2">
-                        <p>Nombre:</p>
-                        <p>Apellidos:</p>
-                        <p>Correo Personal:</p>
-                        <p>Edad:</p>
-                        <button class="btn btn-primary" routerLink="/Editar_Perfil">Editar Datos</button>
-                    </div>
-                    <div class="col-3">
-                        <p>{{name}}</p>
-                        <p>{{surname}}</p>
-                        <p>{{email}}</p>
-                        <p>{{age}}</p>
-                        <button class="btn change_password" routerLink="/Nueva_Contraseña">Cambiar Contraseña</button>
-                    </div>
-                    <div class="col-3">
-                        <dl>
-                            <div class="box ">
-                                <dt>Ranking</dt>
-                                    <dd>1º Puesto</dd>
-                            </div>
-                            <div class="box ">
-                                <dt>Puntuación</dt>
-                                    <dd>{{score}}</dd>
-                            </div>
-                            <div class="box ">
-                                <dt>Rutinas Completadas</dt>
-                                    <dd>{{routines}}</dd>
-                            </div>
-                            <div class="box ">
-                                <dt>Ejercicios Realizados</dt>
-                                    <dd>{{exercises}}</dd>
-                            </div>
-                            <div class="box ">
-                                <dt>Retos Completados</dt>
-                                    <dd>{{challenges}}</dd>
-                            </div>
-                        </dl>
+                    
+                </div>
+                <div class="row mx-auto">
+                    <p class="title">Buenas Prácticas</p>
+                    <div class="col-6" *ngFor="let pract of practice">
+                        <ul>
+                            <li>{{pract}}</li>
+                        </ul>
                     </div>
                 </div>
             </div>

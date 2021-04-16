@@ -1,0 +1,162 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+#sidebar-container > div.menu > a:nth-child(6) {
+    color: orange !important;
+}
+
+#sidebar-container > div.menu > a > i {
+    padding-right: 12px;
+}
+
+.bg-primary { 
+    background-color: #002959 !important; 
+}
+
+.bg-light { 
+    background-color: #fff !important; 
+}
+
+.bg-grey { 
+    background-color: #efefef !important; 
+}
+
+#sidebar-container {
+    min-height: 100%;
+}
+  
+#sidebar-container .logo {
+    padding: 15px 0px 30px 15px;
+    width: 255px;
+}
+
+#sidebar-container .logo img {
+    width: 245px;
+}
+  
+#sidebar-container .menu {
+    width: 18rem;
+    font-size: 20px;
+}
+
+#sidebar-container .menu a:hover {
+    font-size: 22px;
+    color: orange!important;
+}
+
+#content {
+    overflow-y: auto;
+    height: 91.5vh;
+}
+
+.profile {
+    max-width: 55px;
+}
+
+.nav-link.text-dark {
+    font-size: 20px;
+}
+
+.stat {
+    border-right: 1px solid #efefef;
+}
+
+.title_header {
+    font-size: 24px;
+    display: contents;
+    font-weight: bold;
+    color: #002959;
+}
+
+.separation_line {
+    background-color: rgb(255 255 255);
+    padding-bottom: 2px;
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+.btn.btn-warning {
+    font-size: 20px;
+}
+
+.btn.btn-warning.tutorial{
+    margin: 80px 94px;
+}
+
+div > div.w-100 > nav {
+    padding: 10px 15px;
+}
+
+div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
+    margin-left: 170px;
+}
+
+#content > div > div.row.mx-auto > p {
+    display: flex;
+    margin-left: 30px;
+    font-size: 24px;
+    color: #002959;
+    text-decoration: underline;
+    margin-top: 30px;
+}
+
+#content > div > div.row.mx-auto > p {
+    display: flex;
+    margin-left: 30px;
+    font-size: 24px;
+    color: #002959;
+    text-decoration: underline;
+    margin-top: 58px;
+    margin-bottom: 35px;
+}
+
+#demo {
+    margin-top: 15px;
+    width: 82%;
+    border: 1px solid #002959;
+    padding: 20px 15px 6px 15px;
+    background-color: #ffc1077d;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-image: none;
+  padding-top: 12px;
+}
+
+.carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 45px;
+    color: rgb(0, 0, 0);
+}
+
+.carousel-control-next-icon:after {
+  content: '>';
+  font-size: 45px;
+  color: rgb(0, 0, 0);
+}
+
+#demo > div > div > p {
+    font-size: 20px;
+    color: #002959;
+}
+
+#content > div > div.row.mx-auto > div > ul,
+#content > div > div.row.mx-auto > div > div > div > ul {
+    font-size: 18px;
+    margin-left: 25px;
+}
+
+#content > div > div.row.mx-auto > div > ul > li,
+#content > div > div.row.mx-auto > div > div > div > ul > li {
+    padding: 25px 0 25px 50px;
+    list-style: none;
+    background-image: url(/assets/registered/ok_icon.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 40px;
+    text-align: left;
+}

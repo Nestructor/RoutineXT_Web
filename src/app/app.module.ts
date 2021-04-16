@@ -38,6 +38,7 @@ import { ProfileComponent } from './registered/profile/profile.component';
 registerLocaleData(localeEs);
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { EditProfileComponent } from './registered/edit-profile/edit-profile.component';
+import { AdviceComponent } from './registered/advice/advice.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EditProfileComponent } from './registered/edit-profile/edit-profile.com
     PaginaNoEncontradaComponent,
     TrainingPlanComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AdviceComponent
   ],
   imports: [
     BrowserModule,
