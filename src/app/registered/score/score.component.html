@@ -1,0 +1,135 @@
+<div class="d-flex">
+    <div id="sidebar-container" class="bg-primary">
+        <div class="logo">
+            <a routerLink="/" target="_blank"><img src="assets/WebLogo.png"></a>
+            <hr class="separation_line">
+        </div>
+
+        <div class="menu">
+            <a class="d-block text-light p-3 border-0" routerLink="/Plan_De_Entrenamiento"><i class="icon ion-md-walk lead mr-2"></i>Mi Entrenamiento</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Ejercicios"><i class="ion-md-clipboard lead mr-2"></i>Mis Ejercicios</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Progreso"><i class="icon ion-md-stats lead mr-2"></i>Mi Progreso</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Retos"><i class="ion-md-star lead mr-2"></i>Mis Retos</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Puntuación"><i class="icon ion-md-podium lead mr-2"></i>Mi Puntuación</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Consejos"><i class="icon ion-md-bulb lead mr-2"></i>Consejos</a>
+        </div>
+        <button class="btn btn-warning tutorial">Tutorial</button>
+    </div>
+
+    <div class="w-100">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <p class="title_header">Sistema de Puntuación</p><br>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img [src]="userImg" class="img-fluid rounded profile mr-2" alt="profile photo">
+                            {{completeUserName}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <button class="dropdown-item" routerLink="/Perfil">Mi perfil</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" (click)="onLogout()">Cerrar sesión</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="content" class="bg-grey w-100 text-center">
+
+            <div class="container-fluid">
+                <div class="row my-5 ml-5">
+                    <div class="col-7">
+                        <ul>
+                            <li><p>Tu puntuación actual es de {{userScore}} puntos.</p></li>
+                            <li *ngIf="scoreAchieved > 0"><p>Esta semana has obtenido <span style="color: green">{{scoreAchieved}}</span> puntos al realizar {{routinesDone}}/{{totalRoutines}} rutinas.</p></li>
+                            <li *ngIf="scoreAchieved < 0"><p>Esta semana has obtenido <span style="color: red">{{scoreAchieved}}</span> puntos al realizar {{routinesDone}}/{{totalRoutines}} rutinas.</p></li>
+                            <li *ngIf="scoreAchieved == 0"><p>Esta semana has obtenido {{scoreAchieved}} puntos al realizar {{routinesDone}}/{{totalRoutines}} rutinas.</p></li>
+                            <li><p><span style="margin-bottom: 30px">Rutinas de la semana</span>: {{totalRoutines}}</p></li>
+                            <ul>
+                                <!-- Ordenado por Lunes -->
+                                <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
+                                    <div *ngIf="routines[i][0] == 'Lunes'">
+                                        <li>
+                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
+                                        </li>
+                                    </div>
+                                </div>
+                                <!-- Ordenado por Martes -->
+                                <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
+                                    <div *ngIf="routines[i][0] == 'Martes'">
+                                        <li>
+                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
+                                        </li>
+                                    </div>
+                                </div>
+                                <!-- Ordenado por Miércoles -->
+                                <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
+                                    <div *ngIf="routines[i][0] == 'Miércoles'">
+                                        <li>
+                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
+                                        </li>
+                                    </div>
+                                </div>
+                                <!-- Ordenado por Jueves -->
+                                <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
+                                    <div *ngIf="routines[i][0] == 'Jueves'">
+                                        <li>
+                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
+                                        </li>
+                                    </div>
+                                </div>
+                                <!-- Ordenado por Viernes -->
+                                <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
+                                    <div *ngIf="routines[i][0] == 'Viernes'">
+                                        <li>
+                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
+                                        </li>
+                                    </div>
+                                </div>
+                                <!-- Ordenado por Sábado -->
+                                <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
+                                    <div *ngIf="routines[i][0] == 'Sábado'">
+                                        <li>
+                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
+                                        </li>
+                                    </div>
+                                </div>
+                                <!-- Ordenado por Domingo -->
+                                <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
+                                    <div *ngIf="routines[i][0] == 'Domingo'">
+                                        <li>
+                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
+                                        </li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </ul>
+                        <a href="/FAQs_Contacto#score" target="_blank" style="font-size: 20px; float: left; margin-top: 30px;">¿Cómo funciona nuestro sistema de puntuación?</a>
+                    </div>
+                    <div class="col-5">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

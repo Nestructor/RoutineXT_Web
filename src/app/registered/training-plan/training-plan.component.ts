@@ -240,7 +240,7 @@ export class TrainingPlanComponent implements OnInit {
       dayTime: this.dayTime,
       type: routine,
       timetable: startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected,
-      completed: false,
+      completed: "",
       userID: this.userID
     }).then((routineID)=> {
       console.log(this.dayTime)
@@ -273,7 +273,7 @@ export class TrainingPlanComponent implements OnInit {
       dayTime: this.dayTime,
       type: routine,
       timetable: startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected,
-      completed: false,
+      completed: "",
       userID: this.userID
     }).then((updated) => {
       switch(this.dayTime) {

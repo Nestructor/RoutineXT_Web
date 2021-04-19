@@ -1,0 +1,110 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+#sidebar-container > div.menu > a {
+    text-decoration: none;
+}
+
+#sidebar-container > div.menu > a > i {
+    padding-right: 12px;
+}
+
+.bg-primary { 
+    background-color: #002959 !important; 
+}
+
+.bg-light { 
+    background-color: #fff !important; 
+}
+
+.bg-grey { 
+    background-color: #efefef !important; 
+}
+
+#sidebar-container {
+    min-height: 100%;
+}
+  
+#sidebar-container .logo {
+    padding: 15px 0px 30px 15px;
+    width: 255px;
+}
+
+#sidebar-container .logo img {
+    width: 245px;
+}
+  
+#sidebar-container .menu {
+    width: 18rem;
+    font-size: 20px;
+}
+
+#sidebar-container .menu a:hover {
+    font-size: 22px;
+    color: orange!important;
+    text-decoration: none;
+}
+
+#content {
+    overflow-y: auto;
+    height: 91.5vh;
+}
+
+.profile {
+    max-width: 55px;
+}
+
+.nav-link.text-dark {
+    font-size: 20px;
+}
+
+.stat {
+    border-right: 1px solid #efefef;
+}
+
+.title_header {
+    font-size: 24px;
+    display: contents;
+    font-weight: bold;
+    color: #002959;
+}
+
+.separation_line {
+    background-color: rgb(255 255 255);
+    padding-bottom: 2px;
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+.btn.btn-warning {
+    font-size: 20px;
+}
+
+.btn.btn-warning.tutorial{
+    margin: 80px 94px;
+}
+
+div > div.w-100 > nav {
+    padding: 10px 15px;
+}
+
+div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
+    margin-left: 170px;
+}
+
+#content > div > div > div.col-7 > ul > li {
+    text-align: left;
+    font-size: 22px;
+}
+
+#content > div > div > div.col-7 > ul > ul >  div > div > li  {
+    text-align: left;
+    font-size: 20px;
+    list-style-type: cirle;
+}
+
+#content > div > div > div.col-7 {
+    padding: 50px;
+    border: 1px groove;
+}
