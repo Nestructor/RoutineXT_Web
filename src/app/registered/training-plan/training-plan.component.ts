@@ -19,7 +19,6 @@ export class TrainingPlanComponent implements OnInit {
 
   public isLogged = false
   public user$: Observable<any> = this.authSvc.afAuth.user
-  // loading: boolean = true
   userID: string
   userImg: any
   completeUserName: string
@@ -43,6 +42,8 @@ export class TrainingPlanComponent implements OnInit {
   nightRoutines = [];
   modalState: string = ''
   editableDays = []
+  cancelTrainingPlan: boolean = false
+  todayIndex: number;
 
   constructor(
     private authSvc: AuthService, 
@@ -123,9 +124,9 @@ export class TrainingPlanComponent implements OnInit {
 
     let weekdayFormatDate = formatDate(this.today.getTime(), 'EEEE', 'es')
     weekdayFormatDate = weekdayFormatDate.charAt(0).toUpperCase() + weekdayFormatDate.substring(1)
-    let todayIndex = this.map.weekdayToIndexArray.get(weekdayFormatDate)
+    this.todayIndex = this.map.weekdayToIndexArray.get(weekdayFormatDate)
     
-    for(var i = 0; i < todayIndex; i++) {
+    for(var i = 0; i < this.todayIndex; i++) {
       this.editableDays[i] = false
     }
 
@@ -320,6 +321,20 @@ export class TrainingPlanComponent implements OnInit {
         break;
     }
     this.modalRef.hide()
+  }
+
+  disableTrainingPlan() {
+    this.cancelTrainingPlan = true;
+    for (let i = 0; i < 7; i++) {
+      this.editableDays[i] = false;
+    }
+  }
+
+  enableTrainingPlan() {
+    this.cancelTrainingPlan = false;
+    for(var i = this.todayIndex; i < 7; i++) {
+      this.editableDays[i] = true;
+    }
   }
 
   async onLogout() {

@@ -53,7 +53,8 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container-fluid">
-                    <p class="title_header">Plan de Entrenamiento</p><br>
+                    <p class="title_header" *ngIf="!cancelTrainingPlan">Plan de Entrenamiento</p>
+                    <p class="title_header" *ngIf="cancelTrainingPlan">Plan de Entrenamiento (cancelado)</p><br>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -83,7 +84,8 @@
                             <p class="week_value">{{firstDayOfWeek}} - {{lastDayOfWeek}}</p>
                         </div>
                         <div class="col-3">
-                            <button class="btn btn-light mt-2" style="font-size: 18px; border: 2px outset">Descansar esta semana <img style="width: 40px; margin-left: 5px" src="assets/registered/break.png" alt="print img"></button>
+                            <button class="btn btn-danger mt-2" style="font-size: 18px; border: 1px outset red" *ngIf="!cancelTrainingPlan" (click)="disableTrainingPlan()">Desactivar Plan de Entrenamiento<img style="width: 40px; margin-left: 10px" src="assets/registered/break.png" alt="print img"></button>
+                            <button class="btn btn-success mt-2" style="font-size: 18px; border: 1px outset green" *ngIf="cancelTrainingPlan" (click)="enableTrainingPlan()">Reactivar Plan de Entrenamiento<img style="width: 40px; margin-left: 10px" src="assets/registered/training_icon.png" alt="print img"></button>
                         </div>
                         <div class="col-2"></div>
                         <div class="col-2">

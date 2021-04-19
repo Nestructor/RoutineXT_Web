@@ -43,6 +43,7 @@
 #sidebar-container .menu a:hover {
     font-size: 22px;
     color: orange!important;
+    text-decoration: none;
 }
 
 #content {
