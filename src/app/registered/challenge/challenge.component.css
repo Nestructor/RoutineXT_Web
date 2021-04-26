@@ -1,0 +1,144 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+#sidebar-container > div.menu > a {
+    text-decoration: none;
+}
+
+#sidebar-container > div.menu > a > i {
+    padding-right: 12px;
+}
+
+.bg-primary { 
+    background-color: #002959 !important; 
+}
+
+.bg-light { 
+    background-color: #fff !important; 
+}
+
+.bg-grey { 
+    background-color: #efefef !important; 
+}
+
+#sidebar-container {
+    min-height: 100%;
+}
+  
+#sidebar-container .logo {
+    padding: 15px 0px 30px 15px;
+    width: 255px;
+}
+
+#sidebar-container .logo img {
+    width: 245px;
+}
+  
+#sidebar-container .menu {
+    width: 18rem;
+    font-size: 20px;
+}
+
+#sidebar-container .menu a:hover {
+    font-size: 22px;
+    color: orange!important;
+    text-decoration: none;
+}
+
+#content {
+    overflow-y: auto;
+    height: 91.5vh;
+}
+
+.profile {
+    max-width: 55px;
+}
+
+.nav-link.text-dark {
+    font-size: 20px;
+}
+
+.stat {
+    border-right: 1px solid #efefef;
+}
+
+.title_header {
+    font-size: 24px;
+    display: contents;
+    font-weight: bold;
+    color: #002959;
+}
+
+.separation_line {
+    background-color: rgb(255 255 255);
+    padding-bottom: 2px;
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+.btn.btn-warning {
+    font-size: 20px;
+}
+
+.btn.btn-warning.tutorial{
+    margin: 80px 94px;
+}
+
+div > div.w-100 > nav {
+    padding: 10px 15px;
+}
+
+div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
+    margin-left: 170px;
+}
+
+#customers {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#customers td, #customers th {
+    border: 2px groove;
+    padding: 8px;
+}
+
+#customers tr {
+    background-color: white;
+}
+
+#customers tr > th:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+#customers > tr:nth-child(1) > th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4c88af;
+    color: white;
+    font-size: 18px;
+}
+
+#customers > tr th.heading {
+    cursor: pointer;
+}
+
+#customers > tr:nth-child(1) > th {
+    width: 245px;
+}
+
+#content > div.row.mt-5.mb-3 > div > p {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #002959;
+    font-weight: bold;
+    margin-left: 45px;
+}
+
+#content > div.row.mt-5.mb-3 > div:nth-child(3) > ul {
+    text-align: left;
+    font-size: 18px;
+    margin-left: 15px;
+    color: #002959;
+}

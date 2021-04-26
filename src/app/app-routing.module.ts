@@ -15,6 +15,7 @@ import { EditProfileComponent } from './registered/edit-profile/edit-profile.com
 import { AdviceComponent } from './registered/advice/advice.component';
 import { ScoreComponent } from './registered/score/score.component';
 import { ExerciseComponent } from './registered/exercise/exercise.component';
+import { ChallengeComponent } from './registered/challenge/challenge.component';
 
 const routes: Routes = [
   {
@@ -60,8 +61,11 @@ const routes: Routes = [
     path: 'Ejercicios', component: ExerciseComponent
   },
   {
-    path: '**', component: PaginaNoEncontradaComponent
+    path: 'Retos', component: ChallengeComponent
   },
+  {
+    path: '**', component: PaginaNoEncontradaComponent
+  }
 ];
 
 @NgModule({

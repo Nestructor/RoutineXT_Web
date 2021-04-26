@@ -22,6 +22,7 @@ export class ExerciseComponent implements OnInit {
   map = new Maps();
   routineMinutes = []
   routineExercises = []
+  showEmptyPlanning = false;
 
   flexibility: any = []
   abs: any = []
@@ -113,6 +114,7 @@ export class ExerciseComponent implements OnInit {
             this.map.indexWeekdayToWeekday.get(routine.weekday) + " - " + routine.type 
             + " de " + routine.timetable.substring(0, routine.timetable.indexOf("-")) + " a " + routine.timetable.substring(routine.timetable.indexOf("-")+1) 
             + " (" + this.routineMinutes[i++] + " minutos)"
+            
         }
       })
 
@@ -163,6 +165,11 @@ export class ExerciseComponent implements OnInit {
           this.routineExercises[j] = this.buttock.slice(0, this.routineMinutes[j]);
         }
       }
+
+      if(this.userRoutines.length == 0) {
+        this.showEmptyPlanning = true;
+      }
+
     })
   }
 

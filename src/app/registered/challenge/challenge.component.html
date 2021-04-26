@@ -1,0 +1,106 @@
+
+<div class="d-flex">
+    <div id="sidebar-container" class="bg-primary">
+        <div class="logo">
+            <a routerLink="/" target="_blank"><img src="assets/WebLogo.png" ></a>
+            <hr class="separation_line">
+        </div>
+
+        <div class="menu">
+            <a class="d-block text-light p-3 border-0" routerLink="/Plan_De_Entrenamiento"><i class="icon ion-md-walk lead mr-2"></i>Mi Entrenamiento</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Ejercicios"><i class="ion-md-clipboard lead mr-2"></i>Mis Ejercicios</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Progreso"><i class="icon ion-md-stats lead mr-2"></i>Mi Progreso</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Retos"><i class="ion-md-star lead mr-2"></i>Mis Retos</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Puntuación"><i class="icon ion-md-podium lead mr-2"></i>Mi Puntuación</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Consejos"><i class="icon ion-md-bulb lead mr-2"></i>Consejos</a>
+        </div>
+        <button class="btn btn-warning tutorial">Tutorial</button>
+    </div>
+
+    <div class="w-100">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <p class="title_header">Listado de Retos</p><br>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img [src]="userImg" class="img-fluid rounded profile mr-2" alt="profile photo" >
+                            {{completeUserName}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <button class="dropdown-item" routerLink="/Perfil">Mi perfil</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" (click)="onLogout()">Cerrar sesión</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="content" class="bg-grey w-100 text-center">
+
+            <div class="row mt-5 mb-3">
+                <div class="col-3"><p>Puntuación Actual: <span style="color: rgb(214, 129, 0)">{{score}}</span></p></div>
+                <div class="col-3"><p>Retos Completados: <span style="color: rgb(214, 129, 0)">{{completedChallenges}}</span></p></div>
+                <div class="col-3">
+                    <ul>
+                        <li>Dificultad Fácil: <span style="color: green">+25</span> puntos</li>
+                        <li>Dificultad Media: <span style="color: green">+45</span> puntos</li>
+                        <li>Dificultad Difícil: <span style="color: green">+75</span> puntos</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-warning">Imprimir <img style="width: 24px; margin-left: 5px" src="assets/registered/print.png" alt="print img"></button><br>
+                </div>
+            </div>
+           
+            <div class="container-fluid">
+                <div class="row my-5 mx-5">
+                    <table id="customers">
+                        <tr>
+                          <th>Reto</th>
+                          <th>Tipo</th>
+                          <th>Puntuación Necesaria</th>
+                          <th>Dificultad</th>
+                          <th>Completado</th>
+                        </tr>
+
+                        <tr *ngFor="let challenge of challenges; let i = index">
+                            <th *ngIf="score >= challenge[3]"
+                                class="heading" 
+                                popoverTitle="Descripción"
+                                popover={{challenge[2]}}
+                                placement="right">
+                                {{challenge[0]}} 
+                            </th>
+                            <th *ngIf="score < challenge[3]"
+                                class="heading" 
+                                popoverTitle="Descripción"
+                                popover="No disponible hasta que este reto no sea desbloqueado"
+                                placement="right">
+                                {{challenge[0]}} 
+                            </th>
+
+                            <td *ngIf="score >= challenge[3]">{{challenge[1]}}</td>
+                            <td *ngIf="score < challenge[3]">?</td>
+
+                            <td>{{challenge[3]}}</td>
+
+                            <td *ngIf="score >= challenge[3]">{{challenge[4]}}</td>
+                            <td *ngIf="score < challenge[3]">?</td>
+
+                            <td>{{challenge[5]}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

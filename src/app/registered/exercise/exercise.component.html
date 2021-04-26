@@ -51,127 +51,124 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div *ngIf="userRoutines.length > 0; else showErrorMessage">
 
-                    <div *ngFor="let routine of userRoutines; let i = index">
-                        <div *ngIf="routine.includes('Lunes')">
-                            <p class="my-3 ml-5">{{routine}}</p>
-                            <div class="row my-5 mx-5">
-                                <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
-                                    <div class="card" >
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
-                                            <img src="{{routineExercises[3]}}" alt="" width="250px">
-                                        </div>
-                                    </div><br>
-                                </div>
+                <div *ngFor="let routine of userRoutines; let i = index">
+                    <div *ngIf="routine.includes('Lunes')">
+                        <p class="my-3 ml-5">{{routine}}</p>
+                        <div class="row my-5 mx-5">
+                            <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
+                                <div class="card" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
+                                        <img src="{{routineExercises[3]}}" alt="" width="250px">
+                                    </div>
+                                </div><br>
                             </div>
                         </div>
                     </div>
-
-                    <div *ngFor="let routine of userRoutines; let i = index">
-                        <div *ngIf="routine.includes('Martes')">
-                            <p class="my-3 ml-5">{{routine}}</p>
-                            <div class="row my-5 mx-5">
-                                <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
-                                    <div class="card" >
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
-                                            <img src="{{routineExercise[3]}}" alt="" width="250px">
-                                        </div>
-                                    </div><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div *ngFor="let routine of userRoutines; let i = index">
-                        <div *ngIf="routine.includes('Miércoles')">
-                            <p class="my-3 ml-5">{{routine}}</p>
-                            <div class="row my-5 mx-5">
-                                <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
-                                    <div class="card" >
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
-                                            <img src="{{routineExercise[3]}}" alt="" width="250px">
-                                        </div>
-                                    </div><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div *ngFor="let routine of userRoutines; let i = index">
-                        <div *ngIf="routine.includes('Jueves')">
-                            <p class="my-3 ml-5">{{routine}}</p>
-                            <div class="row my-5 mx-5">
-                                <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
-                                    <div class="card" >
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
-                                            <img src="{{routineExercise[3]}}" alt="" width="250px">
-                                        </div>
-                                    </div><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div *ngFor="let routine of userRoutines; let i = index">
-                        <div *ngIf="routine.includes('Viernes')">
-                            <p class="my-3 ml-5">{{routine}}</p>
-                            <div class="row my-5 mx-5">
-                                <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
-                                    <div class="card" >
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
-                                            <img src="{{routineExercise[3]}}" alt="" width="250px">
-                                        </div>
-                                    </div><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div *ngFor="let routine of userRoutines; let i = index">
-                        <div *ngIf="routine.includes('Sábado')">
-                            <p class="my-3 ml-5">{{routine}}</p>
-                            <div class="row my-5 mx-5">
-                                <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
-                                            <img src="{{routineExercise[3]}}" alt="" width="250px">
-                                        </div>
-                                    </div><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div *ngFor="let routine of userRoutines; let i = index">
-                        <div *ngIf="routine.includes('Domingo')">
-                            <p class="my-3 ml-5">{{routine}}</p>
-                            <div class="row my-5 mx-5">
-                                <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
-                                    <div class="card" >
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
-                                            <img src="{{routineExercise[3]}}" alt="" width="250px">
-                                        </div>
-                                    </div><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-                <ng-template #showErrorMessage>
+                <div *ngFor="let routine of userRoutines; let i = index">
+                    <div *ngIf="routine.includes('Martes')">
+                        <p class="my-3 ml-5">{{routine}}</p>
+                        <div class="row my-5 mx-5">
+                            <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
+                                <div class="card" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
+                                        <img src="{{routineExercise[3]}}" alt="" width="250px">
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngFor="let routine of userRoutines; let i = index">
+                    <div *ngIf="routine.includes('Miércoles')">
+                        <p class="my-3 ml-5">{{routine}}</p>
+                        <div class="row my-5 mx-5">
+                            <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
+                                <div class="card" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
+                                        <img src="{{routineExercise[3]}}" alt="" width="250px">
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngFor="let routine of userRoutines; let i = index">
+                    <div *ngIf="routine.includes('Jueves')">
+                        <p class="my-3 ml-5">{{routine}}</p>
+                        <div class="row my-5 mx-5">
+                            <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
+                                <div class="card" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
+                                        <img src="{{routineExercise[3]}}" alt="" width="250px">
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngFor="let routine of userRoutines; let i = index">
+                    <div *ngIf="routine.includes('Viernes')">
+                        <p class="my-3 ml-5">{{routine}}</p>
+                        <div class="row my-5 mx-5">
+                            <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
+                                <div class="card" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
+                                        <img src="{{routineExercise[3]}}" alt="" width="250px">
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngFor="let routine of userRoutines; let i = index">
+                    <div *ngIf="routine.includes('Sábado')">
+                        <p class="my-3 ml-5">{{routine}}</p>
+                        <div class="row my-5 mx-5">
+                            <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
+                                        <img src="{{routineExercise[3]}}" alt="" width="250px">
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngFor="let routine of userRoutines; let i = index">
+                    <div *ngIf="routine.includes('Domingo')">
+                        <p class="my-3 ml-5">{{routine}}</p>
+                        <div class="row my-5 mx-5">
+                            <div class="col-4 mx-auto" *ngFor="let routineExercise of routineExercises[i]; let j = index">
+                                <div class="card" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{j+1}}) {{routineExercise[0]}}</h5>
+                                        <img src="{{routineExercise[3]}}" alt="" width="250px">
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="showEmptyPlanning">
                     <p class="mt-5" style="font-size: 40px; text-align: center">¡Oops! :(</p>
                     <p style="font-size: 30px; text-align: center">El plan de entrenamiento no tiene rutinas disponibles</p> 
-                    <img src="assets/registered/emptyTrainingPlan.gif" alt="">
-                </ng-template>
+                    <img width="275px" src="assets/registered/emptyTrainingPlan.gif" alt="">
+                </div>
 
             </div>
         </div>

@@ -96,6 +96,7 @@ export class AccountComponent implements OnInit {
     } catch(error) { 
       console.log(error)
     }
+    
     //Añadir datos de usuario a cloudFirestore
     this.db.collection('users').doc(uid).set({
       name: this.registerForm.get('name').value,
@@ -111,8 +112,59 @@ export class AccountComponent implements OnInit {
     }).then((registered)=> {
       console.log("Registro creado")
     })
-  }
 
-  
+    //Añadir primeros 5 retos
+
+    this.db.collection('challenges').add({
+        completed: "",
+        name: "Este trote empieza a complicarse",
+        type: "Atletismo II",
+        description: "Nos situaremos en la avenida marítima e iremos trotando ida y vuelta desde la Plaza de Santa Isabel hasta llegar hasta la Playa de la Laja (10 Km en 2 horas).",
+        necessaryScore: 200,
+        difficulty: "Difícil",
+        userID: uid
+      })
+
+    this.db.collection('challenges').add({
+      completed: "",
+      name: "Un buen pedaleo",
+      type: "Ciclismo I",
+      description: "Nos situaremos en la avenida marítima e iremos pedaleando ida y vuelta en bicicleta desde la Plaza de Santa Isabel pasando por el Museo Élder, y siguiendo la ruta hasta llegar hasta el Monumento 'El Atlante' (18 Km en 1:30 horas).",
+      necessaryScore: 145,
+      difficulty: "Media",
+      userID: uid
+    })
+
+    this.db.collection('challenges').add({
+      completed: "",
+      name: "Hola Tejeda, quiero decir Artenara",
+      type: "Senderismo I",
+      description: "Nos situaremos en el aparcamiento situado en la parte trasera del Parador Nacional de La Cruz de Tejeda. Por un lado del Parador, comenzaremos a caminar por un sendero señalizado hasta llegar hasta Artenara siguiendo las indicaciones de la ruta (9 Km en 3 horas).",
+      necessaryScore: 100,
+      difficulty: "Media",
+      userID: uid
+    })
+
+    this.db.collection('challenges').add({
+      completed: "",
+      name: "¿Estás visible Barra?",
+      type: "Natación I",
+      description: "Nos situaremos en la playa de las Canteras por la altura del hotel 'Reina Isabel' y tendremos que ir y venir nadando hasta la Barra un total de 3 veces sin hacer paradas. Es necesario que la marea esté baja (1,2 Km en 1 hora).",
+      necessaryScore: 65,
+      difficulty: "Fácil",
+      userID: uid
+    })
+
+    this.db.collection('challenges').add({
+      completed: "",
+      name: "¡Comenzamos a trotar!",
+      type: "Atletismo I",
+      description: "En este primer reto, tendremos que ir y venir trotando por la avenida marítima desde la plaza de Santa Isabel hasta el Monumento a la Vela Latina en San Telmo sin parar en ningún momento (4 Km en 1 hora).",
+      necessaryScore: 35,
+      difficulty: "Fácil",
+      userID: uid
+    })
+
+  }
 
 }

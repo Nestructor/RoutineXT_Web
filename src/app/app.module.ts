@@ -41,6 +41,9 @@ import { EditProfileComponent } from './registered/edit-profile/edit-profile.com
 import { AdviceComponent } from './registered/advice/advice.component';
 import { ScoreComponent } from './registered/score/score.component';
 import { ExerciseComponent } from './registered/exercise/exercise.component';
+import { ChallengeComponent } from './registered/challenge/challenge.component';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +63,8 @@ import { ExerciseComponent } from './registered/exercise/exercise.component';
     EditProfileComponent,
     AdviceComponent,
     ScoreComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    ChallengeComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +81,7 @@ import { ExerciseComponent } from './registered/exercise/exercise.component';
     NgbModule,
     FormsModule,
     ProgressbarModule.forRoot(),
+    PopoverModule.forRoot()
   ],
   providers: [
     AngularFireAuth,
