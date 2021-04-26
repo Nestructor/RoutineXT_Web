@@ -39,6 +39,8 @@ registerLocaleData(localeEs);
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { EditProfileComponent } from './registered/edit-profile/edit-profile.component';
 import { AdviceComponent } from './registered/advice/advice.component';
+import { ScoreComponent } from './registered/score/score.component';
+import { ExerciseComponent } from './registered/exercise/exercise.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { AdviceComponent } from './registered/advice/advice.component';
     TrainingPlanComponent,
     ProfileComponent,
     EditProfileComponent,
-    AdviceComponent
+    AdviceComponent,
+    ScoreComponent,
+    ExerciseComponent
   ],
   imports: [
     BrowserModule,

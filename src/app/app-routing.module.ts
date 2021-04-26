@@ -13,6 +13,8 @@ import { TrainingPlanComponent } from './registered/training-plan/training-plan.
 import { ProfileComponent } from './registered/profile/profile.component';
 import { EditProfileComponent } from './registered/edit-profile/edit-profile.component';
 import { AdviceComponent } from './registered/advice/advice.component';
+import { ScoreComponent } from './registered/score/score.component';
+import { ExerciseComponent } from './registered/exercise/exercise.component';
 
 const routes: Routes = [
   {
@@ -50,6 +52,12 @@ const routes: Routes = [
   },
   {
     path: "Consejos", component: AdviceComponent
+  },
+  {
+    path: 'Puntuación', component: ScoreComponent
+  },
+  {
+    path: 'Ejercicios', component: ExerciseComponent
   },
   {
     path: '**', component: PaginaNoEncontradaComponent

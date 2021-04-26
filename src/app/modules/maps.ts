@@ -40,5 +40,15 @@ export class Maps {
         ["Sábado", 5],
         ["Domingo", 6],
     ])
+
+    indexWeekdayToWeekday = new Map([
+        [0, "Lunes"],
+        [1, "Martes"],
+        [2, "Miércoles"],
+        [3, "Jueves"],
+        [4, "Viernes"],
+        [5, "Sábado"],
+        [6, "Domingo"],
+    ])
     
 }
