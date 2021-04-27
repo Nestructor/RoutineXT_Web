@@ -2,6 +2,10 @@
     display: none;
 }
 
+#sidebar-container > div.menu > a:nth-child(3) {
+    color: orange !important;
+}
+
 #sidebar-container > div.menu > a {
     text-decoration: none;
 }

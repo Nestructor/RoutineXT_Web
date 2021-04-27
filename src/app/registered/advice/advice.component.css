@@ -2,7 +2,7 @@
     display: none;
 }
 
-#sidebar-container > div.menu > a:nth-child(6) {
+#sidebar-container > div.menu > a:nth-child(5) {
     color: orange !important;
 }
 

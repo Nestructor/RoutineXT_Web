@@ -1,5 +1,9 @@
-::-webkit-scrollbar {
+#content::-webkit-scrollbar {
     display: none;
+}
+
+#sidebar-container > div.menu > a:nth-child(4) {
+    color: orange !important;
 }
 
 #sidebar-container > div.menu > a {
@@ -93,18 +97,61 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     margin-left: 170px;
 }
 
-#content > div > div > div.col-7 > ul > li {
+#content > div > div > div.col-6:nth-child(1) > ul > li {
     text-align: left;
     font-size: 22px;
 }
 
-#content > div > div > div.col-7 > ul > ul >  div > div > li  {
+#content > div > div > div.col-6:nth-child(1) > ul > ul >  div > div > li  {
     text-align: left;
     font-size: 20px;
     list-style-type: cirle;
 }
 
-#content > div > div > div.col-7 {
+#content > div > div > div.col-6:nth-child(1) {
     padding: 50px;
     border: 1px groove;
+    margin-top: 45px;
+    margin-bottom: 200px;
+}
+
+#content > div > div > div:nth-child(2) > p,
+#customers > p {
+    font-size:20px; 
+    margin-bottom: 25px; 
+    color: #002959;
+    font-weight: bold;
+}
+
+#tabla {
+    overflow:scroll;
+    height: 600px;
+}
+
+#customers {
+    border-collapse: collapse;
+    width: 80%;
+}
+  
+#customers td, #customers th {
+    border: 2px groove;
+    padding: 8px;
+}
+
+#customers tr {
+    background-color: white;
+}
+
+#customers > tr:nth-child(1) > th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: orange;
+    color: black;
+    font-size: 18px;
+}
+
+#customers > tr:nth-child(odd) {
+    background-color: rgb(255, 238, 210);
+    color: black;
 }
