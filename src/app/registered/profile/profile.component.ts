@@ -31,6 +31,8 @@ export class ProfileComponent implements OnInit {
   userImg: any
   urlImagen: string = ''
   uploadPercentage: number = 0;
+  userRanking: number;
+  usersData = []
   
   constructor(
     private authSvc: AuthService, 
@@ -42,18 +44,18 @@ export class ProfileComponent implements OnInit {
       try {
         this.userID = user.uid
         this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
-        let items: any = resultado.data()
-        this.name = items.name
-        this.surname = items.surname
-        this.email = items.email
-        this.age = items.age
-        this.score = items.score
-        this.max_score = items.max_score
-        this.challenges = items.challenges
-        this.routines = items.routines
-        this.exercises = items.exercises
-        this.completeUserName = items.name + " " + items.surname
-        this.userImg = items.profile
+          let items: any = resultado.data()
+          this.name = items.name
+          this.surname = items.surname
+          this.email = items.email
+          this.age = items.age
+          this.score = items.score
+          this.max_score = items.max_score
+          this.challenges = items.challenges
+          this.routines = items.routines
+          this.exercises = items.exercises
+          this.completeUserName = items.name + " " + items.surname
+          this.userImg = items.profile
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 
@@ -62,7 +64,47 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.db.collection('users').get().subscribe((resultado) => {
+      let i = 0
+      for(let j=0; j < resultado.size-1; j++) {
+        this.usersData[j] = new Array(3);
+      }
+
+      resultado.docs.forEach((item) => {
+        let user:any = item.data();
+        if(user.name != 'routineXT') {
+          this.usersData[i][0] = user.name
+          this.usersData[i][1] = user.score
+          this.usersData[i++][2] = user.email
+        }
+      })
+      this.sort();
+    })
+
+    this.user$.subscribe((user) => {
+      this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
+        let items: any = resultado.data()
+        for (let i = 0; i < this.usersData.length; i++) {
+          if(this.usersData[i][2] == items.email) {
+             this.userRanking = i+1;
+             break;
+          }
+        }
+      })
+    })
+  }
+
+  private sort() {
+    let aux: number;
+    for (let k = 1; k < this.usersData.length; k++) {
+      for (let i = 0; i < (this.usersData.length - k); i++) {
+        if (this.usersData[i][1] < this.usersData[i+1][1]) {
+          aux = this.usersData[i];
+          this.usersData[i] = this.usersData[i+1];
+          this.usersData[i+1] = aux;
+        }
+      }
+    }
   }
 
   async onLogout() {

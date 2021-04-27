@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2';
 import { formatDate } from '@angular/common';
 import { Maps } from 'src/app/modules/maps';
@@ -42,7 +41,7 @@ export class TrainingPlanComponent implements OnInit {
   nightRoutines = [];
   modalState: string = ''
   editableDays = []
-  cancelTrainingPlan: boolean = false
+  cancelTrainingPlan: boolean;
   todayIndex: number;
 
   constructor(
@@ -58,6 +57,10 @@ export class TrainingPlanComponent implements OnInit {
           let items: any = resultado.data()
           this.completeUserName = items.name + " " + items.surname
           this.userImg = items.profile
+          this.cancelTrainingPlan = items.trainingPlanCancelled
+          for(var k=0; k<7; k++) {
+            this.editableDays[k] = this.cancelTrainingPlan ? false : true
+          }
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 
@@ -75,13 +78,10 @@ export class TrainingPlanComponent implements OnInit {
       this.morningRoutines[3][j] = ''
     }
 
-    for(var k=0; k<7; k++) {
-      this.editableDays[k] = true
-    }
-    
   }
 
   ngOnInit() {
+
     let dayToMilliseconds = 1000 * 60 * 60 * 24
     
     switch(this.weekday) { 
@@ -324,17 +324,25 @@ export class TrainingPlanComponent implements OnInit {
   }
 
   disableTrainingPlan() {
+    this.db.collection('users').doc(this.userID).update({
+      trainingPlanCancelled: true
+    })
     this.cancelTrainingPlan = true;
     for (let i = 0; i < 7; i++) {
       this.editableDays[i] = false;
     }
+    console.log("Disabled: " + this.editableDays)
   }
 
   enableTrainingPlan() {
+    this.db.collection('users').doc(this.userID).update({
+      trainingPlanCancelled: false
+    })
     this.cancelTrainingPlan = false;
     for(var i = this.todayIndex; i < 7; i++) {
       this.editableDays[i] = true;
     }
+    console.log("Enabled: " + this.editableDays)
   }
 
   async onLogout() {

@@ -108,7 +108,8 @@ export class AccountComponent implements OnInit {
       routines: 0,
       exercises: 0,
       challenges: 0,
-      max_score: 0
+      max_score: 0,
+      trainingPlanCancelled: true
     }).then((registered)=> {
       console.log("Registro creado")
     })

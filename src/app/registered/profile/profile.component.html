@@ -30,7 +30,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img [src]="userImg" class="img-fluid rounded profile mr-2" alt="profile photo" >
+                            <img [src]="userImg" class="img-fluid rounded profile mr-2" >
                             {{completeUserName}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -55,7 +55,7 @@
                                 <img src="assets/registered/pedestal.png" alt="pedestal">
                             </div>
                         </div><br>
-                        <p>Puntuación Récord: <span style="font-weight: normal">{{max_score}} puntos.</span></p> 
+                        <p>Puntuación Récord: <span style="font-weight: normal;">{{max_score}} puntos.</span></p> 
                     </div>
                     <div class="col-2">
                         <p>Nombre:</p>
@@ -75,7 +75,7 @@
                         <dl>
                             <div class="box ">
                                 <dt>Ranking</dt>
-                                    <dd>1º Puesto</dd>
+                                    <dd>{{userRanking}}º Puesto</dd>
                             </div>
                             <div class="box ">
                                 <dt>Puntuación</dt>
