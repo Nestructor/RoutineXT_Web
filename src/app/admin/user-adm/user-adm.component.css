@@ -1,0 +1,99 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+#sidebar-container > div.menu > a:nth-child(1) {
+    color: orange !important;
+}
+
+
+#sidebar-container > div.menu > a {
+    text-decoration: none;
+}
+
+#sidebar-container > div.menu > a > i {
+    padding-right: 12px;
+}
+
+.bg-primary { 
+    background-color: #34303b !important; 
+}
+
+.bg-light { 
+    background-color: #670000 !important; 
+}
+
+.bg-grey { 
+    background-color: #efefef !important; 
+}
+
+#sidebar-container {
+    min-height: 100%;
+}
+  
+#sidebar-container .logo {
+    padding: 15px 0px 30px 15px;
+    width: 255px;
+}
+
+#sidebar-container .logo img {
+    width: 245px;
+}
+  
+#sidebar-container .menu {
+    width: 18rem;
+    font-size: 20px;
+}
+
+#sidebar-container .menu a:hover {
+    font-size: 22px;
+    color: orange!important;
+    text-decoration: none;
+}
+
+#content {
+    overflow-y: auto;
+    height: 91.5vh;
+}
+
+.profile {
+    max-width: 55px;
+}
+
+.nav-link.text-dark {
+    font-size: 20px;
+}
+
+.stat {
+    border-right: 1px solid #efefef;
+}
+
+.title_header {
+    font-size: 24px;
+    display: contents;
+    font-weight: bold;
+    color: white;
+}
+
+.separation_line {
+    background-color: rgb(255 255 255);
+    padding-bottom: 2px;
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+.btn.btn-warning {
+    font-size: 20px;
+}
+
+.btn.btn-warning.tutorial{
+    margin: 80px 94px;
+}
+
+div > div.w-100 > nav {
+    padding: 10px 15px;
+}
+
+div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
+    margin-left: 170px;
+}

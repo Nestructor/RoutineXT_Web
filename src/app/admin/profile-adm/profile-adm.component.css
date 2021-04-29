@@ -1,0 +1,243 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+#sidebar-container > div.menu > a {
+    text-decoration: none;
+}
+
+#sidebar-container > div.menu > a > i {
+    padding-right: 12px;
+}
+
+.bg-primary { 
+    background-color: #34303b !important; 
+}
+
+.bg-light { 
+    background-color: #670000 !important; 
+}
+
+.bg-grey { 
+    background-color: #efefef !important; 
+}
+
+#sidebar-container {
+    min-height: 100%;
+}
+  
+#sidebar-container .logo {
+    padding: 15px 0px 30px 15px;
+    width: 255px;
+}
+
+#sidebar-container .logo img {
+    width: 245px;
+}
+  
+#sidebar-container .menu {
+    width: 18rem;
+    font-size: 20px;
+}
+
+#sidebar-container .menu a:hover {
+    font-size: 22px;
+    color: orange!important;
+    text-decoration: none;
+}
+
+#content {
+    overflow-y: auto;
+    height: 91.5vh;
+}
+
+.profile {
+    max-width: 55px;
+}
+
+.nav-link.text-dark {
+    font-size: 20px;
+}
+
+.stat {
+    border-right: 1px solid #efefef;
+}
+
+.title_header {
+    font-size: 24px;
+    display: contents;
+    font-weight: bold;
+    color: white;
+}
+
+.separation_line {
+    background-color: rgb(255 255 255);
+    padding-bottom: 2px;
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+.btn.btn-warning {
+    font-size: 20px;
+}
+
+.btn.btn-warning.tutorial{
+    margin: 80px 94px;
+}
+
+div > div.w-100 > nav {
+    padding: 10px 15px;
+}
+
+div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
+    margin-left: 170px;
+}
+
+/*  */
+
+
+#content > div > div > div:nth-child(1) {
+    margin-top: 40px;
+}
+
+#content > div > div > div:nth-child(1) > div > div > img {
+    max-width: 225px;
+    display: block;
+}
+
+#content > div > div > div:nth-child(1) > div {
+    background-color: #212529;
+    color: white;
+    border: 4px outset;
+    width: 80%;
+    border-radius: 20px;
+}
+
+#content > div > div > div.col-4 > div > div > img:nth-child(4) {
+    margin-top: -25px;
+}
+
+#content > div > div > div:nth-child(1) > div:hover {
+    background-color: white;
+    color: black;
+}
+
+#content > div > div > div:nth-child(1) > div > div {
+    padding: 0.5rem
+}
+
+#content > div > div > div.col-4 > progressbar {
+    width: 82%;
+}
+
+#content > div > div > div.col-4 > div > div > h5 {
+    margin-top: .25rem;
+}
+
+#content > div > div > div:nth-child(2) {
+    margin-top: 50px;
+}
+
+#content > div > div > div.col-2 > p {
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#content > div > div > div.col-2 > p:nth-child(1) {
+    margin-top: 50px;
+}
+
+#content > div > div > div.col-2 > p:nth-child(4) {
+    margin-bottom: 75px;
+}
+
+#content > div > div > div:nth-child(3) {
+    margin-top: 50px;
+}
+
+#content > div > div > div.col-3 > p {
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+#content > div > div > div.col-3 > p:nth-child(1) {
+    margin-top: 50px;
+}
+
+#content > div > div > div.col-3 > p:nth-child(4) {
+    margin-bottom: 70px;
+}
+
+#content > div > div > div > button {
+    float: left;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+#content > div > div > div:nth-child(3) > button.btn.change_password {
+    margin-left: 10px;
+    background-color: rgb(255 132 0 / 85%);
+}
+
+#content > div > div > div:nth-child(3) > button.btn.change_password:hover {
+    background-color: rgb(225 117 0);
+}
+
+#content > div > div > div.col-4 > p {
+    margin-top: 15px;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#content > div > div > div:nth-child(4) {
+    margin-top: 40px;
+}
+
+#content > div > div > div:nth-child(4) > dl .box {
+    border: 1px solid black;
+    width: 210px;
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: white;
+}
+
+#content > div > div > div:nth-child(4) > dl .box > dt {
+    font-size: 18px;
+}
+
+#content > div > div > div:nth-child(4) > dl .box > dd {
+    font-size: 16px;
+}
+
+#content > div > div > div:nth-child(4) > dl > div:nth-child(1) {
+    border: 4px outset #eddf14
+}
+
+#content > div > div > div:nth-child(4) > dl > div:nth-child(2) {
+    border: 4px outset #9cb5f1
+}
+
+#content > div > div > div:nth-child(4) > dl > div:nth-child(3) {
+    border: 4px outset #ed9914
+}
+
+#content > div > div > div:nth-child(4) > dl > div:nth-child(4) {
+    border: 4px outset #fc3939
+}
+
+#content > div > div > div:nth-child(4) > dl > div:nth-child(5) {
+    border: 4px outset #239700
+}
+
+#content > div > div > div:nth-child(2),
+#content > div > div > div:nth-child(3) {
+    margin-top: 100px;
+}

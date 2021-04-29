@@ -1,0 +1,71 @@
+
+<div class="d-flex">
+    <div id="sidebar-container" class="bg-primary">
+        <div class="logo">
+            <a routerLink="/" target="_blank"><img src="assets/WebLogo.png" ></a>
+            <hr class="separation_line">
+        </div>
+
+        <div class="menu">
+            <a class="d-block text-light p-3 border-0" routerLink="/Tabla_De_Usuarios"><i class="icon ion-md-walk lead mr-2"></i>Tabla de Usuarios</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Tabla_De_Ejercicios"><i class="ion-md-clipboard lead mr-2"></i>Tabla de Ejercicios</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Tabla_De_Retos"><i class="ion-md-star lead mr-2"></i>Tabla de Retos</a>
+            <a class="d-block text-light p-3 border-0" href="https://outlook.live.com/owa/?nlp=1" target="_blank"><span class="iconify mr-3 mb-1" data-icon="ion-mail" data-inline="false"></span>Correo Personal</a>
+        </div>
+    </div>
+
+    <div class="w-100">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <p class="title_header">Perfil del Administrador/a</p><br>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img [src]="userImg" class="img-fluid rounded profile mr-2">
+                            <span style="font-size: 20px;">{{name}}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <button class="dropdown-item" routerLink="/Perfil_Adm">Mis Datos</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" (click)="onLogout()">Cerrar sesión</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="content" class="bg-grey w-100 text-center">
+           
+            <div class="container-fluid">
+                <div class="row my-5 ml-5">
+                    <div class="col-5">
+                        <div class="card">
+                            <div class="card-body mx-auto">
+                                <h5 class="card-title">Foto de Perfil</h5><hr>
+                                <img class="card-img-top" [src]="userImg">
+                                <img src="assets/registered/pedestal.png" alt="pedestal">
+                            </div>
+                        </div><br>
+                    </div>
+                    <div class="col-3">
+                        <p>Nombre:</p>
+                        <p>Correo Personal:</p>
+                        <button class="btn btn-primary" routerLink="/Editar_Perfil_Adm">Editar Datos</button>
+                    </div>
+                    <div class="col-3">
+                        <p>{{name}}</p>
+                        <p>{{email}}</p>
+                        <button class="btn change_password" routerLink="/Nueva_Contraseña">Cambiar Contraseña</button>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
