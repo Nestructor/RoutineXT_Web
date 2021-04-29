@@ -96,11 +96,6 @@ div > div.w-100 > nav {
 div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     margin-left: 170px;
 }
-
-#customers {
-    border-collapse: collapse;
-    width: 100%;
-}
   
 #customers td, #customers th {
     border: 2px groove;
@@ -111,25 +106,26 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     background-color: white;
 }
 
-#customers tr > th:hover {
-    background-color: rgb(221, 221, 221);
+#customers tr:nth-child(odd) {
+    background-color: #f4f4f4;
 }
 
 #customers > tr:nth-child(1) > th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #4c88af;
+    background-color: #17569a;
     color: white;
     font-size: 18px;
 }
 
-#customers > tr th.heading {
-    cursor: pointer;
+#customers > tr:nth-child(1) > th {
+    width: 80px;
 }
 
-#customers > tr:nth-child(1) > th {
-    width: 245px;
+#customers > tr > td:nth-child(5) {
+    text-align: justify;
+    width: 30%;
 }
 
 #content > div.row.mt-5.mb-3 > div > p {
@@ -146,3 +142,53 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     margin-left: 15px;
     color: #002959;
 }
+
+@media print {
+
+    div.d-flex {
+        writing-mode: tb-rl;
+        margin: 0 auto;
+    }
+
+    header, nav, .menu, img, button, #sidebar-container {
+        display: none;
+    }
+
+    #content {
+        background-color: white !important;
+    }
+
+    #customers  {
+        margin-top: 1%;;
+        border: 3px groove;
+        height: 103% !important;
+    }
+
+    #customers > tr:nth-child(1) > th {
+        color: black;
+    }
+
+    #customers > tr:nth-child(1) > th {
+        background-color: #e0b423;
+    }
+
+    #customers > tr:nth-child(2) > td > img {
+        display: initial;
+        transform: rotate(90deg);
+    }
+
+    #content > div.row.mt-5.mb-3 {
+        margin-left: 0%;
+    }
+
+    #content > div.container-fluid {
+        margin-right: -10%;
+    }
+
+    #content > div.row.mt-5.mb-3 > div:nth-child(3) {
+        margin-top: 15%;
+        margin-left: 5%;
+    }
+
+
+  }

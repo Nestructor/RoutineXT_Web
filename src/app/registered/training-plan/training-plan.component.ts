@@ -58,9 +58,6 @@ export class TrainingPlanComponent implements OnInit {
           this.completeUserName = items.name + " " + items.surname
           this.userImg = items.profile
           this.cancelTrainingPlan = items.trainingPlanCancelled
-          for(var k=0; k<7; k++) {
-            this.editableDays[k] = this.cancelTrainingPlan ? false : true
-          }
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 
@@ -122,6 +119,11 @@ export class TrainingPlanComponent implements OnInit {
       } 
     } 
 
+    for(var k=0; k<7; k++) {
+      this.editableDays[k] = this.cancelTrainingPlan ? false : true
+    }
+    console.log("cancelPlan: " + this.editableDays)
+
     let weekdayFormatDate = formatDate(this.today.getTime(), 'EEEE', 'es')
     weekdayFormatDate = weekdayFormatDate.charAt(0).toUpperCase() + weekdayFormatDate.substring(1)
     this.todayIndex = this.map.weekdayToIndexArray.get(weekdayFormatDate)
@@ -129,8 +131,7 @@ export class TrainingPlanComponent implements OnInit {
     for(var i = 0; i < this.todayIndex; i++) {
       this.editableDays[i] = false
     }
-
-    // this.editableDays.forEach(e => console.log(e))
+    console.log("Día actual: " + this.editableDays)
 
     this.db.collection('routines').get().subscribe((resultado) => {
       resultado.docs.forEach((item) => {
@@ -343,6 +344,10 @@ export class TrainingPlanComponent implements OnInit {
       this.editableDays[i] = true;
     }
     console.log("Enabled: " + this.editableDays)
+  }
+
+  print() {
+    window.print()
   }
 
   async onLogout() {

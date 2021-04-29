@@ -184,3 +184,43 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
     padding: 12px;
     font-size: 18px;
 }
+
+
+@media print {
+
+    div.d-flex {
+        writing-mode: tb-rl;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    header, nav, .menu, img, button, #sidebar-container {
+        display: none;
+    }
+
+    #content {
+        height: 180%;
+        background-color: white !important;
+    }
+
+    #content > div {
+        margin-bottom: 1%;
+    }
+
+    #content > div > div {
+        border: 0.5px solid black;
+    }
+
+    #content > div:nth-child(2) > div {
+        background-color: #d7d7d7 !important;
+    }
+    
+    #content > .card-group > .card {
+        opacity: 1 !important;
+    }
+
+    #content > div.container-fluid > div {
+        border: none;
+    }
+
+  }

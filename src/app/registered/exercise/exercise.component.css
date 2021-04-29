@@ -119,3 +119,20 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
 #content > div.container-fluid > div > div > div > div > div {
     border:none
 }
+
+@media print {
+
+    header, nav, .menu, img, button, #sidebar-container {
+        display: none;
+    }
+
+    #content > div.container-fluid > div > div > div > div > div > div > img {
+        display: initial;
+    }
+
+    #content {
+        height: auto;
+        background-color: white !important;
+    }
+
+  }

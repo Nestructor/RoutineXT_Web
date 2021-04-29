@@ -173,6 +173,10 @@ export class ExerciseComponent implements OnInit {
     })
   }
 
+  print() {
+    window.print()
+  }
+
   async onLogout() {
     const Toast = Swal.mixin({
       toast: true,

@@ -41,7 +41,7 @@ export class ChallengeComponent implements OnInit {
     })
 
     for (let i = 0; i < 5; i++) {
-      this.challenges[i] = new Array(6);
+      this.challenges[i] = new Array(7);
     }
 
   }
@@ -58,9 +58,11 @@ export class ChallengeComponent implements OnInit {
           this.challenges[i][2] = challengeData.description
           this.challenges[i][3] = challengeData.necessaryScore
           this.challenges[i][4] = challengeData.difficulty
-          this.challenges[i++][5] = challengeData.completed
+          this.challenges[i][5] = challengeData.completed
+          this.challenges[i++][6] = challengeData.distance
         }
       })
+      
       this.sort();
     })   
   }
@@ -77,6 +79,11 @@ export class ChallengeComponent implements OnInit {
       }
     }
   }
+
+  print() {
+    window.print()
+  }
+
 
   async onLogout() {
     const Toast = Swal.mixin({

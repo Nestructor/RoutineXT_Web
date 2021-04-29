@@ -54,7 +54,7 @@
                     </ul>
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-warning">Imprimir <img style="width: 24px; margin-left: 5px" src="assets/registered/print.png" alt="print img"></button><br>
+                    <button class="btn btn-warning" (click)="print()">Imprimir <img style="width: 24px; margin-left: 5px" src="assets/registered/print.png" alt="print img"></button><br>
                 </div>
             </div>
            
@@ -66,34 +66,39 @@
                           <th>Tipo</th>
                           <th>Puntuación Necesaria</th>
                           <th>Dificultad</th>
+                          <th>Descripción</th>
                           <th>Completado</th>
                         </tr>
 
                         <tr *ngFor="let challenge of challenges; let i = index">
-                            <th *ngIf="score >= challenge[3]"
-                                class="heading" 
-                                popoverTitle="Descripción"
-                                popover={{challenge[2]}}
-                                placement="right">
-                                {{challenge[0]}} 
+
+                            <th>{{challenge[0]}}<br><br>
+                                <span *ngIf="score >= challenge[3]" style="font-weight: normal;">({{challenge[6]}})</span>
+                                <span *ngIf="score < challenge[3]" style="font-weight: bold;">?</span>
                             </th>
-                            <th *ngIf="score < challenge[3]"
-                                class="heading" 
-                                popoverTitle="Descripción"
-                                popover="No disponible hasta que este reto no sea desbloqueado"
-                                placement="right">
-                                {{challenge[0]}} 
-                            </th>
+                           
 
                             <td *ngIf="score >= challenge[3]">{{challenge[1]}}</td>
-                            <td *ngIf="score < challenge[3]">?</td>
+                            <th *ngIf="score < challenge[3]">?</th>
 
-                            <td>{{challenge[3]}}</td>
+                            <th *ngIf="score >= challenge[3]"><span style="color: green">{{challenge[3]}}</span></th>
+                            <th *ngIf="score < challenge[3]"><span style="color: red">{{challenge[3]}}</span></th>
 
-                            <td *ngIf="score >= challenge[3]">{{challenge[4]}}</td>
-                            <td *ngIf="score < challenge[3]">?</td>
+                            <th *ngIf="score >= challenge[3]">
+                                <span *ngIf="challenge[4] == 'Fácil'" style="color: rgb(1, 196, 1)"> {{challenge[4]}} </span>
+                                <span *ngIf="challenge[4] == 'Media'" style="color: rgb(252, 172, 0)"> {{challenge[4]}} </span>
+                                <span *ngIf="challenge[4] == 'Difícil'" style="color: rgb(255, 0, 0)"> {{challenge[4]}} </span>
+                            </th>
+                            <th *ngIf="score < challenge[3]">?</th>
 
-                            <td>{{challenge[5]}}</td>
+                            <td *ngIf="score >= challenge[3]">{{challenge[2]}}</td>
+                            <th *ngIf="score < challenge[3]">?</th>
+
+                            <td *ngIf="challenge[5] != ''">
+                                <img width="45px" src="assets/registered/done.png" alt=""><br><br>
+                                {{challenge[5]}}
+                            </td>
+                            <th *ngIf="challenge[5] == ''">-</th>
                         </tr>
 
                     </table>
