@@ -58,6 +58,7 @@ export class TrainingPlanComponent implements OnInit {
           this.completeUserName = items.name + " " + items.surname
           this.userImg = items.profile
           this.cancelTrainingPlan = items.trainingPlanCancelled
+          if(items.email == 'routineXT_adm@outlook.com') this.router.navigate(['/Tabla_De_Usuarios'])
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 

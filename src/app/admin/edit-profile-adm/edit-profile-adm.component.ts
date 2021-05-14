@@ -43,6 +43,7 @@ export class EditProfileAdmComponent implements OnInit {
           this.name = items.name
           this.email = items.email
           this.userImg = items.profile
+          if(items.email != 'routineXT_adm@outlook.com') this.router.navigate(['/Plan_De_Entrenamiento']) 
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 

@@ -18,7 +18,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div class="container-fluid">
-                <p class="title_header">Ejercicios Almacenados</p><br>
+                <p class="title_header">Ejercicios Almacenados ({{exercises.length}})</p><br>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -42,13 +42,119 @@
            
             <div class="container-fluid">
                 <div class="row my-5 ml-5">
-                    <div class="col-4">
-                    
+                    <div class="col-3">
+                        <button class="btn btn-success" (click)="openModal_2(addModal)">+ Añadir Ejercicio</button>
+                    </div>
+                    <div class="col-9">
+                        <button class="btn btn-warning" (click)="orderByCategory()">Filtrar por categoría</button>
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-12">
+                        <table id="customers" *ngIf="exercises.length > 0">
+                            <tr>
+                              <th>Ejercicio</th>
+                              <th>Categoría</th>
+                              <th>Descripción</th>
+                              <th>Acción</th>
+                            </tr>
+                            <tr *ngFor="let exercise of exercises">
+                              <td>{{exercise[1]}}</td>
+                              <td>{{exercise[2]}}</td>
+                              <td>{{exercise[3]}}</td>
+                              <td>
+                                  <button class="btn btn-primary" (click)="openModal(editModal, exercise)">Editar</button><br>
+                                  <button class="btn btn-danger" (click)="deleteUser(exercise[0])">Eliminar</button></td>
+                            </tr>
+                          </table>
+                        <div *ngIf="noData">
+                            <p style="font-size: 35px; text-align: center">¡Oops! :(</p>
+                            <p style="font-size: 30px; text-align: center">No existen ejercicios en la Base de Datos</p> 
+                            <img style="margin-top: 20px" width="275px" src="assets/admin/emptyDB.gif" alt="">
+                        </div>
                     <div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
+
+<ng-template #editModal>
+
+    <div class="modal-header edit">
+        <h4 class="modal-title">Editar Ejercicio</h4>
+        <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cancelar</button>
+    </div>
+    <div class="modal-body">
+        <div class="row mb-2">
+            <div class="col-4">
+                -Ejercicio:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="exerciseModal" (ngModelChange)="checkModalValues()" value="exerciseModal">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Categoría:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="typeModal" (ngModelChange)="checkModalValues()" value="typeModal">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Descripción:
+            </div>
+            <div class="col-8">
+              <textarea [(ngModel)]="descriptionModal" (ngModelChange)="checkModalValues()">{{descriptionModal}}</textarea>
+            </div>
+        </div>
+    </div>
+  
+    <div class="modal-footer">
+        <p>El botón "Editar" se habilitará cuando los datos introducidos sean correctos.</p>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!checkModalValues()" (click)="updateExercise(idModal)">Editar</button>
+    </div>
+
+</ng-template>
+
+<ng-template #addModal>
+
+    <div class="modal-header">
+        <h4 class="modal-title">Añadir Ejercicio</h4>
+        <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cancelar</button>
+    </div>
+    <div class="modal-body">
+        <div class="row mb-2">
+            <div class="col-4">
+                -Ejercicio:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="exerciseModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Categoría:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="typeModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Descripción:
+            </div>
+            <div class="col-8">
+              <textarea [(ngModel)]="descriptionModal" (ngModelChange)="checkModalValues()"></textarea>
+            </div>
+        </div>
+    </div>
+  
+    <div class="modal-footer">
+        <p>El botón "Añadir" se habilitará cuando los datos introducidos sean correctos.</p>
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!checkModalValues()" (click)="addExercise()">Añadir</button>
+    </div>
+
+</ng-template>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service'
@@ -17,17 +16,24 @@ export class AccountComponent implements OnInit {
   checked: boolean = false
   public user$: Observable<any> = this.authSrv.afAuth.user
   isLogged: boolean = false
-
+  userID: string;
+  name: string
+  challenges: any = []
 
   constructor(
     private authSrv: AuthService, 
     private fb: FormBuilder, 
     private db: AngularFirestore,
-    private router: Router) 
+  ) 
   { 
     this.user$.subscribe((user) => {
-      console.log(user)
       this.isLogged = user != null ? true : false
+      if(this.isLogged)
+        this.userID = user.uid
+        this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
+          let items: any = resultado.data()
+          this.name = items.name;
+        })
     })
   }
 
@@ -53,7 +59,43 @@ export class AccountComponent implements OnInit {
     {
       validator: this.passwordMatchValidator
     })
+
+    this.db.collection('challenges').get().subscribe((resultado) => {
+      for (let i = 0; i < resultado.size; i++) {
+        this.challenges[i] = new Array(6);
+      }
+      let i = 0
+      resultado.docs.forEach((item) => {
+        let exerciseData:any = item.data();
+        this.challenges[i][0] = item.id;
+        this.challenges[i][1] = exerciseData.name;
+        this.challenges[i][2] = exerciseData.type;
+        this.challenges[i][3] = exerciseData.necessaryScore;
+        this.challenges[i][4] = exerciseData.difficulty;
+        this.challenges[i][5] = exerciseData.description;
+        this.challenges[i++][6] = exerciseData.distance;
+      })
+      this.removeRepeatedChallenges();
+      
+    })
+
   };
+
+  private removeRepeatedChallenges() {
+    let newChallenges = []
+    if(this.challenges.length > 0) {
+      newChallenges.push(this.challenges[0])
+      let k = 1;
+      loop: for (let i = 1; i < this.challenges.length; i++) {
+        for (let j = 0; j < newChallenges.length; j++) {
+          if(this.challenges[i][1] == newChallenges[j][1]) continue loop;
+          if(j == newChallenges.length-1) newChallenges[k++] = this.challenges[i];
+        }
+      }
+      this.challenges = newChallenges
+    }
+    console.log(this.challenges)
+  }
 
   private passwordMatchValidator(control: AbstractControl) {
     const password: string = control.get('password').value; 
@@ -85,6 +127,36 @@ export class AccountComponent implements OnInit {
             confirmButtonText: 'Aceptar'
           })
         }, 1000);
+
+        //Añadir datos de usuario a cloudFirestore
+        this.db.collection('users').doc(uid).set({
+          name: this.registerForm.get('name').value,
+          surname: this.registerForm.get('surname').value,
+          age: this.registerForm.get('age').value,
+          email: this.registerForm.get('email').value,
+          profile: "https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2Fdefault_profile_photo.png?alt=media&token=8d696e13-a7d6-47ca-bc9c-384d4e1c0719",
+          score: 0,
+          routines: 0,
+          exercises: 0,
+          challenges: 0,
+          max_score: 0,
+          trainingPlanCancelled: false
+        }).then((registered)=> {
+          console.log("Registro creado")
+          for (let i = 0; i < this.challenges.length; i++) {
+            this.db.collection('challenges').add({
+              name: this.challenges[i][1],
+              type: this.challenges[i][2],
+              necessaryScore: this.challenges[i][3],
+              difficulty: this.challenges[i][4],
+              description: this.challenges[i][5],
+              distance: this.challenges[i][6],
+              completed: "",
+              userID: uid
+            })
+          }
+        })
+
       } else {
         Swal.fire({
           title: '¡Oops! Ha ocurrido un error',
@@ -97,75 +169,5 @@ export class AccountComponent implements OnInit {
       console.log(error)
     }
     
-    //Añadir datos de usuario a cloudFirestore
-    this.db.collection('users').doc(uid).set({
-      name: this.registerForm.get('name').value,
-      surname: this.registerForm.get('surname').value,
-      age: this.registerForm.get('age').value,
-      email: this.registerForm.get('email').value,
-      profile: "https://firebasestorage.googleapis.com/v0/b/routinext.appspot.com/o/profile_Images%2Fdefault_profile_photo.png?alt=media&token=8d696e13-a7d6-47ca-bc9c-384d4e1c0719",
-      score: 0,
-      routines: 0,
-      exercises: 0,
-      challenges: 0,
-      max_score: 0,
-      trainingPlanCancelled: true
-    }).then((registered)=> {
-      console.log("Registro creado")
-    })
-
-    //Añadir primeros 5 retos
-
-    this.db.collection('challenges').add({
-        completed: "",
-        name: "Este trote empieza a complicarse",
-        type: "Atletismo II",
-        description: "Nos situaremos en la avenida marítima e iremos trotando ida y vuelta desde la Plaza de Santa Isabel hasta llegar hasta la Playa de la Laja (10 Km en 2 horas).",
-        necessaryScore: 200,
-        difficulty: "Difícil",
-        userID: uid
-      })
-
-    this.db.collection('challenges').add({
-      completed: "",
-      name: "Un buen pedaleo",
-      type: "Ciclismo I",
-      description: "Nos situaremos en la avenida marítima e iremos pedaleando ida y vuelta en bicicleta desde la Plaza de Santa Isabel pasando por el Museo Élder, y siguiendo la ruta hasta llegar hasta el Monumento 'El Atlante' (18 Km en 1:30 horas).",
-      necessaryScore: 145,
-      difficulty: "Media",
-      userID: uid
-    })
-
-    this.db.collection('challenges').add({
-      completed: "",
-      name: "Hola Tejeda, quiero decir Artenara",
-      type: "Senderismo I",
-      description: "Nos situaremos en el aparcamiento situado en la parte trasera del Parador Nacional de La Cruz de Tejeda. Por un lado del Parador, comenzaremos a caminar por un sendero señalizado hasta llegar hasta Artenara siguiendo las indicaciones de la ruta (9 Km en 3 horas).",
-      necessaryScore: 100,
-      difficulty: "Media",
-      userID: uid
-    })
-
-    this.db.collection('challenges').add({
-      completed: "",
-      name: "¿Estás visible Barra?",
-      type: "Natación I",
-      description: "Nos situaremos en la playa de las Canteras por la altura del hotel 'Reina Isabel' y tendremos que ir y venir nadando hasta la Barra un total de 3 veces sin hacer paradas. Es necesario que la marea esté baja (1,2 Km en 1 hora).",
-      necessaryScore: 65,
-      difficulty: "Fácil",
-      userID: uid
-    })
-
-    this.db.collection('challenges').add({
-      completed: "",
-      name: "¡Comenzamos a trotar!",
-      type: "Atletismo I",
-      description: "En este primer reto, tendremos que ir y venir trotando por la avenida marítima desde la plaza de Santa Isabel hasta el Monumento a la Vela Latina en San Telmo sin parar en ningún momento (4 Km en 1 hora).",
-      necessaryScore: 35,
-      difficulty: "Fácil",
-      userID: uid
-    })
-
   }
-
 }

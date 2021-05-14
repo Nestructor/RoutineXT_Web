@@ -56,6 +56,7 @@ export class ProfileComponent implements OnInit {
           this.exercises = items.exercises
           this.completeUserName = items.name + " " + items.surname
           this.userImg = items.profile
+          if(items.email == 'routineXT_adm@outlook.com') this.router.navigate(['/Perfil_Adm']) 
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 

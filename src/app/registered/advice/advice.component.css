@@ -153,7 +153,7 @@ div > div.w-100 > nav > div.collapse.navbar-collapse > ul > li > div {
 
 #content > div > div.row.mx-auto > div > ul > li,
 #content > div > div.row.mx-auto > div > div > div > ul > li {
-    padding: 25px 0 25px 50px;
+    padding: 25px 0 0 50px;
     list-style: none;
     background-image: url(/assets/registered/ok_icon.png);
     background-repeat: no-repeat;

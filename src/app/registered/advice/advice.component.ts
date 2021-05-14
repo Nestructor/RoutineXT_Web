@@ -12,13 +12,10 @@ import Swal from 'sweetalert2';
 })
 export class AdviceComponent implements OnInit {
 
-  public isLogged = false
   public user$: Observable<any> = this.authSvc.afAuth.user
   userID: string
   completeUserName: string
   userImg: any
-  advice = new Array();
-  practice = new Array();
   
   constructor(
     private authSvc: AuthService, 
@@ -32,6 +29,7 @@ export class AdviceComponent implements OnInit {
           let items: any = resultado.data()
           this.completeUserName = items.name + " " + items.surname
           this.userImg = items.profile
+          if(items.email == 'routineXT_adm@outlook.com') this.router.navigate(['/Tabla_De_Usuarios']) 
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 
@@ -41,22 +39,6 @@ export class AdviceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.db.collection('advice').get().subscribe((resultado) => {
-        let i = 0
-        resultado.docs.forEach((doc) => {
-          let adviceDocs:any = doc.data(); 
-          this.advice[i++] = adviceDocs.advice
-        })
-        // this.advice.forEach(item => console.log(item))
-    })
-
-    this.db.collection('practice').get().subscribe((resultado) => {
-      let i = 0
-      resultado.docs.forEach((doc) => {
-        let practiceDocs:any = doc.data(); 
-        this.practice[i++] = practiceDocs.practice
-      })
-  })
   }
 
   async onLogout() {

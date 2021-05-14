@@ -18,7 +18,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div class="container-fluid">
-                <p class="title_header">Usuarios del Sistema</p><br>
+                <p class="title_header">Usuarios del Sistema ({{users.length}})</p><br>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -42,13 +42,90 @@
            
             <div class="container-fluid">
                 <div class="row my-5 ml-5">
-                    <div class="col-4">
-                    
+                    <div class="col-3">
+                        <button class="btn btn-warning" (click)="orderByScore()">Filtrar por puntuación</button>
+                    </div>
+                    <div class="col-9">
+                        <button class="btn btn-warning" (click)="orderByAge()">Filtrar por edad</button>
+                    </div>
+                </div>
+
+                <div class="row mt-5 mx-5">
+                    <div class="col-12">
+                        <table id="customers" *ngIf="users.length > 0">
+                            <tr>
+                              <th>Nombre</th>
+                              <th>Apellidos</th>
+                              <th>Edad</th>
+                              <th>Correo</th>
+                              <th>Puntuación</th>
+                              <th>Acción</th>
+                            </tr>
+                            <tr *ngFor="let user of users">
+                              <td>{{user[1]}}</td>
+                              <td>{{user[2]}}</td>
+                              <td>{{user[3]}}</td>
+                              <td>{{user[4]}}</td>
+                              <td>{{user[5]}}</td>
+                              <td><button class="btn btn-primary" (click)="openModal(editModal, user)">Editar</button><button class="btn btn-danger" (click)="deleteUser(user[0])">Eliminar</button></td>
+                            </tr>
+                          </table>
+                        <div *ngIf="noData">
+                            <p style="font-size: 35px; text-align: center">¡Oops! :(</p>
+                            <p style="font-size: 30px; text-align: center">No existen usuarios en la Base de Datos</p> 
+                            <img style="margin-top: 20px" width="275px" src="assets/admin/emptyDB.gif" alt="">
+                        </div>
                     <div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
+    
+<ng-template #editModal>
+
+  <div class="modal-header">
+      <h4 class="modal-title">Editar Usuario</h4>
+      <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cancelar</button>
+  </div>
+  <div class="modal-body">
+      <div class="row mb-2">
+          <div class="col-4">
+              -Nombre:
+          </div>
+          <div class="col-8">
+            <input type="text" [(ngModel)]="nameModal" (ngModelChange)="checkModalValues()" value="nameModal">
+          </div>
+      </div>
+      <div class="row mb-2">
+          <div class="col-4">
+              -Apellidos:
+          </div>
+          <div class="col-8">
+            <input type="text" [(ngModel)]="surnameModal" (ngModelChange)="checkModalValues()" value="surnameModal">
+          </div>
+      </div>
+      <div class="row mb-2">
+          <div class="col-4">
+              -Edad:
+          </div>
+          <div class="col-8">
+            <input type="number" [(ngModel)]="ageModal" (ngModelChange)="checkModalValues()" value="ageModal">
+          </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-4">
+            -Correo:
+        </div>
+        <div class="col-8">
+          <input type="text" [(ngModel)]="emailModal" (ngModelChange)="checkModalValues()" value="emailModal">
+        </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+      <p>El botón "Editar" se habilitará cuando los datos introducidos sean correctos.</p>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!checkModalValues()" (click)="updateUser(idModal)">Editar</button>
+  </div>
+
+</ng-template>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 import Swal from 'sweetalert2';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-faqs-contact',
@@ -17,12 +18,22 @@ export class FaqsContactComponent implements OnInit {
   isLogged: boolean = false
   registerForm: FormGroup;
   checked: boolean = false
-  
+  userID: string;
+  name: string
 
-  constructor(private authSrv: AuthService, private fb: FormBuilder) {
+  constructor(
+    private authSrv: AuthService, 
+    private fb: FormBuilder,
+    private db: AngularFirestore,
+  ) 
+  { 
     this.user$.subscribe((user) => {
-      console.log(user)
       this.isLogged = user != null ? true : false
+      this.userID = user.uid
+      this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
+        let items: any = resultado.data()
+        this.name = items.name;
+      })
     })
   }
 

@@ -43,6 +43,11 @@ import { ScoreComponent } from './registered/score/score.component';
 import { ExerciseComponent } from './registered/exercise/exercise.component';
 import { ChallengeComponent } from './registered/challenge/challenge.component';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ProfileAdmComponent } from './admin/profile-adm/profile-adm.component';
+import { ChallengeAdmComponent } from './admin/challenge-adm/challenge-adm.component';
+import { ExerciseAdmComponent } from './admin/exercise-adm/exercise-adm.component';
+import { UserAdmComponent } from './admin/user-adm/user-adm.component';
+import { EditProfileAdmComponent } from './admin/edit-profile-adm/edit-profile-adm.component';
 
 
 @NgModule({
@@ -64,7 +69,12 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     AdviceComponent,
     ScoreComponent,
     ExerciseComponent,
-    ChallengeComponent
+    ChallengeComponent,
+    ProfileAdmComponent,
+    ChallengeAdmComponent,
+    ExerciseAdmComponent,
+    UserAdmComponent,
+    EditProfileAdmComponent
   ],
   imports: [
     BrowserModule,

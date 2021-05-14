@@ -16,6 +16,11 @@ import { AdviceComponent } from './registered/advice/advice.component';
 import { ScoreComponent } from './registered/score/score.component';
 import { ExerciseComponent } from './registered/exercise/exercise.component';
 import { ChallengeComponent } from './registered/challenge/challenge.component';
+import { ChallengeAdmComponent } from './admin/challenge-adm/challenge-adm.component';
+import { EditProfileAdmComponent } from './admin/edit-profile-adm/edit-profile-adm.component';
+import { ExerciseAdmComponent } from './admin/exercise-adm/exercise-adm.component';
+import { ProfileAdmComponent } from './admin/profile-adm/profile-adm.component';
+import { UserAdmComponent } from './admin/user-adm/user-adm.component';
 
 const routes: Routes = [
   {
@@ -62,6 +67,21 @@ const routes: Routes = [
   },
   {
     path: 'Retos', component: ChallengeComponent
+  },
+  {
+    path: 'Tabla_De_Usuarios', component: UserAdmComponent
+  },
+  {
+    path: 'Tabla_De_Retos', component: ChallengeAdmComponent
+  },
+  {
+    path: 'Tabla_De_Ejercicios', component: ExerciseAdmComponent
+  },
+  {
+    path: 'Perfil_Adm', component: ProfileAdmComponent
+  },
+  {
+    path: 'Editar_Perfil_Adm', component: EditProfileAdmComponent
   },
   {
     path: '**', component: PaginaNoEncontradaComponent

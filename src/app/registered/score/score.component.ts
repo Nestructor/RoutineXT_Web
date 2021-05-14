@@ -43,6 +43,7 @@ export class ScoreComponent implements OnInit {
           this.userImg = items.profile
           this.userScore = items.score
           this.userEmail = items.email
+          if(items.email == 'routineXT_adm@outlook.com') this.router.navigate(['/Tabla_De_Ejercicios']) 
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 

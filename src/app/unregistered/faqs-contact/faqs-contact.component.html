@@ -1,8 +1,8 @@
 <header>
     <div class="container">
         <nav class="menu">
-            <img type="button" src="assets/WebLogo.png" alt="logo" routerLink="/">
-            <button type="button" class="btn btn-danger" routerLink="/Plan_De_Entrenamiento" *ngIf="user$ | async as user">Hola, {{user?.email}}</button>
+            <a routerLink="/"><img src="assets/WebLogo.png" ></a>
+            <button type="button" class="btn btn-danger" routerLink="/Plan_De_Entrenamiento" *ngIf="user$ | async as user">Hola {{name}}</button>
             <button type="button" class="btn btn-danger" routerLink="/Iniciar_Sesion" *ngIf="!isLogged">Iniciar Sesión</button>
             <p class="title">Preguntas Frecuentes (FAQs)</p>
             <div class="title_decoration">
@@ -20,7 +20,8 @@
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                "RoutineXT" es el nombre que hace referencia a la aplicación web y móvil dedicada a realizar ejercicios de mantenimmiento en casa. Las marcas registradas corresponden
+                a 'RoutineXT Web' para la aplicación web y 'RoutineXT App' para la aplicación móvil para 'Android'.
             </div>
             </div>
         </div>
@@ -32,7 +33,10 @@
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                RoutineXT permite a un usuario registrado realizar un seguimiento del ejercicio que va realizando en casa mediante un sistema de puntuación. La idea es que el usuario planifique un 
+                horario semanal para realizar ejercicio cada semana en la aplicación web y utilice la aplicación móvil para realizar los ejercicios, confirmar la finalización de los mismos, o ver el 
+                horario de la semana. Una vez haya finalizado su entrenamiento, se le otorgarán una serie de puntos en base a su regularidad. De igual modo, a medida que va obteniendo puntos, el usuario 
+                puede desbloquear retos que otorgan una gran cantidad de puntos.
             </div>
             </div>
         </div>
@@ -45,19 +49,33 @@
             </h2>
             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                RoutineXT utiliza un algoritmo que controla la realización de ejercicios mediante un sistema de puntuación sencillo.<br>
+                Rutinas:<br>
+                -Una rutina realizada otorga +5 puntos independientemente del tiempo empleado en su realización.<br>
+                -Una rutina programada que no se ha realizado resta -5 puntos al usuario.<br><br>
+                
+                Retos:<br>
+                Los retos tienen una puntuación mínima requerida para ser desbloqueados. Los puntos que otorgan dependen de su nivel de dificultad.<br>
+                -Un reto con difiicultad "Fácil" otorga +25 puntos.<br>
+                -Un reto con difiicultad "Media" otorga +45 puntos.<br>
+                -Un reto con difiicultad "Difícil" otorga +75 puntos.<br>
             </div>
             </div>
         </div>
 <!--4--><div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingFour">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                ¿Cómo se mide el progreso de los últimos 3 meses?
+                ¿Cómo se mide el progreso o seguimiento?
             </button>
             </h2>
             <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                El seguimiento es muy intuitivo de realizar debido a que el usuario puede visualizar en todo momento cómo va incrementándose su puntuación a medida que va realizando las rutinas.<br>
+                Es importante destacar que RoutineXT utiliza 3 términos relacionados:<br><br>
+                -Plan de Entrenamiento: semana actual formada por rutinas de ejercicios a realizar cada día a una determinada hora.<br>
+                -Rutinas: conjunto de ejercicios de un determinado tipo a realizar en el día actual a una hora determinada. Una rutina dura entre 15 y 60 minutos<br>
+                -Ejercicios: subconjunto por el que está formado una rutina que contiene todas las actividades que va a realizar el usuario.<br><br>
+                En la sección "Mi Puntuación" se pueden visualizar todas las estadísticas de la semana, así como la puntuación, ejercicios realizados y ranking de usuarios registrados.
             </div>
             </div>
         </div>
@@ -69,7 +87,10 @@
             </h2>
             <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                RoutineXT aconseja realiza al comenzar un máximo de 3 sesiones o rutinas semanales y descansar los fines de semana. No obstante, el horario puede personalizarse hasta un máximo 
+                de 21 rutinas por semana dirigidos a aquellos usuarios más exigentes.<br>
+                Respecto a la modificación de las rutinas, se podrán modificar aquellas rutinas sin incluir los días que han transcurrido de la semana actual de forma ilimitada. No obstante, si el horario ha sido
+                desactivado, no se podrá realizar ninguna modificación.
             </div>
             </div>
         </div>
@@ -81,7 +102,11 @@
             </h2>
             <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                RoutineXT intenta hacer lo posible por controlar que el usuario sea honesto, no obstante siempre dependerá del usuario la realización de las rutinas programadas.
+                Si un usuario confirma la realización de una rutina que no ha hecho, se perjudicará a sí mismo porque de nada servirá engañar al sistema de puntuación debido a que no 
+                le aporta ningún beneficio. <br>
+                No obstante, el sistema de puntuación restará puntos si no se confirma la realización de la rutina programada, y además no permitirá confirmar hasta que se cumpla al menos un 75% del tiempo
+                de duración de la rutina.<br>
             </div>
             </div>
         </div>
@@ -93,7 +118,7 @@
             </h2>
             <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                No. El plan de entrenamiento es semanal. En el caso que no sea modificado, se volverán a repetir las mismas rutinas con la actividad y tiempo programado.
             </div>
             </div>
         </div>
@@ -105,7 +130,9 @@
             </h2>
             <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                No es necesario. RoutineXT proporciona opciones de impresión de los retos realizados, plan de entrenamiento y ejercicios de cada rutina. La idea es utilizar la aplicación móvil tan solo 
+                para comenzar la rutina y confirmar la realización de los ejercicios. Además, tampoco es necesario utilizar la aplicación web si el usuario suele realizar las mismas rutinas cada semana
+                debido a que se repite el mismo plan de entrenamiento si no es modificado.
             </div>
             </div>
         </div>
@@ -117,7 +144,7 @@
             </h2>
             <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                La aplicación solo está disponible de momento para el sistema operativo 'Android' a partir de la versión 'Jelly Bean 4.3.1'
             </div>
             </div>
         </div>
@@ -129,7 +156,8 @@
             </h2>
             <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-                [Poner contenido aquí]
+                Los retos sirven para realizar ejercicios diferentes y obtener una gran cantidad de puntos con gran facilidad. A diferencia de las rutinas del plan de entrenamiento, todos los retos
+                se deben realizar fuera de casa, debido a que pretenden que el usuario varíe de actividad. Otorgan diferentes puntuaciones según su dificultad. <a style="text-decoration: underline;" href="/FAQs_Contacto#score">Más información</a>
             </div>
             </div>
         </div>

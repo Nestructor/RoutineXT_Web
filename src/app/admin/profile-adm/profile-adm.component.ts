@@ -38,6 +38,7 @@ export class ProfileAdmComponent implements OnInit {
           this.email = items.email
           this.completeUserName = items.name + " " + items.surname
           this.userImg = items.profile
+          if(items.email != 'routineXT_adm@outlook.com') this.router.navigate(['/Plan_De_Entrenamiento']) 
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 

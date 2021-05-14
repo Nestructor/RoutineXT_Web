@@ -18,7 +18,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div class="container-fluid">
-                <p class="title_header">Retos Almacenados</p><br>
+                <p class="title_header">Retos Almacenados ({{challenges.length}})</p><br>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -42,13 +42,178 @@
            
             <div class="container-fluid">
                 <div class="row my-5 ml-5">
-                    <div class="col-4">
-                    
+                    <div class="col-3">
+                        <button class="btn btn-success" (click)="openModal_2(addModal)">+ Añadir Reto</button>
+                    </div>
+                    <div class="col-9">
+                        <button class="btn btn-warning" (click)="orderByCategory()">Filtrar por categoría</button>
+                    </div>
+                </div>
+                <div class="row my-5 ml-5">
+                    <div class="col-12">
+                        <button class="btn btn-warning" (click)="orderByScore()">Filtrar por puntuación</button>
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-12">
+                        <table id="customers" *ngIf="challenges.length > 0">
+                            <tr>
+                              <th>Reto</th>
+                              <th>Categoría</th>
+                              <th>Puntuación</th>
+                              <th>Dificultad</th>
+                              <th>Descripción</th>
+                              <th>Distancia</th>
+                              <th>Acción</th>
+                            </tr>
+                            <tr *ngFor="let challenge of challenges">
+                              <td>{{challenge[1]}}</td>
+                              <td>{{challenge[2]}}</td>
+                              <td>{{challenge[3]}}</td>
+                              <td>{{challenge[4]}}</td>
+                              <td>{{challenge[5]}}</td>
+                              <td>{{challenge[6]}}</td>
+                              <td>
+                                  <button class="btn btn-primary" (click)="openModal(editModal, challenge)">Editar</button><br>
+                                  <button class="btn btn-danger" (click)="deleteChallenge(challenge)">Eliminar</button></td>
+                            </tr>
+                          </table>
+                        <div *ngIf="noData">
+                            <p style="font-size: 35px; text-align: center">¡Oops! :(</p>
+                            <p style="font-size: 30px; text-align: center">No existen retos en la Base de Datos</p> 
+                            <img style="margin-top: 20px" width="275px" src="assets/admin/emptyDB.gif" alt="">
+                        </div>
                     <div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
+
+<ng-template #editModal>
+
+    <div class="modal-header edit">
+        <h4 class="modal-title">Editar Reto</h4>
+        <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cancelar</button>
+    </div>
+    <div class="modal-body">
+        <div class="row mb-2">
+            <div class="col-4">
+                -Reto:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="challengeModal" (ngModelChange)="checkModalValues()" value="challengeModal" disabled>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Categoría:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="typeModal" (ngModelChange)="checkModalValues()" value="typeModal">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Distancia:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="distanceModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Puntuación:
+            </div>
+            <div class="col-8">
+              <input type="number" [(ngModel)]="scoreModal" (ngModelChange)="checkModalValues()" value="scoreModal">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Dificultad:
+            </div>
+            <div class="col-8">
+              <input type="text" placeholder="[Fácil, Media, Difícil]" [(ngModel)]="difficultyModal" (ngModelChange)="checkModalValues()" value="difficultyModal">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Descripción:
+            </div>
+            <div class="col-8">
+              <textarea [(ngModel)]="descriptionModal" (ngModelChange)="checkModalValues()">{{descriptionModal}}</textarea>
+            </div>
+        </div>
+    </div>
+  
+    <div class="modal-footer">
+        <p>El botón "Editar" se habilitará cuando los datos introducidos sean correctos.</p>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!checkModalValues()" (click)="updateChallenge(idModal)">Editar</button>
+    </div>
+
+</ng-template>
+
+<ng-template #addModal>
+
+    <div class="modal-header">
+        <h4 class="modal-title">Añadir Reto</h4>
+        <button type="button" class="btn btn-light" style="margin-right: 2px" (click)="modalRef.hide()">Cancelar</button>
+    </div>
+    <div class="modal-body">
+        <div class="row mb-2">
+            <div class="col-4">
+                -Reto:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="challengeModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Categoría:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="typeModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Distancia:
+            </div>
+            <div class="col-8">
+              <input type="text" [(ngModel)]="distanceModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Puntuación:
+            </div>
+            <div class="col-8">
+              <input type="number" [(ngModel)]="scoreModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Dificultad:
+            </div>
+            <div class="col-8">
+              <input placeholder="[Fácil, Media, Difícil]" type="text" [(ngModel)]="difficultyModal" (ngModelChange)="checkModalValues()">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4">
+                -Descripción:
+            </div>
+            <div class="col-8">
+              <textarea [(ngModel)]="descriptionModal" (ngModelChange)="checkModalValues()"></textarea>
+            </div>
+        </div>
+    </div>
+  
+    <div class="modal-footer">
+        <p>El botón "Añadir" se habilitará cuando los datos introducidos sean correctos.</p>
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!checkModalValues()" (click)="addChallenge()">Añadir</button>
+    </div>
+
+</ng-template>
