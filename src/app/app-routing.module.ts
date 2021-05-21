@@ -21,6 +21,7 @@ import { EditProfileAdmComponent } from './admin/edit-profile-adm/edit-profile-a
 import { ExerciseAdmComponent } from './admin/exercise-adm/exercise-adm.component';
 import { ProfileAdmComponent } from './admin/profile-adm/profile-adm.component';
 import { UserAdmComponent } from './admin/user-adm/user-adm.component';
+import { StartRoutineComponent } from './registered/start-routine/start-routine.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,9 @@ const routes: Routes = [
   },
   {
     path: 'Editar_Perfil_Adm', component: EditProfileAdmComponent
+  },
+  {
+    path: 'Comenzar_Rutina', component: StartRoutineComponent
   },
   {
     path: '**', component: PaginaNoEncontradaComponent

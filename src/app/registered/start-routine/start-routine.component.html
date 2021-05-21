@@ -1,0 +1,76 @@
+
+<div class="d-flex">
+    <div id="sidebar-container" class="bg-primary">
+        <div class="logo">
+            <a routerLink="/" target="_blank"><img src="assets/WebLogo.png" ></a>
+            <hr class="separation_line">
+        </div>
+
+        <div class="menu">
+            <a class="d-block text-light p-3 border-0" routerLink="/Plan_De_Entrenamiento"><i class="icon ion-md-walk lead mr-2"></i>Mi Entrenamiento</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Ejercicios"><i class="ion-md-clipboard lead mr-1"></i>Mis Ejercicios</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Retos"><i class="ion-md-star lead mr-1"></i>Mis Retos</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Puntuación"><i class="icon ion-md-podium"></i>Mi Puntuación</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Consejos"><i class="icon ion-md-bulb lead mr-2"></i>Consejos</a>
+            <a class="d-block text-light p-3 border-0" routerLink=""><i class="icon ion-md-ribbon lead mr-1"></i>Comenzar Rutina</a>
+        </div>
+        <button class="btn btn-warning tutorial">Tutorial</button>
+    </div>
+
+    <div class="w-100">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <p class="title_header">Inicio de Rutina</p><br>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img [src]="userImg" class="img-fluid rounded profile mr-2" >
+                            {{completeUserName}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <button class="dropdown-item" routerLink="/Perfil">Mi perfil</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" (click)="onLogout()">Cerrar sesión</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div *ngIf="actualRoutine.length != 0">
+            <div id="content" class="bg-grey w-100">
+                <div class="container-fluid my-5">
+                    <div class="row mx-auto">
+                        <p class="title"><span style="border-bottom: 1px solid black; padding: 15px;">Rutina de {{actualRoutine[3]}} ({{actualRoutine[0]}}, {{actualRoutineTimePeriod}})</span></p>
+                    </div>
+                    <div class="row mx-auto my-5">
+                        <ul>
+                            <li>Rutina de {{actualRoutineDayTime}}.</li>
+                            <li>Rutina {{numberOfRoutine}}/{{userRoutines.length}} de la semana.</li>
+                            <li>{{actualRoutineTime}} ejercicios.</li>
+                            <li>{{actualRoutineTime}} minutos.</li>
+                            <li>+ 5 puntos.</li>
+                            <li>Descansar 25 segundos por ejercicio.</li>
+                        </ul>
+                        <button class="btn btn-success">¡Comenzar!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div *ngIf="actualRoutine.length == 0">
+            <div id="content" class="w-100" *ngIf="userID != ''">
+                <div class="container-fluid mt-5">
+                    <p>¡Oops!</p>
+                    <p>En este momento, no hay rutinas disponibles. Recuerda que las rutinas se mostrarán aquí en el período de tiempo que has asignado en el plan de entrenamiento.</p>
+                    <img src="assets/registered/noRoutines.gif">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

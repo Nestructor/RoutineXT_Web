@@ -7,11 +7,11 @@
 
         <div class="menu">
             <a class="d-block text-light p-3 border-0" routerLink="/Plan_De_Entrenamiento"><i class="icon ion-md-walk lead mr-2"></i>Mi Entrenamiento</a>
-            <a class="d-block text-light p-3 border-0" routerLink="/Ejercicios"><i class="ion-md-clipboard lead mr-2"></i>Mis Ejercicios</a>
-            <!-- <a class="d-block text-light p-3 border-0" routerLink="/Progreso"><i class="icon ion-md-stats lead mr-2"></i>Mi Progreso</a> -->
-            <a class="d-block text-light p-3 border-0" routerLink="/Retos"><i class="ion-md-star lead mr-2"></i>Mis Retos</a>
-            <a class="d-block text-light p-3 border-0" routerLink="/Puntuación"><i class="icon ion-md-podium lead mr-2"></i>Mi Puntuación</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Ejercicios"><i class="ion-md-clipboard lead mr-1"></i>Mis Ejercicios</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Retos"><i class="ion-md-star lead mr-1"></i>Mis Retos</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Puntuación"><i class="icon ion-md-podium"></i>Mi Puntuación</a>
             <a class="d-block text-light p-3 border-0" routerLink="/Consejos"><i class="icon ion-md-bulb lead mr-2"></i>Consejos</a>
+            <a class="d-block text-light p-3 border-0" routerLink="/Comenzar_Rutina"><i class="icon ion-md-ribbon lead mr-1"></i>Comenzar Rutina</a>
         </div>
         <button class="btn btn-warning tutorial">Tutorial</button>
     </div>
@@ -56,8 +56,8 @@
                                 <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
                                     <div *ngIf="routines[i][0] == 'Lunes'">
                                         <li>
-                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
-                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == 'Y'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'N'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos.<br> (No realizada)</p> 
                                             <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
                                         </li>
                                     </div>
@@ -66,8 +66,8 @@
                                 <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
                                     <div *ngIf="routines[i][0] == 'Martes'">
                                         <li>
-                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
-                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == 'Y'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'N'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos.<br> (No realizada)</p> 
                                             <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
                                         </li>
                                     </div>
@@ -76,8 +76,8 @@
                                 <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
                                     <div *ngIf="routines[i][0] == 'Miércoles'">
                                         <li>
-                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
-                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == 'Y'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'N'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos.<br> (No realizada)</p> 
                                             <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
                                         </li>
                                     </div>
@@ -86,8 +86,8 @@
                                 <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
                                     <div *ngIf="routines[i][0] == 'Jueves'">
                                         <li>
-                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
-                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == 'Y'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'N'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos.<br> (No realizada)</p> 
                                             <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
                                         </li>
                                     </div>
@@ -96,8 +96,8 @@
                                 <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
                                     <div *ngIf="routines[i][0] == 'Viernes'">
                                         <li>
-                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
-                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == 'Y'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'N'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos.<br> (No realizada)</p> 
                                             <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
                                         </li>
                                     </div>
@@ -106,8 +106,8 @@
                                 <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
                                     <div *ngIf="routines[i][0] == 'Sábado'">
                                         <li>
-                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
-                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == 'Y'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'N'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos.<br> (No realizada)</p> 
                                             <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
                                         </li>
                                     </div>
@@ -116,8 +116,8 @@
                                 <div *ngFor="let routine of routines.constructor(totalRoutines); let i = index">
                                     <div *ngIf="routines[i][0] == 'Domingo'">
                                         <li>
-                                            <p *ngIf="routines[i][3] == 'Yes'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
-                                            <p *ngIf="routines[i][3] == 'No'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos. (no realizada)</p> 
+                                            <p *ngIf="routines[i][3] == 'Y'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: green">+10</span> puntos.</p>
+                                            <p *ngIf="routines[i][3] == 'N'"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}} -> <span style="color: red">-10</span> puntos.<br> (No realizada)</p> 
                                             <p *ngIf="routines[i][3] == ''" style="opacity: 0.2"><span style="text-decoration: underline">{{routines[i][0]}}</span>: {{routines[i][1]}} {{routines[i][2]}}</p> 
                                         </li>
                                     </div>

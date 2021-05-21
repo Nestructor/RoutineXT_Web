@@ -48,6 +48,7 @@ import { ChallengeAdmComponent } from './admin/challenge-adm/challenge-adm.compo
 import { ExerciseAdmComponent } from './admin/exercise-adm/exercise-adm.component';
 import { UserAdmComponent } from './admin/user-adm/user-adm.component';
 import { EditProfileAdmComponent } from './admin/edit-profile-adm/edit-profile-adm.component';
+import { StartRoutineComponent } from './registered/start-routine/start-routine.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { EditProfileAdmComponent } from './admin/edit-profile-adm/edit-profile-a
     ChallengeAdmComponent,
     ExerciseAdmComponent,
     UserAdmComponent,
-    EditProfileAdmComponent
+    EditProfileAdmComponent,
+    StartRoutineComponent
   ],
   imports: [
     BrowserModule,

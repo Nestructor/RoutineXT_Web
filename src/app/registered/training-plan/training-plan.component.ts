@@ -123,7 +123,7 @@ export class TrainingPlanComponent implements OnInit {
     for(var k=0; k<7; k++) {
       this.editableDays[k] = this.cancelTrainingPlan ? false : true
     }
-    console.log("cancelPlan: " + this.editableDays)
+    // console.log("cancelPlan: " + this.editableDays)
 
     let weekdayFormatDate = formatDate(this.today.getTime(), 'EEEE', 'es')
     weekdayFormatDate = weekdayFormatDate.charAt(0).toUpperCase() + weekdayFormatDate.substring(1)
@@ -132,7 +132,7 @@ export class TrainingPlanComponent implements OnInit {
     for(var i = 0; i < this.todayIndex; i++) {
       this.editableDays[i] = false
     }
-    console.log("Día actual: " + this.editableDays)
+    // console.log("Día actual: " + this.editableDays)
 
     this.db.collection('routines').get().subscribe((resultado) => {
       resultado.docs.forEach((item) => {
@@ -242,7 +242,7 @@ export class TrainingPlanComponent implements OnInit {
       dayTime: this.dayTime,
       type: routine,
       timetable: startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected,
-      completed: "",
+      completed: "N",
       userID: this.userID
     }).then((routineID)=> {
       console.log(this.dayTime)
@@ -275,7 +275,7 @@ export class TrainingPlanComponent implements OnInit {
       dayTime: this.dayTime,
       type: routine,
       timetable: startHoursSelected+":"+startMinutesSelected + "-" + endHoursSelected + ":" + endMinutesSelected,
-      completed: "",
+      completed: "N",
       userID: this.userID
     }).then((updated) => {
       switch(this.dayTime) {

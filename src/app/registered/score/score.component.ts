@@ -68,11 +68,11 @@ export class ScoreComponent implements OnInit {
           this.routines[i][1] = routine.type
           this.routines[i][2] = routine.timetable
           this.routines[i++][3] = routine.completed
-          if(routine.completed == 'Yes') {
+          if(routine.completed == 'Y') {
             this.routinesDone++;
-            this.scoreAchieved += 10
-          } else if(routine.completed == 'No') {
-            this.scoreAchieved -= 10
+            this.scoreAchieved += 5
+          } else if(routine.completed == 'N') {
+            this.scoreAchieved -= 5
           }
         }
       })
