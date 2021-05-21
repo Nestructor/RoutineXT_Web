@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -71,7 +72,7 @@ export class ScoreComponent implements OnInit {
           if(routine.completed == 'Y') {
             this.routinesDone++;
             this.scoreAchieved += 5
-          } else if(routine.completed == 'N') {
+          } else if(routine.completed == 'OK') {
             this.scoreAchieved -= 5
           }
         }
@@ -86,7 +87,7 @@ export class ScoreComponent implements OnInit {
 
       resultado.docs.forEach((item) => {
         let user:any = item.data();
-        if(user.name != 'routineXT') {
+        if(user.name != 'Routine_XT') {
           this.usersData[i][0] = user.name
           this.usersData[i][1] = user.score
           this.usersData[i++][2] = user.email

@@ -1,0 +1,84 @@
+div > div > div.row.mt-5.mx-4 > div > button {
+    float: right;
+    margin-right: 60px;
+    font-size: 22px;
+}
+
+div > div > div.row.mt-5.mx-4 > div > button:nth-child(1) {
+    float: left;
+    margin-left: 60px;
+    font-size: 20px;
+}
+
+div > div > div.row.mt-4.mx-auto {
+    border: 1px solid;
+    width: 88%;
+}
+
+div > div > div.row.mt-4.mx-auto > div {
+    text-align: center;
+}
+
+div > div > div.row.mt-4.mx-auto > div:nth-child(1),
+div > div > div.row.mt-4.mx-auto > div:nth-child(3) {
+    font-size: 22px;
+}
+
+div > div > div.row.mt-4.mx-auto > div:nth-child(2) {
+    font-size: 26px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+div > div > div.row.mt-4.mx-auto > div > p {
+    margin: 15px;
+}
+
+div > div > div.row.mx-auto {
+    border: 1px solid;
+    border-top: none;
+    width: 88%;
+}
+
+div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) {
+    text-align: center;
+    padding: 50px 0;
+    border-right: 1px solid;
+}
+
+div > div > div:nth-child(3) > div.col-4{
+    padding: 50px 0;
+}
+
+div > div > div:nth-child(2) > div:nth-child(2) > div.col-6.my-auto > p {
+    width: 345px;
+    font-size: 21px;
+    border: 1px solid black;
+    padding: 30px;
+    text-align: justify;
+    background-color: #ffc107a8;
+}
+
+div > div > div:nth-child(3) > div.col-4 {
+    border-right: 1px solid;
+    text-align: center;
+}
+
+div > div > div:nth-child(3) > div.col-8 {
+    text-align: center;
+    margin: 50px auto;
+    font-size: 20px;
+}
+
+div > div > div:nth-child(4) {
+    text-align: center;
+    padding: 25px 0;
+}
+
+div > div > div:nth-child(4) > div > p {
+    font-size: 20px;
+}
+
+div > div > div.row.bg-white.mt-4.mx-auto > div > p {
+    font-weight: bold;
+}

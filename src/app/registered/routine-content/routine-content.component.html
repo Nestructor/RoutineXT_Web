@@ -1,0 +1,64 @@
+<div class="d-flex">
+    <div class="container-fluid">
+
+        <div class="row mt-5 mx-4">
+            <div class="col-12">
+                <button class="btn btn-light" (click)="hideRow()" data-toggle="tooltip" title="Ocultar">
+                    <p *ngIf="!hideRowMessage" style="margin: 5px auto;">Pantalla Completa: Tecla F11 ("Option" + "Command" + "D" en Safari)</p>
+                </button>
+                <button class="btn btn-secondary" (click)="hideButton()" data-toggle="tooltip" data-placement="top" title="Ocultar">
+                    <p *ngIf="!hideButtonMessage && !stopTimer" style="margin: 5px auto;">Tiempo total: {{mm}}:{{ss}}</p>
+                    <p *ngIf="!hideButtonMessage && stopTimer" style="margin: 5px auto;">En Pausa</p>
+                </button>
+            </div>
+        </div>
+
+        <div *ngFor="let book of books | paginate: {itemsPerPage: 1, currentPage: page}; let i = index">
+            <div class="row bg-white mt-4 mx-auto">
+                <div class="col-4">
+                    <p *ngIf="timeRelax > 0 && !stopTimer" style="color: #00ce2f">{{timeRelax}} segundos de descanso</p>
+                    <p *ngIf="timeRelax == 0 && time > 0 && !stopTimer">{{time}} segundos</p>
+                    <p *ngIf="time == 0">Finalizado</p>
+                    <p *ngIf="stopTimer && time != 0">En pausa</p>
+                </div>
+                <div class="col-4">
+                    <p style="font-weight: bold">Abdominales Superiores</p>
+                </div>
+                <div class="col-4">
+                    <p>Ejercicio 3/20</p>
+                </div>
+            </div>
+    
+            <div class="row bg-white mx-auto">
+                <div class="col-6">
+                   <img width="350px" src="assets/404_Error.gif" alt="">
+                </div>
+                <div class="col-6 my-auto">
+                    <p class="mx-auto">Eleva toda la parte superior del cuerpo levantándote ligeramente del suelo. Mantén siempre la mirada en el techo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row bg-white mx-auto">
+            <div class="col-4">
+                <button class="btn btn-danger" style="font-size: 20px" (click)="stopTimers()" *ngIf="!stopTimer">Pausar Entrenamiento</button>
+                <button class="btn btn-danger" style="font-size: 20px" (click)="stopTimers()" *ngIf="stopTimer">Seguir Entrenamiento</button>
+            </div>
+            <div class="col-8 my-auto">
+                <pagination-controls  
+                    (pageChange)="page = $event"
+                    previousLabel="Anterior"
+                    nextLabel="Siguiente"
+                    (click)="endTimer()">
+                </pagination-controls>
+            </div>
+        </div>
+
+        <div class="row bg-white mx-auto">
+            <div class="col-12">
+               <p style="margin-top:15px">El botón "Siguiente" será habilitado cuando realices al menos un 75% del tiempo de la rutina para considerarla un éxito.</p>
+            </div>
+        </div>
+        
+    </div>
+</div>

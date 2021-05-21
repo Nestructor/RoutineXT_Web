@@ -1,0 +1,66 @@
+#content::-webkit-scrollbar {
+    display: none;
+}
+
+.bg-primary { 
+    background-color: #063d79 !important; 
+}
+
+.bg-light { 
+    background-color: #fff !important; 
+}
+
+.bg-grey { 
+    background-color: #efefef !important; 
+}
+
+div {
+    height: 95px;
+    background-color: #063d79 !important;
+}
+
+div > div.w-100 {
+    background-color: #063d79 !important;
+}
+
+div > div.w-100 > div {
+    padding-top: 23px;
+    border-left: 2px solid white;
+    margin-left: 30px;
+    padding-left: 50px;
+}
+
+div > div.w-100 > div > button {
+    float: right;
+    font-size: 21px;
+    margin-right: 90px;
+}   
+
+div > div.w-100 > div > button > img {
+    margin-left: 15px;
+    margin-bottom: 4px;
+}
+
+#sidebar-container {
+    min-height: 100%;
+}
+  
+#sidebar-container .logo {
+    padding: 15px 0px 30px 15px;
+    width: 255px;
+}
+
+#sidebar-container .logo img {
+    width: 265px;
+}
+
+.title_header {
+    font-size: 24px;
+    display: contents;
+    font-weight: bold;
+    color: white;
+}
+
+#content {
+    height: 110vh;
+}

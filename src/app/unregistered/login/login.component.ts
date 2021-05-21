@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   userRoutines = []
   map = new Maps();
   weekday: number
+  trainingPlanCancelled: boolean
   
   constructor(
     private authSrv: AuthService, 
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
         this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
           let items: any = resultado.data()
           this.name = items.name;
+          this.trainingPlanCancelled = items.trainingPlanCancelled
         })
       }
     })
@@ -73,7 +75,7 @@ export class LoginComponent implements OnInit {
   async showLoading(user_id) {
     this.spinner.show()
     setTimeout(() => {
-      this.updateScore(user_id)
+      if(!this.trainingPlanCancelled) this.updateScore(user_id)
       this.router.navigate(['/Plan_De_Entrenamiento']) 
       this.spinner.hide()
     }, 3000)

@@ -49,6 +49,9 @@ import { ExerciseAdmComponent } from './admin/exercise-adm/exercise-adm.componen
 import { UserAdmComponent } from './admin/user-adm/user-adm.component';
 import { EditProfileAdmComponent } from './admin/edit-profile-adm/edit-profile-adm.component';
 import { StartRoutineComponent } from './registered/start-routine/start-routine.component';
+import { RoutineComponent } from './registered/routine/routine.component';
+import { RoutineContentComponent } from './registered/routine-content/routine-content.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -76,7 +79,9 @@ import { StartRoutineComponent } from './registered/start-routine/start-routine.
     ExerciseAdmComponent,
     UserAdmComponent,
     EditProfileAdmComponent,
-    StartRoutineComponent
+    StartRoutineComponent,
+    RoutineComponent,
+    RoutineContentComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +97,7 @@ import { StartRoutineComponent } from './registered/start-routine/start-routine.
     TimepickerModule.forRoot(),
     NgbModule,
     FormsModule,
+    NgxPaginationModule,
     ProgressbarModule.forRoot(),
     PopoverModule.forRoot()
   ],

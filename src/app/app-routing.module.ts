@@ -22,6 +22,7 @@ import { ExerciseAdmComponent } from './admin/exercise-adm/exercise-adm.componen
 import { ProfileAdmComponent } from './admin/profile-adm/profile-adm.component';
 import { UserAdmComponent } from './admin/user-adm/user-adm.component';
 import { StartRoutineComponent } from './registered/start-routine/start-routine.component';
+import { RoutineComponent } from './registered/routine/routine.component';
 
 const routes: Routes = [
   {
@@ -86,6 +87,9 @@ const routes: Routes = [
   },
   {
     path: 'Comenzar_Rutina', component: StartRoutineComponent
+  },
+  {
+    path: 'Rutina', component: RoutineComponent
   },
   {
     path: '**', component: PaginaNoEncontradaComponent

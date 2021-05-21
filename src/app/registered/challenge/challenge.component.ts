@@ -23,6 +23,7 @@ export class ChallengeComponent implements OnInit {
   completedChallenges: number = 0
   challenges: any = []
   today: string = formatDate(Date.now(), 'dd/MM/yyyy', 'en')
+  nChallenges: number = 0
   
   constructor(
     private authSvc: AuthService, 
@@ -38,6 +39,7 @@ export class ChallengeComponent implements OnInit {
           this.userImg = items.profile
           this.score = items.score;
           this.max_score = items.max_score;
+          this.nChallenges = items.challenges
           if(items.email == 'routineXT_adm@outlook.com') this.router.navigate(['/Tabla_De_Retos']) 
         })
       } catch(error) {
@@ -110,6 +112,10 @@ export class ChallengeComponent implements OnInit {
           })
         }
       })
+    })
+
+    this.db.collection('users').doc(this.userID).update({
+      challenges: this.nChallenges+1
     })
 
     switch(challenge[4]) {

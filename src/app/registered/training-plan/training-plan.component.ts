@@ -59,6 +59,15 @@ export class TrainingPlanComponent implements OnInit {
           this.userImg = items.profile
           this.cancelTrainingPlan = items.trainingPlanCancelled
           if(items.email == 'routineXT_adm@outlook.com') this.router.navigate(['/Tabla_De_Usuarios'])
+          if(this.cancelTrainingPlan) {
+            for (let i = 0; i < 7; i++) {
+              this.editableDays[i] = false;
+            }
+          } else {
+            for(var i = this.todayIndex+1; i < 7; i++) {
+              this.editableDays[i] = true;
+            }
+          }
         })
       } catch(error) {
         this.router.navigate(['/Iniciar_Sesion']) 
@@ -120,16 +129,15 @@ export class TrainingPlanComponent implements OnInit {
       } 
     } 
 
-    for(var k=0; k<7; k++) {
-      this.editableDays[k] = this.cancelTrainingPlan ? false : true
-    }
+    // for(var k=0; k<7; k++) {
+    //   this.editableDays[k] = this.cancelTrainingPlan ? false : true
+    // }
     // console.log("cancelPlan: " + this.editableDays)
 
     let weekdayFormatDate = formatDate(this.today.getTime(), 'EEEE', 'es')
     weekdayFormatDate = weekdayFormatDate.charAt(0).toUpperCase() + weekdayFormatDate.substring(1)
     this.todayIndex = this.map.weekdayToIndexArray.get(weekdayFormatDate)
-    
-    for(var i = 0; i < this.todayIndex; i++) {
+    for(var i = 0; i <= this.todayIndex; i++) {
       this.editableDays[i] = false
     }
     // console.log("Día actual: " + this.editableDays)
@@ -341,7 +349,7 @@ export class TrainingPlanComponent implements OnInit {
       trainingPlanCancelled: false
     })
     this.cancelTrainingPlan = false;
-    for(var i = this.todayIndex; i < 7; i++) {
+    for(var i = this.todayIndex+1; i < 7; i++) {
       this.editableDays[i] = true;
     }
     console.log("Enabled: " + this.editableDays)
