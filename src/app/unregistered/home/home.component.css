@@ -87,13 +87,13 @@ main {
 
 main .container {
 	overflow: hidden;
-    height: 580px;
+    height: 495px;
 	padding-top: 80px;
     margin-bottom: 45px;
 }
 
 main .article .article1_text {
-	margin: 138px 40px 130px 134px;
+	margin: 85px 40px 130px 134px;
 }
 
 main .article .article_title {
@@ -113,7 +113,7 @@ main .article .article_subtitle {
 main .article .article1_img {
 	display:block;
 	margin: 50px auto;
-	width: 180px;
+	width: 325px;
 	transition: all 500ms ease-in-out;
 }
 

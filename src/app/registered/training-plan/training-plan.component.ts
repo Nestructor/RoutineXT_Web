@@ -359,6 +359,10 @@ export class TrainingPlanComponent implements OnInit {
     window.print()
   }
 
+  watchVideo(modal: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(modal);
+  }
+
   async onLogout() {
     const Toast = Swal.mixin({
       toast: true,
