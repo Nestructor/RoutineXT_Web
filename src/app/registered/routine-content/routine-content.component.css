@@ -82,3 +82,10 @@ div > div > div:nth-child(4) > div > p {
 div > div > div.row.bg-white.mt-4.mx-auto > div > p {
     font-weight: bold;
 }
+
+div > div > div:nth-child(3) > div.col-8.my-auto > button {
+    font-size: 20px;
+    float: right;
+    margin-top: -15px;
+    margin-right: 40px;
+}

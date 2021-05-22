@@ -13,28 +13,29 @@
             </div>
         </div>
 
-        <div *ngFor="let book of books | paginate: {itemsPerPage: 1, currentPage: page}; let i = index">
+        <!-- <div *ngFor="let book of books | paginate: {itemsPerPage: 1, currentPage: page}; let i = index"> -->
+        <div *ngFor="let exercise of actualRoutineExercises | paginate: {itemsPerPage: 1, currentPage: page}">
             <div class="row bg-white mt-4 mx-auto">
                 <div class="col-4">
-                    <p *ngIf="timeRelax > 0 && !stopTimer" style="color: #00ce2f">{{timeRelax}} segundos de descanso</p>
+                    <p *ngIf="timeRelax > 0 && !stopTimer" style="color: #00ce2f">Comenzamos en {{timeRelax}} segundos</p>
                     <p *ngIf="timeRelax == 0 && time > 0 && !stopTimer">{{time}} segundos</p>
                     <p *ngIf="time == 0">Finalizado</p>
                     <p *ngIf="stopTimer && time != 0">En pausa</p>
                 </div>
                 <div class="col-4">
-                    <p style="font-weight: bold">Abdominales Superiores</p>
+                    <p style="font-weight: bold">{{exercise[0]}}</p>
                 </div>
                 <div class="col-4">
-                    <p>Ejercicio 3/20</p>
+                    <p>Ejercicio {{page}}</p>
                 </div>
             </div>
     
             <div class="row bg-white mx-auto">
                 <div class="col-6">
-                   <img width="350px" src="assets/404_Error.gif" alt="">
+                   <img width="350px" src={{exercise[2]}} alt="">
                 </div>
                 <div class="col-6 my-auto">
-                    <p class="mx-auto">Eleva toda la parte superior del cuerpo levantándote ligeramente del suelo. Mantén siempre la mirada en el techo.</p>
+                    <p class="mx-auto">{{exercise[1]}}</p>
                 </div>
             </div>
         </div>
@@ -49,14 +50,16 @@
                     (pageChange)="page = $event"
                     previousLabel="Anterior"
                     nextLabel="Siguiente"
-                    (click)="endTimer()">
+                    (click)="endTimer(page)">
                 </pagination-controls>
+                <button class="btn btn-success" *ngIf="page == actualRoutineExercises.length" [disabled]="disabled" (click)="endRoutine()">Continuar</button>
+                <!-- <button class="btn btn-success" (click)="endRoutine()">Continuar</button> -->
             </div>
         </div>
 
-        <div class="row bg-white mx-auto">
+        <div class="row bg-white mx-auto" *ngIf="page == actualRoutineExercises.length && disabled">
             <div class="col-12">
-               <p style="margin-top:15px">El botón "Siguiente" será habilitado cuando realices al menos un 75% del tiempo de la rutina para considerarla un éxito.</p>
+               <p style="margin-top:15px">El botón "Continuar" será habilitado cuando realices al menos un 75% del tiempo de la rutina para considerarla un éxito. <br>({{percentage-minutesDone}} minutos restantes)</p>
             </div>
         </div>
         
