@@ -1,4 +1,4 @@
-# RoutineXT_Web
+# RoutineXT: aplicación para realizar ejercicios de mantenimiento en casa
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
 
@@ -9,6 +9,14 @@ is that each week the user performs workout routines planned in their personalis
 reward for each routine performed. Likewise, if the user does not complete the routine, the accumulated points will be automatically subtracted. 
 As the user's score increases, it will unlock challenges that will allow the user to increase their score very  easily. Similarly, the score 
 will help the user to know how they are progressing or developing their physical fitness as in a gamification system.
+
+## Product Backlog && User Stories
+
+Here you can see how this project was planned:
+
+-Product Backlog: https://docs.google.com/spreadsheets/d/1ucibHy_jsmGTU8AAoY8B82HWr019MRJASVpkp1SiAU4/edit?usp=sharing
+-User Stories: https://docs.google.com/presentation/d/10pQ_4X9mLAEk8Z1gZi3F5uJssr41iY0p8mDLdov8OJk/edit?usp=sharing
+
 
 ## Development server (VSC)
 
