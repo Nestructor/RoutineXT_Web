@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-profile',
@@ -33,12 +34,14 @@ export class ProfileComponent implements OnInit {
   uploadPercentage: number = 0;
   userRanking: number;
   usersData = []
+  modalRef: BsModalRef
   
   constructor(
     private authSvc: AuthService, 
     private router: Router, 
     private db: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private modalService: BsModalService
   ) {
     this.user$.subscribe((user) => {
       try {
@@ -64,6 +67,10 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  watchVideo(modal: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(modal);
+  }
+
   ngOnInit() {
     this.db.collection('users').get().subscribe((resultado) => {
       let i = 0
@@ -73,7 +80,7 @@ export class ProfileComponent implements OnInit {
 
       resultado.docs.forEach((item) => {
         let user:any = item.data();
-        if(user.name != 'routineXT') {
+        if(user.name != 'Routine_XT') {
           this.usersData[i][0] = user.name
           this.usersData[i][1] = user.score
           this.usersData[i++][2] = user.email
@@ -81,7 +88,7 @@ export class ProfileComponent implements OnInit {
       })
       this.sort();
     })
-
+    
     this.user$.subscribe((user) => {
       this.db.collection('users').doc(this.userID).get().subscribe((resultado) => {
         let items: any = resultado.data()

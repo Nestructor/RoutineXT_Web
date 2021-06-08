@@ -52,8 +52,8 @@
                     nextLabel="Siguiente"
                     (click)="endTimer(page)">
                 </pagination-controls>
-                <button class="btn btn-success" *ngIf="page == actualRoutineExercises.length" [disabled]="disabled" (click)="endRoutine()">Continuar</button>
-                <!-- <button class="btn btn-success" (click)="endRoutine()">Continuar</button> -->
+                <!-- <button class="btn btn-success" *ngIf="page == actualRoutineExercises.length" [disabled]="disabled" (click)="endRoutine()">Continuar</button> -->
+                <button class="btn btn-success" (click)="endRoutine()">Continuar</button>
             </div>
         </div>
 

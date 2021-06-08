@@ -239,8 +239,7 @@ export class RoutineContentComponent implements OnInit {
         }
       })
     })    
-    
-    setInterval(() => {this.router.navigate(['/Puntuación']) }, 2000)
+
     Swal.fire({
       title: '¡Enhorabuena ' + this.name + "!",
       text: "Has completado la rutina",
@@ -261,6 +260,8 @@ export class RoutineContentComponent implements OnInit {
       },
       inputPlaceholder: 'Logros Obtenidos',
     })
+
+    this.router.navigate(['/Puntuación']) 
         
   }
 

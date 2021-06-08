@@ -1,7 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { Maps } from 'src/app/modules/maps';
 import { AuthService } from 'src/app/services/auth.service';
@@ -29,11 +30,13 @@ export class ScoreComponent implements OnInit {
   routines: any = []
   map = new Maps();
   usersData = []
+  modalRef: BsModalRef
 
   constructor(
     private authSvc: AuthService, 
     private router: Router, 
     private db: AngularFirestore,
+    private modalService: BsModalService
   ) {
     this.user$.subscribe((user) => {
       try {
@@ -51,6 +54,10 @@ export class ScoreComponent implements OnInit {
       }
     })
 
+  }
+
+  watchVideo(modal: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(modal);
   }
 
   ngOnInit(): void {

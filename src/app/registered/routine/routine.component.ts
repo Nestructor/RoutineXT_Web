@@ -98,7 +98,7 @@ export class RoutineComponent implements OnInit {
           }
         }
       }
-      if(this.actualRoutine.length == 0) this.router.navigate(['/Comenzar_Rutina'])
+      if(this.actualRoutine.length == 0 || this.actualRoutine[4] == 'Y') this.router.navigate(['/Comenzar_Rutina'])
     })
   }
 

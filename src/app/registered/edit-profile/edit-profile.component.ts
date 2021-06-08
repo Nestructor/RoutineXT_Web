@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-edit-profile',
@@ -37,13 +38,15 @@ export class EditProfileComponent implements OnInit {
   validData: boolean = true
   userRanking: number;
   usersData = []
+  modalRef: BsModalRef
   
   constructor(
     private authSvc: AuthService, 
     private router: Router, 
     private db: AngularFirestore,
     private storage: AngularFireStorage,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private modalService: BsModalService
   ) {
     this.user$.subscribe((user) => {
       try {
@@ -67,6 +70,10 @@ export class EditProfileComponent implements OnInit {
         this.router.navigate(['/Iniciar_Sesion']) 
       }
     })
+  }
+
+  watchVideo(modal: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(modal);
   }
 
   ngOnInit(): void {

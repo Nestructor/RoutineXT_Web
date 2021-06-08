@@ -14,7 +14,7 @@
             <a class="d-block text-light p-3 border-0" routerLink="/Consejos"><i class="icon ion-md-bulb lead mr-2"></i>Consejos</a>
             <a class="d-block text-light p-3 border-0" routerLink="/Comenzar_Rutina"><i class="icon ion-md-ribbon lead mr-1"></i>Comenzar Rutina</a>
         </div>
-        <button class="btn btn-warning tutorial">Tutorial</button>
+        <button class="btn btn-warning tutorial" (click)="watchVideo(video)">Tutorial</button>
     </div>
 
     <div class="w-100">
@@ -100,3 +100,11 @@
 
     </div>
 </div>
+
+<ng-template #video>   
+    <div class="pre_modal" style="margin-top: 10px">
+        <div class="modal-body" style="padding: 0; margin: -2% -20%;">
+            <video width="1000px" controls controlsList="nodownload" src="assets/registered/Tutorial.mp4"></video> 
+        </div>
+    </div>
+</ng-template>

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 import { Maps } from 'src/app/modules/maps';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-exercise',
@@ -23,6 +24,7 @@ export class ExerciseComponent implements OnInit {
   routineMinutes = []
   routineExercises = []
   showEmptyPlanning = false;
+  modalRef: BsModalRef
 
   flexibility: any = []
   abs: any = []
@@ -35,6 +37,7 @@ export class ExerciseComponent implements OnInit {
     private authSvc: AuthService, 
     private router: Router, 
     private db: AngularFirestore,
+    private modalService: BsModalService
   ) {
     this.user$.subscribe((user) => {
       try {
@@ -50,6 +53,11 @@ export class ExerciseComponent implements OnInit {
       }
     })
   }
+
+  watchVideo(modal: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(modal);
+  }
+
 
   ngOnInit(): void {
 

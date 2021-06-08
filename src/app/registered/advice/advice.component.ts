@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -16,11 +17,13 @@ export class AdviceComponent implements OnInit {
   userID: string
   completeUserName: string
   userImg: any
+  modalRef: BsModalRef
   
   constructor(
     private authSvc: AuthService, 
     private router: Router, 
     private db: AngularFirestore,
+    private modalService: BsModalService
   ) {
     this.user$.subscribe((user) => {
       try {
@@ -39,6 +42,10 @@ export class AdviceComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  watchVideo(modal: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(modal);
   }
 
   async onLogout() {
